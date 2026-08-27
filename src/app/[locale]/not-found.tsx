@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 
-import { isLocale } from "@/config/site";
+import { defaultLocale, isLocale } from "@/config/site";
 import { getDictionary } from "@/dictionaries";
 
 import { MaintenancePage } from "./_maintenance/maintenance-page";
@@ -13,10 +12,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Home({ params }: PageProps<"/[locale]">) {
-  const { locale } = await params;
-
-  if (!isLocale(locale)) notFound();
+export default async function NotFound({
+  params,
+}: {
+  params?: Promise<{ locale?: string }>;
+}) {
+  const { locale: rawLocale } = (await params) ?? {};
+  const locale =
+    rawLocale && isLocale(rawLocale) ? rawLocale : defaultLocale;
 
   const dictionary = await getDictionary(locale);
 
