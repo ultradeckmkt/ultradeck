@@ -1,0 +1,52 @@
+/**
+ * Los valores de diseño del sitio. Única fuente de verdad.
+ * Ningún otro archivo contiene colores hex.
+ */
+
+@layer base, patrones;
+
+:root {
+  /* Marca (provisionales) */
+  --color-primario: #0d2549;
+  --color-acento: #590606;
+  --color-superficie: #f1f1f1;
+  --color-apoyo: #c8d3e6;
+
+  /* Derivados, para no sumar hex fuera de la paleta */
+  --color-texto: var(--color-primario);
+  --color-texto-suave: color-mix(in srgb, var(--color-primario) 70%, var(--color-superficie));
+  --color-linea: color-mix(in srgb, var(--color-apoyo) 80%, var(--color-superficie));
+  --color-blanco: #ffffff;
+
+  /* Tipografía */
+  --fuente-base: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --peso-normal: 400;
+  --peso-medio: 500;
+  --peso-fuerte: 700;
+
+  --texto-xs: 0.75rem;
+  --texto-sm: 0.875rem;
+  --texto-md: 1rem;
+  --texto-lg: 1.125rem;
+  --texto-xl: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+
+  --interlinea-apretada: 1.2;
+  --interlinea-normal: 1.6;
+  --espaciado-letra-amplio: 0.18em;
+
+  /* Espaciado */
+  --espacio-1: 0.25rem;
+  --espacio-2: 0.5rem;
+  --espacio-3: 0.75rem;
+  --espacio-4: 1rem;
+  --espacio-6: 1.5rem;
+  --espacio-8: 2rem;
+  --espacio-12: 3rem;
+  --espacio-16: 4rem;
+
+  /* Medidas */
+  --ancho-texto: 34rem;
+  --ancho-contenido: 44rem;
+  --radio: 0.5rem;
+  --borde: 1px;
+}

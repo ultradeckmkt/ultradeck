@@ -1,0 +1,88 @@
+/**
+ * Página de mantenimiento. También la usa la 404, que comparte el diseño.
+ * Fuera de toda capa y acotada a su data-page.
+ */
+
+[data-page="mantenimiento"] {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espacio-12) var(--espacio-6);
+  text-align: center;
+}
+
+[data-page="mantenimiento"] .mantenimiento {
+  display: flex;
+  width: 100%;
+  max-width: var(--ancho-contenido);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-8);
+}
+
+[data-page="mantenimiento"] .mantenimiento__marca {
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-fuerte);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-transform: uppercase;
+}
+
+[data-page="mantenimiento"] .mantenimiento__texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-4);
+}
+
+[data-page="mantenimiento"] .mantenimiento__texto p {
+  max-width: var(--ancho-texto);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-lg);
+}
+
+[data-page="mantenimiento"] .mantenimiento__contacto {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-6);
+  border-top: var(--borde) solid var(--color-linea);
+  padding-top: var(--espacio-8);
+}
+
+[data-page="mantenimiento"] .mantenimiento__dato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+[data-page="mantenimiento"] .mantenimiento__etiqueta {
+  color: var(--color-texto-suave);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-medio);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-transform: uppercase;
+}
+
+[data-page="mantenimiento"] .mantenimiento__dato a {
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-medio);
+}
+
+[data-page="mantenimiento"] .mantenimiento__domicilio {
+  max-width: var(--ancho-texto);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+@media (min-width: 40rem) {
+  [data-page="mantenimiento"] .mantenimiento__contacto {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--espacio-12);
+  }
+}

@@ -1,0 +1,73 @@
+/**
+ * El reset y los estilos de elemento. Únicos.
+ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-superficie);
+    color: var(--color-texto);
+    font-family: var(--fuente-base);
+    font-size: var(--texto-md);
+    font-weight: var(--peso-normal);
+    line-height: var(--interlinea-normal);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: var(--texto-xl);
+    font-weight: var(--peso-fuerte);
+    line-height: var(--interlinea-apretada);
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: var(--color-primario);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--color-acento);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 3px;
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
