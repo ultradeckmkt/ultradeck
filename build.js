@@ -10,11 +10,26 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
+// ---------------------------------------------------------------------------
+// MODO MANTENIMIENTO
+//
+// true  → dist/ contiene solo la carátula de src/mantenimiento-temporal.html
+//         como index.html, más los archivos de assets/ que esa página usa.
+//         Ninguna otra página del sitio se publica.
+// false → el sitio se arma completo y la carátula no se publica.
+//
+// Se cambia a mano aquí y hay que volver a correr `node build.js`.
+// ---------------------------------------------------------------------------
+const MODO_MANTENIMIENTO = true;
+
 const raiz = __dirname;
 const dirSrc = path.join(raiz, "src");
 const dirAssets = path.join(raiz, "assets");
 const dirPartials = path.join(dirSrc, "partials");
 const dirDist = path.join(raiz, "dist");
+
+const CARATULA = "mantenimiento-temporal.html";
+const RECURSO = /(?:href|src)="(\/assets\/[^"]+)"/g;
 
 const MARCA = /<!--\s*@include\s+([\w-]+)\s*-->/g;
 const MARCA_ANIO = /\[año\]/g;
@@ -107,13 +122,46 @@ function procesarHtml(dir) {
   }
 }
 
-function construir() {
-  fs.rmSync(dirDist, { recursive: true, force: true });
+/** Solo la carátula, con los archivos de assets/ que ella misma referencia. */
+function construirCaratula() {
+  const origen = path.join(dirSrc, CARATULA);
+  if (!fs.existsSync(origen)) {
+    throw new Error(`falta src/${CARATULA}, que es la carátula de mantenimiento`);
+  }
 
-  // src/ se publica en la raíz; los partials son fragmentos, no páginas.
+  const html = fs.readFileSync(origen, "utf8");
+  fs.mkdirSync(dirDist, { recursive: true });
+  fs.writeFileSync(path.join(dirDist, "index.html"), html);
+
+  const recursos = new Set();
+  for (const coincidencia of html.matchAll(RECURSO)) {
+    recursos.add(coincidencia[1]);
+  }
+
+  for (const recurso of recursos) {
+    const desde = path.join(raiz, recurso);
+    if (!fs.existsSync(desde)) {
+      throw new Error(`la carátula pide ${recurso}, que no existe`);
+    }
+
+    const hasta = path.join(dirDist, recurso);
+    fs.mkdirSync(path.dirname(hasta), { recursive: true });
+    fs.copyFileSync(desde, hasta);
+  }
+
+  return recursos.size;
+}
+
+/** El sitio completo. */
+function construirSitio() {
+  // src/ se publica en la raíz; los partials son fragmentos, no páginas, y la
+  // carátula solo sale en modo mantenimiento.
   fs.cpSync(dirSrc, dirDist, {
     recursive: true,
-    filter: (origen) => origen !== dirPartials && sePublica(origen),
+    filter: (origen) =>
+      origen !== dirPartials &&
+      origen !== path.join(dirSrc, CARATULA) &&
+      sePublica(origen),
   });
 
   fs.cpSync(dirAssets, path.join(dirDist, "assets"), {
@@ -124,9 +172,29 @@ function construir() {
   procesarHtml(dirDist);
 }
 
+function construir() {
+  fs.rmSync(dirDist, { recursive: true, force: true });
+
+  if (MODO_MANTENIMIENTO) return construirCaratula();
+  construirSitio();
+  return null;
+}
+
 try {
-  construir();
-  console.log("Build listo en dist/");
+  const recursos = construir();
+
+  if (MODO_MANTENIMIENTO) {
+    console.log("──────────────────────────────────────────────");
+    console.log("  MODO MANTENIMIENTO: solo la carátula");
+    console.log(`  dist/index.html + ${recursos} archivo(s) de assets/`);
+    console.log("  El resto del sitio NO se publicó.");
+    console.log("  Se apaga en la constante MODO_MANTENIMIENTO de build.js.");
+    console.log("──────────────────────────────────────────────");
+  } else {
+    console.log("──────────────────────────────────────────────");
+    console.log("  SITIO COMPLETO");
+    console.log("──────────────────────────────────────────────");
+  }
 } catch (error) {
   console.error(`Build fallido: ${error.message}`);
   process.exit(1);

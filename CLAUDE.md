@@ -69,6 +69,17 @@ industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
 - `build.js` no usa dependencias externas. Si una tarea parece requerir una,
   detente y repórtalo.
 
+## Modo mantenimiento
+- `build.js` empieza con la constante `MODO_MANTENIMIENTO`, que se cambia a
+  mano y hay que volver a correr `node build.js` para que surta efecto.
+- En `true`, `dist/` contiene solo `src/mantenimiento-temporal.html` publicado
+  como `index.html`, más los archivos de `assets/` que esa página referencia.
+  Ninguna otra página del sitio se publica.
+- En `false`, el sitio se arma completo y la carátula no se publica.
+- El build imprime en la terminal en qué modo se armó.
+- La carátula vive fuera del mapa del sitio y usa
+  `assets/css/paginas/mantenimiento.css`.
+
 ## Mapa del sitio
     /                                          Home: bifurcación Construcción / Mantenimiento
     /construccion/                             Entrada de la rama

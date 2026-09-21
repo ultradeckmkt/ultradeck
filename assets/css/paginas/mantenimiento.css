@@ -1,0 +1,94 @@
+/**
+ * Carátula de mantenimiento (src/mantenimiento-temporal.html).
+ * Se publica sola cuando build.js corre con MODO_MANTENIMIENTO en true.
+ * Fuera de toda capa y acotada a su data-page.
+ */
+
+[data-page="mantenimiento-temporal"] .renovacion {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espacio-12) var(--margen-seccion-amplio);
+  text-align: center;
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__logo {
+  width: auto;
+  height: var(--altura-logo);
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__titulo {
+  max-width: 16em;
+  margin-top: var(--espacio-8);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__texto {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-12);
+  padding-top: var(--espacio-8);
+  border-top: var(--borde) solid var(--color-linea);
+  width: 100%;
+  max-width: var(--ancho-texto);
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__dato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__etiqueta {
+  margin-bottom: var(--espacio-2);
+  color: var(--color-apoyo);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-transform: uppercase;
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__enlace {
+  display: inline-flex;
+  min-height: var(--area-toque);
+  align-items: center;
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-titulo);
+  text-decoration: none;
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__enlace:hover,
+[data-page="mantenimiento-temporal"] .renovacion__enlace:focus-visible {
+  color: var(--color-guinda-claro);
+}
+
+[data-page="mantenimiento-temporal"] .renovacion__domicilio {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-8);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+@media (min-width: 48rem) {
+  [data-page="mantenimiento-temporal"] .renovacion__contacto {
+    flex-direction: row;
+    /* Arriba y no al centro: si no, la columna de una línea queda desfasada
+       respecto a la de dos. */
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--espacio-12);
+  }
+}
