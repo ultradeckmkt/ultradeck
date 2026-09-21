@@ -77,8 +77,14 @@
   display: flex;
   min-height: calc(100vh - var(--altura-header) - var(--margen-lateral) * 3);
   min-height: calc(100svh - var(--altura-header) - var(--margen-lateral) * 3);
+  flex-wrap: wrap;
+  /* Texto a la izquierda y cifras a la derecha, las dos cosas apoyadas
+     abajo. Si no caben lado a lado, las cifras bajan debajo del texto y el
+     conjunto se queda abajo de la tarjeta. */
+  align-content: flex-end;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: var(--espacio-8) var(--espacio-12);
   overflow: hidden;
   padding: var(--espacio-8) var(--relleno-hero);
   border-radius: var(--radio-lg);
@@ -117,8 +123,52 @@
     );
 }
 
+/* Base flexible de 36rem: por debajo de eso junto a las cifras, las cifras
+   pasan abajo. */
 [data-page="inicio"] .inicio__hero-contenido {
   position: relative;
+  flex: 1 1 36rem;
+}
+
+/* Cifras del hero: tarjetas pequeñas en una columna, translúcidas con
+   desenfoque como la píldora del header. Estilos propios, no el patrón
+   ud-cifras (lo usan Nosotros y Proyectos). La columna toma el ancho de la
+   etiqueta más larga. */
+[data-page="inicio"] .inicio__hero-cifras {
+  position: relative;
+  display: grid;
+  flex: none;
+  gap: var(--espacio-2);
+}
+
+[data-page="inicio"] .inicio__hero-cifra {
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea-fuerte));
+  border-radius: var(--radio-md);
+  background-color: var(--color-fondo);
+}
+
+/* Respaldo opaco: lo translúcido solo se activa donde hay backdrop-filter. */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  [data-page="inicio"] .inicio__hero-cifra {
+    background-color: var(--color-header);
+    backdrop-filter: var(--desenfoque-header);
+    -webkit-backdrop-filter: var(--desenfoque-header);
+  }
+}
+
+[data-page="inicio"] .inicio__hero-cifra-numero {
+  font-family: var(--fuente-titulos);
+  font-size: var(--titulo-tarjeta);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-titulo);
+  line-height: var(--interlinea-apretada);
+}
+
+[data-page="inicio"] .inicio__hero-cifra-etiqueta {
+  margin-top: var(--espacio-1);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
 }
 
 /* La medida corta el título en dos líneas parejas en escritorio:
@@ -207,7 +257,7 @@
   flex: none;
   min-width: calc(100cqi / 2.5 - var(--espacio-6));
   padding: var(--espacio-3) var(--espacio-6);
-  border: var(--borde) solid var(--color-linea-clara);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea-clara));
   border-radius: var(--radio-pildora);
   color: var(--color-primario);
   font-family: var(--fuente-titulos);
@@ -279,10 +329,15 @@
    plomo con el título y al final la última deja el mismo espacio a la
    derecha. En una sola fila, todas las tarjetas miden lo mismo.
    Celular: una tarjeta y un asomo. */
+/* Respiro arriba y abajo para que la tarjeta elevada y su sombra no se
+   corten contra la pista; el margen negativo de abajo y el superior más
+   corto lo compensan, así la sección mide lo mismo. */
 [data-page="inicio"] .inicio__servicios {
   grid-auto-columns: calc((100% - var(--espacio-4)) / 1.25);
   gap: var(--espacio-4);
-  margin-top: var(--espacio-8);
+  margin-top: var(--espacio-4);
+  margin-bottom: calc(var(--espacio-8) * -1);
+  padding-block: var(--espacio-4) var(--espacio-8);
   margin-inline: calc(var(--margen-seccion-amplio) * -1);
   padding-inline: var(--margen-seccion-amplio);
   scroll-padding-left: var(--margen-seccion-amplio);
@@ -291,7 +346,7 @@
 [data-page="inicio"] .inicio__servicio {
   display: flex;
   flex-direction: column;
-  border: var(--borde) solid var(--color-linea-clara);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea-clara));
   border-radius: var(--radio-lg);
   background-color: var(--color-blanco);
 }
@@ -403,8 +458,8 @@
   gap: var(--espacio-12);
 }
 
-/* Nosotros + cifras respira más que el resto del home: más separación del
-   hero y entre sus propios bloques. */
+/* Nosotros respira más que el resto del home: más separación del hero y
+   entre sus propios bloques. */
 [data-page="inicio"] .inicio__seccion--nosotros {
   margin-top: var(--espacio-16);
 }
@@ -415,11 +470,6 @@
 
 [data-page="inicio"] .inicio__nosotros .inicio__acciones {
   margin-top: var(--espacio-8);
-}
-
-/* Botones y cifras, bien separados: más que la distancia entre secciones. */
-[data-page="inicio"] .inicio__seccion--nosotros .ud-cifras {
-  margin-top: var(--espacio-16);
 }
 
 /* La medida parte el título en dos líneas parejas:
@@ -521,6 +571,16 @@
   margin-inline: calc(var(--margen-seccion-amplio) - var(--margen-lateral));
 }
 
+/* Proyectos deja de ser tarjeta: franja de borde a borde (sale del margen del
+   <main>), sin redondeo y con el margen amplio por dentro. Lleva las dos
+   clases para ganarle al relleno de .ud-seccion-clara del home, también al
+   de escritorio. */
+[data-page="inicio"] .ud-seccion-clara.inicio__seccion--proyectos {
+  margin-inline: calc(var(--margen-lateral) * -1);
+  padding: var(--espacio-16) var(--margen-seccion-amplio);
+  border-radius: 0;
+}
+
 /* Sobre fondo claro el párrafo va en azul de marca; el gris suave del home
    no se lee sobre Tender Light Blue. */
 [data-page="inicio"] .ud-seccion-clara .inicio__texto {
@@ -576,20 +636,20 @@
 }
 
 /* Carrusel: desplazamiento nativo con parada en cada tarjeta.
-   La pista sale a los dos bordes de la sección clara (margen negativo) y
-   recupera por dentro el mismo relleno, así las tarjetas se salen por los
-   bordes en vez de cortarse contra el margen del contenido. El scroll-padding
-   hace que cada parada caiga en el inicio del contenido, a plomo con el
-   título, y el relleno derecho deja a la última tarjeta el mismo aire que
-   tiene la primera. */
+   La pista sale a los dos bordes de la franja (margen negativo igual al
+   margen amplio) y recupera por dentro el mismo relleno, así las tarjetas se
+   salen por los bordes en vez de cortarse contra el margen del contenido. El
+   scroll-padding hace que cada parada caiga en el inicio del contenido, a
+   plomo con el título, y el relleno derecho deja a la última tarjeta el mismo
+   aire que tiene la primera. */
 [data-page="inicio"] .inicio__proyectos {
   grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
   gap: var(--espacio-6);
   margin-top: var(--espacio-8);
   margin-bottom: var(--espacio-8);
-  margin-inline: calc(var(--espacio-6) * -1);
-  padding-inline: var(--espacio-6);
-  scroll-padding-left: var(--espacio-6);
+  margin-inline: calc(var(--margen-seccion-amplio) * -1);
+  padding-inline: var(--margen-seccion-amplio);
+  scroll-padding-left: var(--margen-seccion-amplio);
 }
 
 /* Blog en el home ------------------------------------------------------ */
@@ -611,10 +671,13 @@
   padding-inline: var(--margen-seccion-amplio);
 }
 
+/* Mismo respiro que la pista de Servicios, por la elevación de las notas. */
 [data-page="inicio"] .inicio__notas {
   grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
   gap: var(--espacio-6);
-  margin-top: var(--espacio-8);
+  margin-top: var(--espacio-4);
+  margin-bottom: calc(var(--espacio-8) * -1);
+  padding-block: var(--espacio-4) var(--espacio-8);
   padding-inline: var(--margen-seccion-amplio);
   scroll-padding-left: var(--margen-seccion-amplio);
 }
@@ -647,10 +710,13 @@
 
 /* Cierre -------------------------------------------------------------- */
 
+/* Tarjeta alineada con el margen amplio, igual que SST: descuenta el margen
+   del <main>. Más alta que el resto de las tarjetas del home. */
 [data-page="inicio"] .inicio__cierre {
   position: relative;
   overflow: hidden;
-  padding: var(--espacio-16) var(--espacio-6);
+  margin-inline: calc(var(--margen-seccion-amplio) - var(--margen-lateral));
+  padding: calc(var(--espacio-16) + var(--espacio-8)) var(--espacio-6);
   border: var(--borde) solid var(--color-linea-fuerte);
   border-radius: var(--radio-lg);
   background-color: var(--color-superficie-2);
@@ -767,9 +833,10 @@
 
   [data-page="inicio"] .inicio__proyectos {
     grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
-    margin-inline: calc(var(--espacio-12) * -1);
-    padding-inline: var(--espacio-12);
-    scroll-padding-left: var(--espacio-12);
+  }
+
+  [data-page="inicio"] .inicio__cierre {
+    padding-block: calc(var(--espacio-16) * 2);
   }
 
   [data-page="inicio"] .inicio__notas {

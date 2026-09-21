@@ -36,7 +36,7 @@
   display: grid;
   place-items: center;
   padding: var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
   border-radius: var(--radio-lg);
   background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
 }
@@ -265,9 +265,19 @@
   text-decoration: none;
 }
 
-[data-plantilla="nota"] .nota__relacionada-enlace:hover .nota__relacionada-titulo,
-[data-plantilla="nota"] .nota__relacionada-enlace:focus-visible .nota__relacionada-titulo {
-  color: var(--color-guinda-claro);
+/* La tarjeta relacionada no tiene caja: la sombra del patrón va en el marco
+   de la imagen, no alrededor del bloque de texto. */
+[data-plantilla="nota"] .nota__relacionada-enlace.ud-tarjeta {
+  box-shadow: none;
+}
+
+[data-plantilla="nota"] .nota__relacionada-enlace .nota__imagen {
+  transition: box-shadow var(--transicion-tarjeta);
+}
+
+[data-plantilla="nota"] .nota__relacionada-enlace:hover .nota__imagen,
+[data-plantilla="nota"] .nota__relacionada-enlace:focus-visible .nota__imagen {
+  box-shadow: var(--tarjeta-sombra);
 }
 
 [data-plantilla="nota"] .nota__relacionada-titulo {

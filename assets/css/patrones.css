@@ -195,7 +195,7 @@
 
   .ud-cifra {
     padding: var(--espacio-6);
-    border: var(--borde) solid var(--color-linea);
+    border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
     border-radius: var(--radio-md);
     background-color: var(--color-superficie-1);
   }
@@ -399,7 +399,7 @@
 
   .ud-paso {
     padding: var(--espacio-6);
-    border: var(--borde) solid var(--color-linea);
+    border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
     border-radius: var(--radio-md);
     background-color: var(--color-superficie-1);
   }
@@ -414,6 +414,75 @@
   .ud-paso__titulo {
     margin-top: var(--espacio-2);
     font-size: var(--titulo-tarjeta-sm);
+  }
+
+  /* Hover de tarjetas. Un solo efecto para todo el sitio.
+       ud-tarjeta            cualquier tarjeta: al pasar el cursor se marca
+                             su borde, nada más.
+       ud-tarjeta--enlace    la tarjeta lleva a otra página: además se eleva
+                             y gana sombra, también con foco de teclado (en
+                             ella o en un enlace de adentro).
+       ud-tarjeta--clara     sobre fondo claro: borde y sombra en azul.
+       ud-tarjeta--fuerte    la tarjeta ya parte de un borde marcado.
+       ud-tarjeta__imagen    marco de la imagen: recorta, y lo de adentro se
+                             acerca un poco.
+     La tarjeta toma el color de su borde de --tarjeta-borde; cada hoja lo usa
+     en su propio border (con --color-linea de respaldo). Así el cambio de
+     color vive aquí aunque el borde se declare en una hoja de página.
+     Con prefers-reduced-motion no hay elevación ni acercamiento. */
+  .ud-tarjeta {
+    --tarjeta-borde: var(--color-linea);
+    --tarjeta-borde-activo: var(--color-linea-fuerte);
+    --tarjeta-sombra: var(--sombra-tarjeta);
+    transition:
+      border-color var(--transicion-tarjeta),
+      box-shadow var(--transicion-tarjeta),
+      transform var(--transicion-tarjeta);
+  }
+
+  .ud-tarjeta--fuerte {
+    --tarjeta-borde: var(--color-linea-fuerte);
+    --tarjeta-borde-activo: var(--color-linea-activa);
+  }
+
+  .ud-tarjeta--clara {
+    --tarjeta-borde: var(--color-linea-clara);
+    --tarjeta-borde-activo: var(--color-linea-clara-fuerte);
+    --tarjeta-sombra: var(--sombra-tarjeta-clara);
+  }
+
+  .ud-tarjeta:hover,
+  .ud-tarjeta--enlace:focus-visible,
+  .ud-tarjeta--enlace:has(:focus-visible) {
+    --tarjeta-borde: var(--tarjeta-borde-activo);
+  }
+
+  .ud-tarjeta--enlace:hover,
+  .ud-tarjeta--enlace:focus-visible,
+  .ud-tarjeta--enlace:has(:focus-visible) {
+    box-shadow: var(--tarjeta-sombra);
+  }
+
+  .ud-tarjeta__imagen {
+    overflow: hidden;
+  }
+
+  .ud-tarjeta__imagen > * {
+    transition: transform var(--transicion-tarjeta);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ud-tarjeta--enlace:hover,
+    .ud-tarjeta--enlace:focus-visible,
+    .ud-tarjeta--enlace:has(:focus-visible) {
+      transform: translateY(calc(var(--elevacion-tarjeta) * -1));
+    }
+
+    .ud-tarjeta--enlace:hover .ud-tarjeta__imagen > *,
+    .ud-tarjeta--enlace:focus-visible .ud-tarjeta__imagen > *,
+    .ud-tarjeta--enlace:has(:focus-visible) .ud-tarjeta__imagen > * {
+      transform: scale(var(--zoom-imagen-tarjeta));
+    }
   }
 
   /* Tarjeta de proyecto del carrusel. Home y páginas de servicio. */
@@ -450,7 +519,7 @@
     height: 100%;
     flex-direction: column;
     overflow: hidden;
-    border: var(--borde) solid var(--color-linea);
+    border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
     border-radius: var(--radio-lg);
     background-color: var(--color-superficie-1);
     color: var(--color-texto);
@@ -478,11 +547,6 @@
   .ud-nota__titulo {
     margin-top: var(--espacio-4);
     font-size: var(--titulo-tarjeta-sm);
-  }
-
-  .ud-nota__enlace:hover .ud-nota__titulo,
-  .ud-nota__enlace:focus-visible .ud-nota__titulo {
-    color: var(--color-guinda-claro);
   }
 
   .ud-nota__datos {

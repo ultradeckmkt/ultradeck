@@ -114,7 +114,7 @@
   align-items: flex-start;
   gap: var(--espacio-4);
   padding: var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
   border-radius: var(--radio-lg);
   background-color: var(--color-superficie-1);
 }
@@ -146,7 +146,7 @@
 
 [data-page="techos-industriales"] .mant__bloque {
   padding: var(--espacio-8) var(--espacio-6);
-  border: var(--borde) solid var(--color-linea-fuerte);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea-fuerte));
   border-radius: var(--radio-lg);
   background-color: var(--color-superficie-2);
 }
@@ -227,6 +227,15 @@
   margin-inline: calc(var(--margen-seccion-amplio) * -1);
   padding-inline: var(--margen-seccion-amplio);
   scroll-padding-left: var(--margen-seccion-amplio);
+}
+
+/* Las notas son enlaces que se elevan: respiro arriba y abajo para que la
+   tarjeta y su sombra no se corten contra la pista, compensado con los
+   márgenes para que la sección mida lo mismo. */
+[data-page="techos-industriales"] .mant__notas {
+  margin-top: var(--espacio-4);
+  margin-bottom: calc(var(--espacio-8) * -1);
+  padding-block: var(--espacio-4) var(--espacio-8);
 }
 
 /* Preguntas y cierre ------------------------------------------------------- */

@@ -192,7 +192,7 @@ Todas permanentes (308). Cada URL vieja se atiende en sus tres formas —con
       --margen-seccion-amplio   el anterior en celular, pero crece con la
                                 pantalla: ~150 px en laptop y tope de 12rem
   Secciones que las usan:
-      Nosotros + cifras del home   --margen-seccion-amplio
+      Nosotros del home            --margen-seccion-amplio
       Servicios del home           --margen-seccion-amplio
 - Si un párrafo se vuelve difícil de leer a todo el ancho, se limita el ancho de
   ese texto (`--ancho-texto`), nunca el de la sección.
@@ -209,6 +209,29 @@ Todas permanentes (308). Cada URL vieja se atiende en sus tres formas —con
 - Las reglas de una hoja de página van acotadas a su `data-page` para que no se
   filtren a otras páginas. No hay hojas globales de página.
 - Un patrón sube a patrones.css cuando lo piden dos páginas, no antes.
+
+### Hover de tarjetas (patrón `ud-tarjeta`)
+- Un solo efecto para todas las tarjetas del sitio, definido en patrones.css
+  con los tokens `--elevacion-tarjeta`, `--zoom-imagen-tarjeta`,
+  `--sombra-tarjeta`, `--sombra-tarjeta-clara` y `--transicion-tarjeta`.
+- Clases, en el markup de la tarjeta:
+      ud-tarjeta            toda tarjeta: al pasar el cursor se marca su borde
+      ud-tarjeta--enlace    la tarjeta lleva a otra página: además se eleva y
+                            gana sombra, al pasar el cursor y con foco de
+                            teclado (en ella o en un enlace de adentro)
+      ud-tarjeta--clara     sobre fondo claro: borde y sombra en azul
+      ud-tarjeta--fuerte    la tarjeta ya parte de un borde marcado
+      ud-tarjeta__imagen    marco de la imagen: recorta y lo de adentro se
+                            acerca un poco
+- La hoja que dibuja la tarjeta declara su borde con
+  `var(--tarjeta-borde, <color de reposo>)`. El patrón cambia esa variable;
+  no pongas un `border-color` de hover propio en la hoja de página.
+- Con `prefers-reduced-motion` no hay elevación ni acercamiento: solo cambia
+  el borde.
+- Las pistas de carrusel con tarjetas-enlace llevan respiro arriba y abajo
+  (compensado con márgenes) para que la elevación y la sombra no se corten.
+- La tarjeta guinda de llamada a la acción de Servicios del home no usa el
+  patrón: conserva su propio hover.
 - Ya son patrones compartidos: `ud-capsula`, `ud-boton`, `ud-carrusel`,
   `ud-cta`, `ud-migas`, `ud-foto` y `ud-pendiente`, `ud-seccion-clara`,
   `ud-pasos`/`ud-paso`, `ud-proyecto`, `ud-nota` y `ud-pregunta`.

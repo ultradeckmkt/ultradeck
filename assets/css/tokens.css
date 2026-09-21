@@ -37,6 +37,9 @@
   --color-fondo-claro: var(--color-texto);
   --color-primario-suave: color-mix(in srgb, var(--color-primario) 72%, var(--color-blanco));
   --color-linea-clara: color-mix(in srgb, var(--color-primario) 14%, transparent);
+  --color-linea-clara-fuerte: color-mix(in srgb, var(--color-primario) 30%, transparent);
+  /* Borde de una tarjeta que ya parte de --color-linea-fuerte, al activarse. */
+  --color-linea-activa: color-mix(in srgb, var(--color-blanco) 32%, transparent);
 
   /* Header translúcido: deja ver el contenido que pasa por debajo. */
   --color-header: color-mix(in srgb, var(--color-fondo) 72%, transparent);
@@ -124,6 +127,13 @@
   --z-header: 100;
   --transicion: 150ms ease;
   --opacidad-atenuada: 0.7;
+
+  /* Hover de tarjetas (patrón ud-tarjeta en patrones.css). */
+  --elevacion-tarjeta: 0.25rem;
+  --zoom-imagen-tarjeta: 1.04;
+  --sombra-tarjeta: 0 8px 24px color-mix(in srgb, var(--color-negro) 45%, transparent);
+  --sombra-tarjeta-clara: 0 8px 24px color-mix(in srgb, var(--color-primario) 16%, transparent);
+  --transicion-tarjeta: 200ms ease;
   /* Vuelta completa de la barra de clientes del home: lenta a propósito. */
   --duracion-clientes: 60s;
 }

@@ -97,7 +97,7 @@
   height: 100%;
   flex-direction: column;
   overflow: hidden;
-  border: var(--borde) solid var(--color-linea);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
   border-radius: var(--radio-lg);
   background-color: var(--color-superficie-1);
   color: var(--color-texto);
@@ -144,22 +144,6 @@
   font-family: var(--fuente-titulos);
   font-size: var(--texto-sm);
   font-weight: var(--peso-titulo);
-}
-
-[data-plantilla="rama"] .rama__servicio-enlace:hover .rama__servicio-nombre,
-[data-plantilla="rama"] .rama__servicio-enlace:focus-visible .rama__servicio-nombre {
-  color: var(--color-guinda-claro);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  [data-plantilla="rama"] .rama__servicio-mas .ud-boton__flecha {
-    transition: transform var(--transicion);
-  }
-
-  [data-plantilla="rama"] .rama__servicio-enlace:hover .ud-boton__flecha,
-  [data-plantilla="rama"] .rama__servicio-enlace:focus-visible .ud-boton__flecha {
-    transform: translateX(var(--espacio-1));
-  }
 }
 
 /* Proyectos y confianza ---------------------------------------------------- */

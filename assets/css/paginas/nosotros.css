@@ -109,7 +109,7 @@
 
 [data-plantilla="nosotros"] .nos__tarjeta {
   padding: var(--espacio-8) var(--espacio-6);
-  border: var(--borde) solid var(--color-linea-fuerte);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea-fuerte));
   border-radius: var(--radio-lg);
   background-color: var(--color-superficie-2);
 }
@@ -155,7 +155,7 @@
 
 [data-plantilla="nosotros"] .nos__maquina {
   padding: var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
   border-radius: var(--radio-lg);
   background-color: var(--color-superficie-1);
 }

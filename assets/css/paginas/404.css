@@ -52,7 +52,7 @@
   justify-content: space-between;
   gap: var(--espacio-4);
   padding: var(--espacio-3) var(--espacio-3) var(--espacio-3) var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
   border-radius: var(--radio-pildora);
   background-color: var(--color-superficie-1);
   color: var(--color-texto);
@@ -61,13 +61,6 @@
   font-weight: var(--peso-titulo);
   text-align: left;
   text-decoration: none;
-  transition: background-color var(--transicion);
-}
-
-[data-page="404"] .e404__acceso:hover,
-[data-page="404"] .e404__acceso:focus-visible {
-  background-color: var(--color-superficie-2);
-  color: var(--color-texto);
 }
 
 /* El círculo de la flecha, en guinda vivo porque va suelto. */
