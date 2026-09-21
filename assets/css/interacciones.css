@@ -1,0 +1,42 @@
+/**
+ * Las clases de estado que pone y quita el JavaScript.
+ * Fuera de toda capa, para que ganen siempre a los patrones.
+ */
+
+/* El panel solo se despliega en celular: en escritorio siempre está a la vista
+   y no debe perder su display propio. */
+@media (max-width: 63.999rem) {
+  .ud-header__panel.esta-abierto {
+    display: block;
+  }
+}
+
+.ud-nav__grupo.esta-abierto > .ud-nav__submenu {
+  display: block;
+}
+
+.ud-nav__grupo.esta-abierto > .ud-nav__disparador .ud-nav__caret {
+  transform: translateY(0.1em) rotate(225deg);
+}
+
+/* Cualquier carrusel mientras se arrastra con el mouse: sin scroll-snap, que
+   pelearía contra el puntero, y sin selección accidental. */
+.ud-carrusel.esta-arrastrando {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+/* Servicios del home plegados: 4 tarjetas en celular, 8 de tablet en adelante.
+   Lleva el data-page para ganarle a la hoja de la página, que carga después. */
+@media (max-width: 47.999rem) {
+  [data-page="inicio"] .inicio__servicios.esta-plegado > li:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (min-width: 48rem) {
+  [data-page="inicio"] .inicio__servicios.esta-plegado > li:nth-child(n + 9) {
+    display: none;
+  }
+}

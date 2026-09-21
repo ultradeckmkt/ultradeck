@@ -1,0 +1,898 @@
+/**
+ * Home. Fuera de toda capa y acotado a su data-page.
+ *
+ * Las fotos todavía no existen: cada hueco es un bloque redondeado teñido con
+ * Tender Light Blue y el marcador [PENDIENTE] a la vista.
+ */
+
+[data-page="inicio"] .inicio {
+  padding: var(--margen-lateral) var(--margen-lateral) var(--espacio-12);
+}
+
+[data-page="inicio"] .inicio > * + * {
+  margin-top: var(--espacio-12);
+}
+
+/* Vocabulario del home ------------------------------------------------ */
+
+[data-page="inicio"] .inicio__titulo {
+  margin-top: var(--espacio-4);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+}
+
+[data-page="inicio"] .inicio__resalte {
+  color: var(--color-guinda-claro);
+}
+
+[data-page="inicio"] .inicio__texto {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+[data-page="inicio"] .inicio__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-6);
+}
+
+/* Sirve para <a> y para <button>: sin background-color, el botón tomaría el
+   fondo claro que pone el navegador y el texto se perdería. */
+[data-page="inicio"] .inicio__boton-secundario {
+  display: inline-flex;
+  min-height: var(--area-toque);
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--espacio-6);
+  border: var(--borde) solid var(--color-linea-fuerte);
+  border-radius: var(--radio-pildora);
+  background-color: transparent;
+  color: var(--color-texto);
+  cursor: pointer;
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-titulo);
+  text-decoration: none;
+  transition: background-color var(--transicion);
+}
+
+[data-page="inicio"] .inicio__boton-secundario:hover,
+[data-page="inicio"] .inicio__boton-secundario:focus-visible {
+  background-color: var(--color-fondo-hover);
+  color: var(--color-texto);
+}
+
+[data-page="inicio"] .inicio__enlace-flecha {
+  display: inline-flex;
+  min-height: var(--area-toque);
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--color-texto);
+  cursor: pointer;
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-titulo);
+  text-decoration: none;
+}
+
+[data-page="inicio"] .inicio__enlace-flecha:hover,
+[data-page="inicio"] .inicio__enlace-flecha:focus-visible {
+  color: var(--color-guinda-claro);
+}
+
+/* El círculo del patrón se invierte cuando va suelto, sin pastilla. */
+[data-page="inicio"] .inicio__enlace-flecha .ud-boton__flecha {
+  background-color: var(--color-guinda-vivo);
+  color: var(--color-texto);
+}
+
+/* Huecos de foto ------------------------------------------------------ */
+
+[data-page="inicio"] .inicio__foto {
+  display: grid;
+  min-height: 14rem;
+  place-items: center;
+  padding: var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-page="inicio"] .inicio__foto--clara {
+  border-color: color-mix(in srgb, var(--color-primario) 22%, transparent);
+  background-color: color-mix(in srgb, var(--color-primario) 12%, var(--color-apoyo));
+}
+
+[data-page="inicio"] .inicio__pendiente {
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Hero ---------------------------------------------------------------- */
+
+/* Tres márgenes en juego: el de arriba de la cápsula, el que la separa del
+   contenido y el que deja libre abajo. Con eso la primera pantalla cierra
+   exacta: margen + header + margen + hero + margen = alto de la ventana.
+   svh, no vh ni dvh: no cambia cuando aparece o se va la barra del navegador.
+   Es min-height, así que en pantallas bajas la tarjeta crece en vez de
+   recortar el contenido. */
+[data-page="inicio"] .inicio__hero {
+  position: relative;
+  display: flex;
+  min-height: calc(100vh - var(--altura-header) - var(--margen-lateral) * 3);
+  min-height: calc(100svh - var(--altura-header) - var(--margen-lateral) * 3);
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: var(--espacio-8) var(--relleno-hero);
+  border-radius: var(--radio-lg);
+}
+
+[data-page="inicio"] .inicio__hero-foto {
+  position: absolute;
+  inset: 0;
+}
+
+/* En celular la tarjeta es vertical y solo se recorta a lo ancho: el encuadre
+   se corre a la izquierda para no cortar al montador ni su casco. */
+[data-page="inicio"] .inicio__hero-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 45% 50%;
+}
+
+/* Oscurece de abajo hacia arriba y carga la esquina inferior izquierda, que es
+   donde se apoya el texto. */
+[data-page="inicio"] .inicio__hero-foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      120% 95% at 0% 100%,
+      color-mix(in srgb, var(--color-fondo) 92%, transparent),
+      transparent 62%
+    ),
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-fondo) 85%, transparent),
+      color-mix(in srgb, var(--color-fondo) 18%, transparent) 68%
+    );
+}
+
+[data-page="inicio"] .inicio__hero-contenido {
+  position: relative;
+}
+
+/* La medida corta el título en dos líneas parejas en escritorio:
+   "Construimos y mantenemos" / "techos para naves industriales". */
+[data-page="inicio"] .inicio__hero-titulo {
+  max-width: 15em;
+  margin-top: var(--espacio-4);
+}
+
+[data-page="inicio"] .inicio__entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-lg);
+}
+
+[data-page="inicio"] .inicio__confianza {
+  margin-top: var(--espacio-6);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Ramas y tarjetas ---------------------------------------------------- */
+
+/* Servicios: cuadrícula de tarjetas -------------------------------------- */
+
+/* Encabezado centrado; las tarjetas conservan su texto a la izquierda. */
+[data-page="inicio"] .inicio__servicios-encabezado {
+  text-align: center;
+}
+
+[data-page="inicio"] .inicio__servicios-encabezado .inicio__titulo {
+  max-width: 16em;
+  margin-inline: auto;
+}
+
+[data-page="inicio"] .inicio__servicios-entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  margin-inline: auto;
+  color: var(--color-texto-suave);
+}
+
+[data-page="inicio"] .inicio__servicios {
+  display: grid;
+  /* Filas iguales: todas las tarjetas miden lo mismo. */
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+}
+
+[data-page="inicio"] .inicio__servicio {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-1);
+}
+
+[data-page="inicio"] .inicio__servicio-foto {
+  display: grid;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  padding: var(--espacio-4);
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-page="inicio"] .inicio__servicio-cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--espacio-6) var(--espacio-4) var(--espacio-4);
+}
+
+[data-page="inicio"] .inicio__servicio-nombre {
+  font-size: var(--texto-md);
+}
+
+[data-page="inicio"] .inicio__servicio-linea {
+  margin-top: var(--espacio-2);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Siempre al fondo de la tarjeta, aunque el texto sea más corto. */
+[data-page="inicio"] .inicio__servicio .inicio__enlace-flecha {
+  margin-top: auto;
+  padding-top: var(--espacio-4);
+}
+
+/* Tarjeta 12: llamada a la acción, sin foto y en guinda vivo. */
+[data-page="inicio"] .inicio__servicio--cta {
+  border-color: transparent;
+  background-color: var(--color-guinda-vivo);
+}
+
+[data-page="inicio"] .inicio__servicio--cta .inicio__servicio-cuerpo {
+  justify-content: center;
+  padding: var(--espacio-8) var(--espacio-6);
+}
+
+[data-page="inicio"] .inicio__servicio--cta .inicio__servicio-linea {
+  color: color-mix(in srgb, var(--color-texto) 88%, var(--color-guinda-vivo));
+}
+
+/* Sobre guinda, el círculo se queda claro: invertirlo lo haría desaparecer. */
+[data-page="inicio"] .inicio__servicio--cta .inicio__enlace-flecha:hover,
+[data-page="inicio"] .inicio__servicio--cta .inicio__enlace-flecha:focus-visible {
+  color: var(--color-texto);
+}
+
+[data-page="inicio"] .inicio__servicio--cta:hover .ud-boton__flecha,
+[data-page="inicio"] .inicio__servicio--cta:focus-within .ud-boton__flecha {
+  background-color: var(--color-texto);
+  color: var(--color-guinda-vivo);
+}
+
+[data-page="inicio"] .inicio__mostrar-mas {
+  display: flex;
+  width: fit-content;
+  margin-top: var(--espacio-6);
+  margin-inline: auto;
+}
+
+/* Al pasar el cursor o al enfocar el enlace: la imagen se acerca y la flecha
+   se llena de guinda vivo. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-page="inicio"] .inicio__servicio-foto {
+    transition: transform var(--transicion);
+  }
+
+  [data-page="inicio"] .inicio__servicio:hover .inicio__servicio-foto,
+  [data-page="inicio"] .inicio__servicio:focus-within .inicio__servicio-foto {
+    transform: scale(1.03);
+  }
+}
+
+[data-page="inicio"] .inicio__servicio:hover .ud-boton__flecha,
+[data-page="inicio"] .inicio__servicio:focus-within .ud-boton__flecha {
+  background-color: var(--color-guinda-vivo);
+  color: var(--color-texto);
+}
+
+/* Nosotros ------------------------------------------------------------ */
+
+[data-page="inicio"] .inicio__dos-columnas {
+  display: grid;
+  gap: var(--espacio-8);
+}
+
+/* Excepción a la regla de ancho completo: esta sección respira más que el
+   resto. Sale del margen del <main> y aplica el suyo, que crece con el ancho
+   de la pantalla. */
+[data-page="inicio"] .inicio__seccion--con-margen {
+  margin-inline: calc(var(--margen-lateral) * -1);
+  padding-inline: var(--margen-seccion-amplio);
+}
+
+[data-page="inicio"] .inicio__nosotros {
+  display: grid;
+  gap: var(--espacio-8);
+}
+
+/* La medida parte el título en dos líneas parejas:
+   "Cubriendo la industria" / "mexicana desde 1990". Sin ella, en monitores
+   anchos la primera línea se lleva también "mexicana". */
+[data-page="inicio"] .inicio__nosotros .inicio__titulo {
+  max-width: 12em;
+}
+
+/* Botón de video: pastilla con miniatura redondeada. */
+[data-page="inicio"] .inicio__video {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+  padding: var(--espacio-2) var(--espacio-6) var(--espacio-2) var(--espacio-2);
+  border: var(--borde) solid var(--color-linea-fuerte);
+  border-radius: var(--radio-pildora);
+  background-color: var(--color-superficie-1);
+  color: var(--color-texto);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--transicion);
+}
+
+[data-page="inicio"] .inicio__video:hover,
+[data-page="inicio"] .inicio__video:focus-visible {
+  background-color: var(--color-superficie-2);
+}
+
+[data-page="inicio"] .inicio__video-miniatura {
+  position: relative;
+  display: block;
+  width: 4.5rem;
+  height: 3rem;
+  flex: none;
+  border-radius: var(--radio-sm);
+  background-color: color-mix(in srgb, var(--color-apoyo) 26%, var(--color-fondo));
+}
+
+/* Triángulo de play, dibujado con bordes. */
+[data-page="inicio"] .inicio__video-miniatura::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-top: 0.4rem solid transparent;
+  border-bottom: 0.4rem solid transparent;
+  border-left: 0.65rem solid var(--color-texto);
+  transform: translate(-40%, -50%);
+}
+
+[data-page="inicio"] .inicio__video-texto {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-titulo);
+}
+
+[data-page="inicio"] .inicio__video-pendiente {
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-normal);
+}
+
+/* Insignias de certificación ------------------------------------------ */
+
+[data-page="inicio"] .inicio__insignias {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-4) 0;
+}
+
+[data-page="inicio"] .inicio__insignia {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-1) var(--espacio-4);
+  border-left: var(--borde) solid var(--color-linea-fuerte);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-transform: uppercase;
+}
+
+[data-page="inicio"] .inicio__insignia:nth-child(odd) {
+  padding-left: 0;
+  border-left: 0;
+}
+
+[data-page="inicio"] .inicio__insignia-icono {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  fill: none;
+  stroke: var(--color-guinda-claro);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+/* Flecha larga horizontal, al estilo de la referencia. */
+[data-page="inicio"] .inicio__flecha-larga {
+  position: relative;
+  display: block;
+  width: 2.75rem;
+  flex: none;
+  border-top: var(--borde) solid currentColor;
+}
+
+[data-page="inicio"] .inicio__flecha-larga::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-top: var(--borde) solid currentColor;
+  border-right: var(--borde) solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Cifras -------------------------------------------------------------- */
+
+[data-page="inicio"] .inicio__cifras {
+  display: grid;
+  /* minmax(0, 1fr) y no 1fr: si no, la etiqueta más larga ensancha su columna
+     y las cuatro tarjetas dejan de medir igual. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-12);
+}
+
+[data-page="inicio"] .inicio__cifra {
+  padding: var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie-1);
+}
+
+[data-page="inicio"] .inicio__cifra-numero {
+  font-family: var(--fuente-titulos);
+  /* Con las columnas ya parejas, la cifra más ancha ("100%") no cabía en
+     celular. Baja solo en pantallas chicas: de ~975px en adelante sigue
+     topada en 4rem, igual que antes. */
+  font-size: clamp(1.9rem, 0.6rem + 5.6vw, 4rem);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-titulo);
+  line-height: var(--interlinea-apretada);
+}
+
+[data-page="inicio"] .inicio__cifra-etiqueta {
+  margin-top: var(--espacio-2);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Sección clara ------------------------------------------------------- */
+
+[data-page="inicio"] .inicio__seccion--clara {
+  padding: var(--espacio-12) var(--espacio-6);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-apoyo);
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__seccion--clara .ud-capsula {
+  border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__seccion--clara .inicio__texto,
+[data-page="inicio"] .inicio__seccion--clara .inicio__pendiente,
+[data-page="inicio"] .inicio__seccion--clara .inicio__proyecto-lugar {
+  color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
+}
+
+[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha {
+  color: var(--color-guinda);
+}
+
+[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha:hover,
+[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha:focus-visible {
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha .ud-boton__flecha {
+  background-color: var(--color-guinda);
+  color: var(--color-apoyo);
+}
+
+[data-page="inicio"] .inicio__maquinaria {
+  margin-top: var(--espacio-8);
+  padding: var(--espacio-6);
+  border-radius: var(--radio-md);
+  background-color: color-mix(in srgb, var(--color-blanco) 45%, var(--color-apoyo));
+}
+
+[data-page="inicio"] .inicio__maquinaria-titulo {
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-transform: uppercase;
+}
+
+[data-page="inicio"] .inicio__maquinaria .inicio__lista {
+  margin-top: var(--espacio-3);
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha {
+  margin-top: var(--espacio-8);
+}
+
+/* Proceso ------------------------------------------------------------- */
+
+[data-page="inicio"] .inicio__pasos {
+  display: grid;
+  /* Ancho mínimo por tarjeta y separación fija: en pantallas grandes crecen
+     las tarjetas, no los huecos. */
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+}
+
+[data-page="inicio"] .inicio__paso {
+  padding: var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie-1);
+}
+
+[data-page="inicio"] .inicio__paso-numero {
+  color: var(--color-guinda-claro);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-titulo);
+}
+
+[data-page="inicio"] .inicio__paso-titulo {
+  margin-top: var(--espacio-2);
+  font-size: var(--texto-md);
+}
+
+/* Proyectos ----------------------------------------------------------- */
+
+[data-page="inicio"] .inicio__carrusel-encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+}
+
+[data-page="inicio"] .ud-carrusel__flechas {
+  margin-left: auto;
+}
+
+/* Sobre la sección clara manda el azul de marca. */
+[data-page="inicio"] .inicio__seccion--clara .ud-carrusel__boton {
+  border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__seccion--clara .ud-carrusel__boton:hover:not([disabled]),
+[data-page="inicio"] .inicio__seccion--clara .ud-carrusel__boton:focus-visible {
+  background-color: color-mix(in srgb, var(--color-blanco) 45%, var(--color-apoyo));
+}
+
+/* Carrusel: desplazamiento nativo con parada en cada tarjeta.
+   La pista sale a los dos bordes de la sección clara (margen negativo) y
+   recupera por dentro el mismo relleno, así las tarjetas se salen por los
+   bordes en vez de cortarse contra el margen del contenido. El scroll-padding
+   hace que cada parada caiga en el inicio del contenido, a plomo con el
+   título, y el relleno derecho deja a la última tarjeta el mismo aire que
+   tiene la primera. */
+[data-page="inicio"] .inicio__proyectos {
+  grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+  margin-bottom: var(--espacio-8);
+  margin-inline: calc(var(--espacio-6) * -1);
+  padding-inline: var(--espacio-6);
+  scroll-padding-left: var(--espacio-6);
+}
+
+[data-page="inicio"] .inicio__proyecto {
+  border-radius: var(--radio-lg);
+}
+
+/* El foco rodea la tarjeta completa y sigue su redondeo. Sobre la sección
+   clara manda el guinda de marca, no el claro. */
+[data-page="inicio"] .inicio__proyecto:focus-visible {
+  outline: 2px solid var(--color-guinda);
+  outline-offset: 4px;
+}
+
+[data-page="inicio"] .inicio__proyecto .inicio__foto {
+  min-height: 11rem;
+}
+
+[data-page="inicio"] .inicio__proyecto-nombre {
+  margin-top: var(--espacio-4);
+  font-size: var(--texto-lg);
+}
+
+[data-page="inicio"] .inicio__proyecto-lugar {
+  margin-top: var(--espacio-1);
+  font-size: var(--texto-sm);
+}
+
+/* Blog en el home ------------------------------------------------------ */
+
+/* Sale del margen del <main> para que la pista llegue a los dos bordes de la
+   ventana; el encabezado y el botón recuperan el margen amplio por dentro. */
+[data-page="inicio"] .inicio__blog {
+  margin-inline: calc(var(--margen-lateral) * -1);
+}
+
+[data-page="inicio"] .inicio__blog-encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding-inline: var(--margen-seccion-amplio);
+}
+
+[data-page="inicio"] .inicio__notas {
+  grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+  margin-bottom: var(--espacio-8);
+  padding-inline: var(--margen-seccion-amplio);
+  scroll-padding-left: var(--margen-seccion-amplio);
+}
+
+[data-page="inicio"] .inicio__nota-enlace {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-1);
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+[data-page="inicio"] .inicio__nota-enlace:focus-visible {
+  outline: 2px solid var(--color-guinda-claro);
+  outline-offset: 4px;
+}
+
+[data-page="inicio"] .inicio__nota-foto {
+  display: grid;
+  aspect-ratio: 16 / 10;
+  place-items: center;
+  padding: var(--espacio-4);
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-page="inicio"] .inicio__nota-cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--espacio-6);
+}
+
+[data-page="inicio"] .inicio__nota-titulo {
+  margin-top: var(--espacio-4);
+  font-size: var(--texto-md);
+}
+
+[data-page="inicio"] .inicio__nota-enlace:hover .inicio__nota-titulo,
+[data-page="inicio"] .inicio__nota-enlace:focus-visible .inicio__nota-titulo {
+  color: var(--color-guinda-claro);
+}
+
+[data-page="inicio"] .inicio__nota-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  margin-top: auto;
+  padding-top: var(--espacio-6);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-xs);
+}
+
+[data-page="inicio"] .inicio__blog-entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+/* Enlace y flechas en la misma fila; en celular bajan debajo del párrafo. */
+[data-page="inicio"] .inicio__blog-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-6);
+}
+
+/* Enlace, no botón: la flecha se asoma un poco al pasar el cursor. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-page="inicio"] .inicio__blog-todas .inicio__flecha-larga {
+    transition: transform var(--transicion);
+  }
+
+  [data-page="inicio"] .inicio__blog-todas:hover .inicio__flecha-larga,
+  [data-page="inicio"] .inicio__blog-todas:focus-visible .inicio__flecha-larga {
+    transform: translateX(var(--espacio-1));
+  }
+}
+
+/* Cierre -------------------------------------------------------------- */
+
+[data-page="inicio"] .inicio__cierre {
+  position: relative;
+  overflow: hidden;
+  padding: var(--espacio-16) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea-fuerte);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-2);
+  text-align: center;
+}
+
+/* El recorte del contenedor hace que la foto respete el redondeo. */
+[data-page="inicio"] .inicio__cierre-imagen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 85%;
+}
+
+/* Velo parejo: aquí el texto va en el centro, no en una esquina, así que un
+   degradado dejaría zonas flojas. */
+[data-page="inicio"] .inicio__cierre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-fondo) 86%, transparent);
+}
+
+/* Por encima del velo: el ::after pinta después de los hijos. */
+[data-page="inicio"] .inicio__cierre > :not(.inicio__cierre-imagen) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Título y texto con su propia medida, centrados; en celular manda el ancho
+   de la tarjeta. */
+/* La medida parte el título en dos líneas parejas en escritorio:
+   "Hablemos de nuestro" / "próximo proyecto." */
+[data-page="inicio"] .inicio__cierre .inicio__titulo {
+  max-width: 12em;
+  margin-inline: auto;
+}
+
+[data-page="inicio"] .inicio__cierre .inicio__texto {
+  margin-inline: auto;
+}
+
+/* Botón y teléfono como un grupo centrado; en celular se apilan. */
+[data-page="inicio"] .inicio__cierre .inicio__acciones {
+  justify-content: center;
+}
+
+[data-page="inicio"] .inicio__telefono {
+  display: inline-flex;
+  min-height: var(--area-toque);
+  align-items: center;
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-titulo);
+  text-decoration: none;
+}
+
+[data-page="inicio"] .inicio__telefono:hover,
+[data-page="inicio"] .inicio__telefono:focus-visible {
+  color: var(--color-guinda-claro);
+}
+
+/* Escritorio ---------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  [data-page="inicio"] .inicio__servicios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-page="inicio"] .inicio__hero-imagen {
+    object-position: 50% 35%;
+  }
+
+  [data-page="inicio"] .inicio__cifras {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
+@media (min-width: 64rem) {
+  [data-page="inicio"] .inicio__servicios {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  [data-page="inicio"] .inicio__hero {
+    padding: var(--relleno-hero);
+  }
+
+  [data-page="inicio"] .inicio__nosotros {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacio-12);
+  }
+
+  [data-page="inicio"] .inicio__insignias {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  [data-page="inicio"] .inicio__insignia {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espacio-3);
+  }
+
+  [data-page="inicio"] .inicio__insignia:nth-child(odd) {
+    padding-left: var(--espacio-4);
+    border-left: var(--borde) solid var(--color-linea-fuerte);
+  }
+
+  [data-page="inicio"] .inicio__insignia:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  [data-page="inicio"] .inicio__dos-columnas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacio-12);
+  }
+
+  [data-page="inicio"] .inicio__seccion--clara {
+    padding: var(--espacio-12);
+  }
+
+  [data-page="inicio"] .inicio__proyectos {
+    grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
+    margin-inline: calc(var(--espacio-12) * -1);
+    padding-inline: var(--espacio-12);
+    scroll-padding-left: var(--espacio-12);
+  }
+
+  [data-page="inicio"] .inicio__notas {
+    grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
+  }
+}

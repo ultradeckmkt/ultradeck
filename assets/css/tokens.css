@@ -1,38 +1,62 @@
 /**
  * Los valores de diseño del sitio. Única fuente de verdad.
  * Ningún otro archivo contiene colores hex.
+ *
+ * El sitio es oscuro sobre grafito. Las secciones claras van en Tender Light
+ * Blue y ahí el texto es el azul de marca.
  */
 
 @layer base, patrones;
 
 :root {
-  /* Marca (provisionales) */
+  /* Base oscura */
+  --color-fondo: #0e0e10;
+  --color-superficie-1: #16161a;
+  --color-superficie-2: #1e1e23;
+
+  /* Marca */
   --color-primario: #0d2549;
-  --color-acento: #590606;
-  --color-superficie: #f1f1f1;
+  --color-guinda: #590606;
+  --color-guinda-vivo: #a61b1b;
+  --color-guinda-claro: #d8514b;
   --color-apoyo: #c8d3e6;
+  --color-texto: #f1f1f1;
+  --color-blanco: #ffffff;
+  --color-negro: #000000;
 
   /* Derivados, para no sumar hex fuera de la paleta */
-  --color-texto: var(--color-primario);
-  --color-texto-suave: color-mix(in srgb, var(--color-primario) 70%, var(--color-superficie));
-  --color-linea: color-mix(in srgb, var(--color-apoyo) 80%, var(--color-superficie));
-  --color-blanco: #ffffff;
+  --color-texto-suave: color-mix(in srgb, var(--color-texto) 66%, var(--color-fondo));
+  --color-guinda-vivo-hover: color-mix(in srgb, var(--color-guinda-vivo) 82%, var(--color-blanco));
+  --color-linea: color-mix(in srgb, var(--color-blanco) 10%, transparent);
+  --color-linea-fuerte: color-mix(in srgb, var(--color-blanco) 18%, transparent);
+  --color-fondo-hover: color-mix(in srgb, var(--color-blanco) 6%, transparent);
+  --color-velo: color-mix(in srgb, var(--color-fondo) 78%, transparent);
 
-  /* Tipografía */
-  --fuente-base: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Header translúcido: deja ver el contenido que pasa por debajo. */
+  --color-header: color-mix(in srgb, var(--color-fondo) 72%, transparent);
+  --desenfoque-header: blur(14px);
+
+  /* Tipografía
+     Archivo SemiBold en títulos, cifras, botones, menú y etiquetas.
+     Manrope en párrafos y textos largos. */
+  --fuente-titulos: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fuente-texto: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --peso-titulo: 600;
   --peso-normal: 400;
   --peso-medio: 500;
-  --peso-fuerte: 700;
+  --peso-fuerte: 600;
 
   --texto-xs: 0.75rem;
   --texto-sm: 0.875rem;
   --texto-md: 1rem;
   --texto-lg: 1.125rem;
-  --texto-xl: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+  --texto-xl: clamp(2rem, 1.3rem + 3vw, 3.5rem);
 
-  --interlinea-apretada: 1.2;
-  --interlinea-normal: 1.6;
-  --espaciado-letra-amplio: 0.18em;
+  --interlinea-apretada: 1.05;
+  --interlinea-normal: 1.65;
+  --espaciado-letra-amplio: 0.12em;
+  --espaciado-letra-titulo: -0.02em;
 
   /* Espaciado */
   --espacio-1: 0.25rem;
@@ -44,9 +68,45 @@
   --espacio-12: 3rem;
   --espacio-16: 4rem;
 
-  /* Medidas */
+  /* Medidas
+     El sitio es de ancho completo: --margen-lateral es el único respiro contra
+     el borde de la ventana y vale igual en todo el sitio. */
+  --margen-lateral: 1.5rem;
+
+  /* Relleno interior de la tarjeta del hero. De él sale --margen-seccion, el
+     margen lateral de las secciones que se alinean con el texto del hero:
+     margen del sitio + relleno de la tarjeta. Los dos cambian juntos. */
+  --relleno-hero: var(--espacio-6);
+  --margen-seccion: calc(var(--margen-lateral) + var(--relleno-hero));
+
+  /* Margen de las secciones que piden aire y crecen con la pantalla:
+     3rem en celular (lo mismo que --margen-seccion), ~150px en 1440 y tope de
+     12rem para que no se dispare en monitores grandes. */
+  --margen-seccion-amplio: clamp(3rem, 10.4vw, 12rem);
   --ancho-texto: 34rem;
-  --ancho-contenido: 44rem;
-  --radio: 0.5rem;
+  --ancho-modal: 58rem;
+  --alto-franja-modal: 9rem;
+  --ancho-submenu: 15rem;
+  --area-toque: 2.75rem;
+  --altura-header: 4.5rem;
+  --altura-logo: 2rem;
   --borde: 1px;
+
+  /* Radios: todo va redondeado */
+  --radio-sm: 12px;
+  --radio-md: 20px;
+  --radio-lg: 32px;
+  --radio-pildora: 999px;
+
+  /* Elevación y movimiento */
+  --sombra-submenu: 0 16px 32px color-mix(in srgb, var(--color-negro) 45%, transparent);
+  --sombra-modal: 0 24px 60px color-mix(in srgb, var(--color-negro) 55%, transparent);
+  --z-header: 100;
+  --transicion: 150ms ease;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --relleno-hero: var(--espacio-12);
+  }
 }

@@ -4,51 +4,784 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Ultra Deck | Sitio en renovación</title>
+    <title>Ultra Deck | Techos metálicos para naves industriales</title>
     <meta
       name="description"
-      content="Ultra Deck está renovando su sitio. Mientras tanto, atendemos por teléfono y correo."
+      content="Diseño, fabricación e instalación de techos metálicos, estructura y canalones para naves industriales. 35 años de experiencia y mantenimiento de techos en todo México."
     />
+    <link rel="canonical" href="https://ultradeck.com.mx/" />
+    <link rel="icon" href="/assets/img/marca/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/img/marca/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Manrope:wght@400;500;600&display=swap"
     />
+    <link rel="stylesheet" href="/assets/css/vendor/lenis.css" />
     <link rel="stylesheet" href="/assets/css/tokens.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
-    <link rel="stylesheet" href="/assets/css/paginas/mantenimiento.css" />
+    <link rel="stylesheet" href="/assets/css/patrones.css" />
+    <link rel="stylesheet" href="/assets/css/interacciones.css" />
+    <link rel="stylesheet" href="/assets/css/paginas/inicio.css" />
+    <script src="/assets/js/menu.js" defer></script>
+    <script src="/assets/js/cotizacion.js" defer></script>
+    <script src="/assets/js/vendor/lenis.min.js" defer></script>
+    <script src="/assets/js/scroll.js" defer></script>
+    <script src="/assets/js/carrusel.js" defer></script>
+    <script src="/assets/js/servicios.js" defer></script>
   </head>
-  <body data-page="mantenimiento">
-    <main class="mantenimiento">
-      <p class="mantenimiento__marca">Ultra Deck</p>
+  <body data-page="inicio">
+    <!-- @include header -->
 
-      <div class="mantenimiento__texto">
-        <h1>Estamos renovando nuestro sitio</h1>
-        <p>
-          Más de 35 años construyendo y dando mantenimiento a cubiertas
-          metálicas para naves industriales en todo México. Mientras terminamos
-          nuestro nuevo sitio, estamos a sus órdenes por teléfono o correo.
-        </p>
-      </div>
-
-      <div class="mantenimiento__contacto">
-        <div class="mantenimiento__dato">
-          <span class="mantenimiento__etiqueta">Teléfono</span>
-          <a href="tel:+528181900884">+52 81 8190 0884</a>
-          <a href="tel:+528181900888">+52 81 8190 0888</a>
+    <main class="inicio">
+      <!-- Hero ------------------------------------------------------- -->
+      <section class="inicio__hero" aria-labelledby="hero-titulo">
+        <div class="inicio__hero-foto">
+          <!-- [PENDIENTE: inicio-movil.webp, la versión vertical para celular].
+               Mientras no exista, en celular se usa esta misma imagen con otro
+               punto de encuadre. -->
+          <img
+            class="inicio__hero-imagen"
+            src="/assets/img/hero/inicio.webp"
+            alt=""
+            width="1920"
+            height="1047"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
 
-        <div class="mantenimiento__dato">
-          <span class="mantenimiento__etiqueta">Correo</span>
-          <a href="mailto:contacto@ultradeck.com.mx">contacto@ultradeck.com.mx</a>
-        </div>
-      </div>
+        <div class="inicio__hero-contenido">
+          <p class="ud-capsula">Desde 1990 · General Escobedo, N.L.</p>
+          <h1 class="inicio__hero-titulo" id="hero-titulo">
+            Construimos y mantenemos techos para naves industriales
+          </h1>
+          <p class="inicio__entrada">
+            Diseñamos, fabricamos e instalamos techos, estructuras y sistemas
+            pluviales para la industria, y les damos mantenimiento para que su
+            nave siga operando.
+          </p>
 
-      <address class="mantenimiento__domicilio">
-        Priv. Juan Escutia 115, Col. Niños Héroes, C.P. 66052, General Escobedo,
-        N.L.
-      </address>
+          <div class="inicio__acciones">
+            <button
+              class="ud-boton ud-boton--flecha"
+              type="button"
+              data-abrir-cotizacion
+            >
+              Solicitar cotización
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </button>
+            <a class="inicio__boton-secundario" href="/proyectos/"
+              >Ver proyectos</a
+            >
+          </div>
+
+          <p class="inicio__confianza">
+            Proyectos para Chrysler, Audi, Costco, John Deere y Caterpillar
+          </p>
+        </div>
+      </section>
+
+      <!-- Nosotros y cifras ---------------------------------------- -->
+      <section
+        class="inicio__seccion inicio__seccion--con-margen"
+        aria-labelledby="nosotros-titulo"
+      >
+        <div class="inicio__nosotros">
+          <div>
+            <p class="ud-capsula">Nosotros</p>
+            <h2 class="inicio__titulo" id="nosotros-titulo">
+              Cubriendo la industria mexicana
+              <span class="inicio__resalte">desde 1990</span>
+            </h2>
+
+            <!-- [PENDIENTE: conectar el video]. -->
+            <button class="inicio__video" type="button" data-abrir-video>
+              <span class="inicio__video-miniatura" aria-hidden="true"></span>
+              <span class="inicio__video-texto">
+                Ver video
+                <span class="inicio__video-pendiente">[PENDIENTE: video]</span>
+              </span>
+            </button>
+          </div>
+
+          <div>
+            <ul class="inicio__insignias">
+              <li class="inicio__insignia">
+                <svg
+                  class="inicio__insignia-icono"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 3h8l4 4v14H6z" />
+                  <path d="M9 13l2 2 4-4" />
+                </svg>
+                REPSE
+              </li>
+              <li class="inicio__insignia">
+                <svg
+                  class="inicio__insignia-icono"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M8.5 12l2.5 2.5 4.5-5" />
+                </svg>
+                ISO
+              </li>
+              <li class="inicio__insignia">
+                <svg
+                  class="inicio__insignia-icono"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M12 21V5" />
+                  <path d="M6.5 10.5L12 5l5.5 5.5" />
+                </svg>
+                DC-3 · Trabajo en alturas
+              </li>
+              <li class="inicio__insignia">
+                <svg
+                  class="inicio__insignia-icono"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M4 20h8" />
+                  <path d="M8 20V4" />
+                  <path d="M8 4h11" />
+                  <path d="M16 4v5" />
+                </svg>
+                Grúas certificadas
+              </li>
+            </ul>
+
+            <p class="inicio__texto">
+              Empezamos en 1990 con proyectos residenciales y crecimos hasta
+              especializarnos en naves industriales. Hoy fabricamos e
+              instalamos con personal certificado en todo el país.
+            </p>
+
+            <div class="inicio__acciones">
+              <a class="ud-boton ud-boton--flecha" href="/nosotros/">
+                Conocer Ultra Deck
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+              <button
+                class="inicio__enlace-flecha"
+                type="button"
+                data-abrir-cotizacion
+              >
+                Solicitar cotización
+                <span class="inicio__flecha-larga" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <ul class="inicio__cifras">
+          <li class="inicio__cifra">
+            <p class="inicio__cifra-numero">35+</p>
+            <p class="inicio__cifra-etiqueta">Años de experiencia</p>
+          </li>
+          <li class="inicio__cifra">
+            <p class="inicio__cifra-numero">20</p>
+            <p class="inicio__cifra-etiqueta">Marcas líderes atendidas</p>
+          </li>
+          <li class="inicio__cifra">
+            <p class="inicio__cifra-numero">5+</p>
+            <p class="inicio__cifra-etiqueta">Estados con obra realizada</p>
+          </li>
+          <li class="inicio__cifra">
+            <p class="inicio__cifra-numero">100%</p>
+            <p class="inicio__cifra-etiqueta">Maquinaria propia</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Servicios -------------------------------------------------- -->
+      <section
+        class="inicio__seccion inicio__seccion--con-margen"
+        aria-labelledby="ramas-titulo"
+      >
+        <div class="inicio__servicios-encabezado">
+          <p class="ud-capsula">Servicios</p>
+          <h2 class="inicio__titulo" id="ramas-titulo">
+            Soluciones para su nave, de la estructura al mantenimiento
+          </h2>
+          <p class="inicio__servicios-entrada">
+            Del techo a los canalones, resolvemos cada sistema de su nave con
+            un solo equipo responsable, desde el diseño hasta el mantenimiento.
+          </p>
+        </div>
+
+        <ul class="inicio__servicios" id="lista-servicios">
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Lámina SST Elite 3"]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Lámina SST Elite 3"</h3>
+              <p class="inicio__servicio-linea">Techo con inyección de sello automatizada en cada traslape.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Lámina SSR KR-18 2.5"]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Lámina SSR KR-18 2.5"</h3>
+              <p class="inicio__servicio-linea">Lámina de junta alzada formada con maquinaria propia.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Mantenimiento de techos industriales]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Mantenimiento de techos industriales</h3>
+              <p class="inicio__servicio-linea">Reparación de goteras, filtraciones y láminas dañadas.</p>
+              <a class="inicio__enlace-flecha" href="/mantenimiento/techos-industriales/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Canalones y bajantes pluviales]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Canalones y bajantes pluviales</h3>
+              <p class="inicio__servicio-linea">Diseño, fabricación e instalación de sistemas pluviales.</p>
+              <a class="inicio__enlace-flecha" href="/mantenimiento/canalones-y-bajantes/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Estructura metálica]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Estructura metálica</h3>
+              <p class="inicio__servicio-linea">Ingeniería, fabricación y montaje de estructura para naves.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/estructura-metalica/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Lámina R-101 y panel para muros]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Lámina R-101 y panel para muros</h3>
+              <p class="inicio__servicio-linea">Sistemas de lámina y panel para cerrar y proteger su nave.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/muros-y-fachadas/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Domos de policarbonato tipo cañón]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Domos de policarbonato tipo cañón</h3>
+              <p class="inicio__servicio-linea">Luz natural para su nave con domos de policarbonato.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/domos-e-iluminacion/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Domos Sunoptics]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Domos Sunoptics</h3>
+              <p class="inicio__servicio-linea">Domos prismáticos de alto rendimiento para iluminación natural.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/domos-e-iluminacion/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Louvers fijos y móviles]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Louvers fijos y móviles</h3>
+              <p class="inicio__servicio-linea">Ventilación natural para muros y fachadas industriales.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/muros-y-fachadas/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Molduras y perfiles especiales]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Molduras y perfiles especiales</h3>
+              <p class="inicio__servicio-linea">Remates y perfiles a la medida de cada proyecto.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-foto">
+              <p class="inicio__pendiente">[PENDIENTE: foto Roof curves (brocales)]</p>
+            </div>
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">Roof curves (brocales)</h3>
+              <p class="inicio__servicio-linea">Bases para domos, extractores, ventiladores y equipos de A/C.</p>
+              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio inicio__servicio--cta">
+            <div class="inicio__servicio-cuerpo">
+              <h3 class="inicio__servicio-nombre">
+                ¿No encuentra lo que busca?
+              </h3>
+              <p class="inicio__servicio-linea">
+                Cuéntenos su proyecto y un especialista le dirá cómo podemos
+                ayudarle.
+              </p>
+              <button
+                class="inicio__enlace-flecha"
+                type="button"
+                data-abrir-cotizacion
+              >
+                Solicitar cotización
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Nace oculto: sin JavaScript se ven las 12 tarjetas y el botón no
+             hace falta. servicios.js lo muestra y pliega la lista. -->
+        <button
+          class="inicio__boton-secundario inicio__mostrar-mas"
+          id="mostrar-servicios"
+          type="button"
+          aria-controls="lista-servicios"
+          hidden
+        >
+          Mostrar más servicios
+        </button>
+      </section>
+
+      <!-- Diferenciador ---------------------------------------------- -->
+      <section
+        class="inicio__seccion inicio__seccion--clara"
+        aria-labelledby="sst-titulo"
+      >
+        <div class="inicio__dos-columnas">
+          <div>
+            <p class="ud-capsula">Sistema SST Elite</p>
+            <h2 class="inicio__titulo" id="sst-titulo">
+              Un techo diseñado para no filtrar
+            </h2>
+            <p class="inicio__texto">
+              Nuestra lámina acanalada de 3 pulgadas de peralte se sella con
+              inyección automatizada en cada traslape, justo donde suelen nacer
+              las filtraciones.
+            </p>
+
+            <div class="inicio__maquinaria">
+              <p class="inicio__maquinaria-titulo">Maquinaria propia</p>
+              <ul class="inicio__lista">
+                <li>Acanaladoras KR-18 Black by Knudson y Zimmerman</li>
+                <li>Guillotina y foldeadoras CIDAN</li>
+              </ul>
+            </div>
+
+            <a
+              class="inicio__enlace-flecha"
+              href="/construccion/techos-metalicos/"
+            >
+              Conocer techos metálicos
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div class="inicio__foto inicio__foto--clara">
+            <p class="inicio__pendiente">
+              [PENDIENTE: foto del sistema SST Elite]
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proceso ---------------------------------------------------- -->
+      <section class="inicio__seccion" aria-labelledby="proceso-titulo">
+        <p class="ud-capsula">Cómo trabajamos</p>
+        <h2 class="inicio__titulo" id="proceso-titulo">
+          De la visita técnica a la entrega
+        </h2>
+
+        <ol class="inicio__pasos">
+          <li class="inicio__paso">
+            <p class="inicio__paso-numero">01</p>
+            <h3 class="inicio__paso-titulo">Visita técnica y diagnóstico</h3>
+          </li>
+          <li class="inicio__paso">
+            <p class="inicio__paso-numero">02</p>
+            <h3 class="inicio__paso-titulo">Propuesta y cotización</h3>
+          </li>
+          <li class="inicio__paso">
+            <p class="inicio__paso-numero">03</p>
+            <h3 class="inicio__paso-titulo">Fabricación e instalación</h3>
+          </li>
+          <li class="inicio__paso">
+            <p class="inicio__paso-numero">04</p>
+            <h3 class="inicio__paso-titulo">Entrega y seguimiento</h3>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Proyectos -------------------------------------------------- -->
+      <section
+        class="inicio__seccion inicio__seccion--clara"
+        aria-labelledby="proyectos-titulo"
+      >
+        <div class="inicio__carrusel-encabezado">
+          <div>
+            <p class="ud-capsula">Proyectos</p>
+            <h2 class="inicio__titulo" id="proyectos-titulo">
+              Respaldados por 35 años de proyectos exitosos
+            </h2>
+          </div>
+
+          <!-- Sin JavaScript quedan deshabilitadas; el carrusel se sigue
+               desplazando con dedo, trackpad y teclado. -->
+          <div class="ud-carrusel__flechas">
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="anterior"
+              aria-controls="carrusel-proyectos"
+              aria-label="Proyecto anterior"
+              disabled
+            >
+              <span
+                class="ud-carrusel__icono ud-carrusel__icono--anterior"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="siguiente"
+              aria-controls="carrusel-proyectos"
+              aria-label="Proyecto siguiente"
+              disabled
+            >
+              <span class="ud-carrusel__icono" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <ul class="ud-carrusel inicio__proyectos" id="carrusel-proyectos">
+          <li class="inicio__proyecto" tabindex="0">
+            <div class="inicio__foto inicio__foto--clara">
+              <p class="inicio__pendiente">[PENDIENTE: foto Chrysler]</p>
+            </div>
+            <h3 class="inicio__proyecto-nombre">Chrysler</h3>
+            <p class="inicio__proyecto-lugar">
+              Ramos Arizpe y Derramadero, Coahuila
+            </p>
+          </li>
+          <li class="inicio__proyecto" tabindex="0">
+            <div class="inicio__foto inicio__foto--clara">
+              <p class="inicio__pendiente">[PENDIENTE: foto Audi]</p>
+            </div>
+            <h3 class="inicio__proyecto-nombre">Audi</h3>
+            <p class="inicio__proyecto-lugar">
+              Planta de proveedores, San José Chiapa, Puebla
+            </p>
+          </li>
+          <li class="inicio__proyecto" tabindex="0">
+            <div class="inicio__foto inicio__foto--clara">
+              <p class="inicio__pendiente">[PENDIENTE: foto CEDIS Costco]</p>
+            </div>
+            <h3 class="inicio__proyecto-nombre">CEDIS Costco</h3>
+            <p class="inicio__proyecto-lugar">Tepeji del Río, Hidalgo</p>
+          </li>
+          <li class="inicio__proyecto" tabindex="0">
+            <div class="inicio__foto inicio__foto--clara">
+              <p class="inicio__pendiente">[PENDIENTE: foto Daltile]</p>
+            </div>
+            <h3 class="inicio__proyecto-nombre">Daltile</h3>
+            <p class="inicio__proyecto-lugar">Salamanca, Guanajuato</p>
+          </li>
+          <li class="inicio__proyecto" tabindex="0">
+            <div class="inicio__foto inicio__foto--clara">
+              <p class="inicio__pendiente">[PENDIENTE: foto Honda]</p>
+            </div>
+            <h3 class="inicio__proyecto-nombre">Honda</h3>
+            <p class="inicio__proyecto-lugar">Celaya, Guanajuato</p>
+          </li>
+          <li class="inicio__proyecto" tabindex="0">
+            <div class="inicio__foto inicio__foto--clara">
+              <p class="inicio__pendiente">[PENDIENTE: foto Cuprum]</p>
+            </div>
+            <h3 class="inicio__proyecto-nombre">Cuprum</h3>
+            <p class="inicio__proyecto-lugar">Santa Catarina, Nuevo León</p>
+          </li>
+        </ul>
+
+        <a class="ud-boton ud-boton--flecha" href="/proyectos/">
+          Ver todos los proyectos
+          <span class="ud-boton__flecha" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <!-- Cierre ----------------------------------------------------- -->
+      <section class="inicio__seccion" aria-labelledby="cierre-titulo">
+        <div class="inicio__cierre">
+          <!-- [PENDIENTE: imagen propia del cierre]. Por ahora la del hero,
+               con otro encuadre. Va al final de la página, así que carga
+               diferida. -->
+          <img
+            class="inicio__cierre-imagen"
+            src="/assets/img/hero/inicio.webp"
+            alt=""
+            width="1920"
+            height="1047"
+            loading="lazy"
+          />
+
+          <h2 class="inicio__titulo" id="cierre-titulo">
+            Hablemos de nuestro próximo proyecto.
+          </h2>
+          <p class="inicio__texto">
+            Cuéntenos sobre su proyecto y reciba una propuesta de un
+            especialista.
+          </p>
+          <div class="inicio__acciones">
+            <button
+              class="ud-boton ud-boton--flecha"
+              type="button"
+              data-abrir-cotizacion
+            >
+              Solicitar cotización
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </button>
+            <a class="inicio__telefono" href="tel:+528181900884"
+              >+52 81 8190 0884</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Blog --------------------------------------------------------- -->
+      <section
+        class="inicio__seccion inicio__blog"
+        aria-labelledby="blog-titulo"
+      >
+        <div class="inicio__blog-encabezado">
+          <div>
+            <p class="ud-capsula">Blog</p>
+            <h2 class="inicio__titulo" id="blog-titulo">Últimas noticias</h2>
+            <p class="inicio__blog-entrada">
+              Guías prácticas para cuidar el techo de su nave industrial,
+              prevenir filtraciones y tomar mejores decisiones de
+              mantenimiento.
+            </p>
+          </div>
+
+          <div class="inicio__blog-acciones">
+            <a class="inicio__enlace-flecha inicio__blog-todas" href="/blog/">
+              Ver todas las notas
+              <span class="inicio__flecha-larga" aria-hidden="true"></span>
+            </a>
+
+            <div class="ud-carrusel__flechas">
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="anterior"
+              aria-controls="carrusel-blog"
+              aria-label="Nota anterior"
+              disabled
+            >
+              <span
+                class="ud-carrusel__icono ud-carrusel__icono--anterior"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="siguiente"
+              aria-controls="carrusel-blog"
+              aria-label="Nota siguiente"
+              disabled
+            >
+              <span class="ud-carrusel__icono" aria-hidden="true"></span>
+            </button>
+            </div>
+          </div>
+        </div>
+
+        <ul class="ud-carrusel inicio__notas" id="carrusel-blog">
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/cada-cuanto-dar-mantenimiento-techo-industrial/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">¿Cada cuánto dar mantenimiento a un techo industrial?</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-19">19 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/goteras-en-naves-industriales/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">Goteras en naves industriales: causas y cómo detectarlas a tiempo</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-16">16 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/revisar-techo-nave-industrial-antes-de-lluvias/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">Qué revisar en el techo de su nave industrial antes de la temporada de lluvias</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-12">12 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/mantenimiento-preventivo-vs-correctivo-techos/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">Mantenimiento preventivo vs. correctivo en techos industriales</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-10">10 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/vida-util-techo-nave-industrial/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">¿Cuánto dura el techo de lámina de una nave industrial y cómo alargar su vida útil?</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-08">8 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/canalones-nave-industrial-desbordan/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">Por qué se desbordan los canalones de una nave industrial y cómo evitarlo</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-05">5 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/reparar-o-cambiar-techo-nave-industrial/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">¿Reparar o cambiar el techo de su nave industrial? Cuándo conviene un retechado</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-03">3 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="inicio__nota">
+            <a class="inicio__nota-enlace" href="/blog/costo-mantenimiento-techo-industrial/">
+              <span class="inicio__nota-foto">
+                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="inicio__nota-cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="inicio__nota-titulo">Cuánto cuesta el mantenimiento de un techo industrial y de qué depende</h3>
+                <span class="inicio__nota-datos">
+                  <time datetime="2026-09-02">2 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+      </section>
     </main>
+
+    <!-- @include footer -->
+
+    <!-- @include cotizacion -->
   </body>
 </html>

@@ -1,0 +1,160 @@
+/**
+ * Índice del blog. Fuera de toda capa y acotado a su data-page.
+ * La cápsula y la caja de llamada a la acción son patrones compartidos.
+ */
+
+/* El mismo margen amplio de Nosotros y Servicios del home, en todos los
+   anchos: en celular vale lo mismo que --margen-seccion. */
+[data-page="blog"] .blog {
+  padding: var(--espacio-8) var(--margen-seccion-amplio) var(--espacio-12);
+}
+
+/* Encabezado ------------------------------------------------------------ */
+
+[data-page="blog"] .blog__encabezado {
+  text-align: center;
+}
+
+[data-page="blog"] .blog__h1 {
+  max-width: 16em;
+  margin-top: var(--espacio-4);
+  margin-inline: auto;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+}
+
+[data-page="blog"] .blog__entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  margin-inline: auto;
+  color: var(--color-texto-suave);
+}
+
+/* Huecos de imagen ------------------------------------------------------ */
+
+[data-page="blog"] .blog__foto {
+  display: grid;
+  aspect-ratio: 16 / 10;
+  place-items: center;
+  padding: var(--espacio-4);
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-page="blog"] .blog__pendiente {
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Tarjetas -------------------------------------------------------------- */
+
+[data-page="blog"] .blog__destacada,
+[data-page="blog"] .blog__enlace {
+  display: block;
+  overflow: hidden;
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-1);
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+[data-page="blog"] .blog__destacada {
+  margin-top: var(--espacio-12);
+}
+
+[data-page="blog"] .blog__enlace {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+[data-page="blog"] .blog__cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--espacio-6);
+}
+
+[data-page="blog"] .blog__titulo {
+  margin-top: var(--espacio-4);
+  font-size: var(--texto-lg);
+}
+
+[data-page="blog"] .blog__titulo--destacado {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+}
+
+[data-page="blog"] .blog__extracto {
+  display: block;
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+[data-page="blog"] .blog__datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  margin-top: auto;
+  padding-top: var(--espacio-6);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-xs);
+}
+
+[data-page="blog"] .blog__destacada:hover .blog__titulo,
+[data-page="blog"] .blog__destacada:focus-visible .blog__titulo,
+[data-page="blog"] .blog__enlace:hover .blog__titulo,
+[data-page="blog"] .blog__enlace:focus-visible .blog__titulo {
+  color: var(--color-guinda-claro);
+}
+
+/* Cuadrícula ------------------------------------------------------------ */
+
+[data-page="blog"] .blog__lista {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-6);
+}
+
+[data-page="blog"] .blog__cta {
+  margin-top: var(--espacio-12);
+}
+
+/* Tablet ---------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  [data-page="blog"] .blog__lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Escritorio ------------------------------------------------------------ */
+
+@media (min-width: 64rem) {
+  /* Destacada: imagen a un lado, texto al otro. */
+  [data-page="blog"] .blog__destacada {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  [data-page="blog"] .blog__foto--destacada {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 22rem;
+  }
+
+  [data-page="blog"] .blog__destacada .blog__cuerpo {
+    justify-content: center;
+    padding: var(--espacio-12);
+  }
+
+  [data-page="blog"] .blog__lista {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

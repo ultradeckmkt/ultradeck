@@ -1,0 +1,813 @@
+/**
+ * El vocabulario compartido del sitio. Clases ud-*.
+ * Las clases de estado que toca el JavaScript viven en interacciones.css.
+ */
+
+@layer patrones {
+  /* Utilidades ------------------------------------------------------- */
+
+  .ud-oculto-visual {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Etiqueta cápsula. La piden el home, las notas y el índice del blog. */
+  .ud-capsula {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--espacio-1) var(--espacio-4);
+    border: var(--borde) solid var(--color-linea-fuerte);
+    border-radius: var(--radio-pildora);
+    color: var(--color-texto-suave);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaciado-letra-amplio);
+    text-transform: uppercase;
+  }
+
+  /* Caja de llamada a la acción. La piden las notas y el índice del blog. */
+  .ud-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-4);
+    padding: var(--espacio-6);
+    border: var(--borde) solid var(--color-linea-fuerte);
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie-2);
+  }
+
+  .ud-cta__titulo {
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-lg);
+    font-weight: var(--peso-titulo);
+  }
+
+  /* Botones ---------------------------------------------------------- */
+
+  .ud-boton {
+    display: inline-flex;
+    min-height: var(--area-toque);
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--espacio-6);
+    border: 0;
+    border-radius: var(--radio-pildora);
+    background-color: var(--color-guinda-vivo);
+    color: var(--color-texto);
+    cursor: pointer;
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-sm);
+    font-weight: var(--peso-titulo);
+    text-align: center;
+    text-decoration: none;
+    transition: background-color var(--transicion);
+    white-space: nowrap;
+  }
+
+  .ud-boton:hover,
+  .ud-boton:focus-visible {
+    background-color: var(--color-guinda-vivo-hover);
+    color: var(--color-texto);
+  }
+
+  .ud-boton--flecha {
+    gap: var(--espacio-3);
+    padding-right: var(--espacio-2);
+  }
+
+  /* Círculo con flecha, dibujado con bordes: sin imagen y sin markup extra. */
+  .ud-boton__flecha {
+    position: relative;
+    display: inline-flex;
+    width: 1.75rem;
+    height: 1.75rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radio-pildora);
+    background-color: var(--color-texto);
+    color: var(--color-guinda-vivo);
+  }
+
+  .ud-boton__flecha::before {
+    content: "";
+    width: 0.7rem;
+    border-top: 2px solid currentColor;
+  }
+
+  .ud-boton__flecha::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  /* Carrusel. Lo piden Proyectos y Blog en el home. La pista aporta el
+     comportamiento; el ancho de tarjeta lo pone cada sección. */
+  .ud-carrusel {
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .ud-carrusel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ud-carrusel > * {
+    scroll-snap-align: start;
+  }
+
+  /* Mano abierta solo donde hay mouse: en táctil el gesto es el nativo. */
+  @media (hover: hover) and (pointer: fine) {
+    .ud-carrusel {
+      cursor: grab;
+    }
+  }
+
+  .ud-carrusel__flechas {
+    display: flex;
+    gap: var(--espacio-2);
+  }
+
+  .ud-carrusel__boton {
+    display: inline-flex;
+    width: var(--area-toque);
+    height: var(--area-toque);
+    align-items: center;
+    justify-content: center;
+    border: var(--borde) solid var(--color-linea-fuerte);
+    border-radius: var(--radio-pildora);
+    background-color: transparent;
+    color: var(--color-texto);
+    cursor: pointer;
+    transition: background-color var(--transicion);
+  }
+
+  .ud-carrusel__boton:hover:not([disabled]),
+  .ud-carrusel__boton:focus-visible {
+    background-color: var(--color-fondo-hover);
+  }
+
+  .ud-carrusel__boton[disabled] {
+    cursor: default;
+    opacity: 0.35;
+  }
+
+  /* Punta de flecha dibujada con bordes, sin imagen. */
+  .ud-carrusel__icono {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: translateX(-0.15em) rotate(45deg);
+  }
+
+  .ud-carrusel__icono--anterior {
+    transform: translateX(0.15em) rotate(225deg);
+  }
+
+  /* Header ----------------------------------------------------------- */
+
+  /* El header es una cápsula flotante: la caja exterior solo aporta el margen
+     contra los bordes de la ventana y la fijación al hacer scroll. */
+  /* La caja exterior no se ve: su relleno no debe robarle el clic al contenido
+     que pasa por debajo. Solo lo visible vuelve a ser clicable. */
+  .ud-header {
+    position: sticky;
+    z-index: var(--z-header);
+    top: 0;
+    padding: var(--margen-lateral) var(--margen-lateral) 0;
+    pointer-events: none;
+  }
+
+  .ud-header__interior {
+    position: relative;
+    display: flex;
+    min-height: var(--altura-header);
+    align-items: center;
+    gap: var(--espacio-4);
+    padding: var(--espacio-3) var(--espacio-4);
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-pildora);
+    background-color: var(--color-fondo);
+    pointer-events: auto;
+  }
+
+  /* Respaldo opaco: lo translúcido solo se activa donde hay backdrop-filter. */
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .ud-header__interior {
+      background-color: var(--color-header);
+      backdrop-filter: var(--desenfoque-header);
+      -webkit-backdrop-filter: var(--desenfoque-header);
+    }
+  }
+
+  .ud-header__logo {
+    display: inline-flex;
+    margin-right: auto;
+    align-items: center;
+  }
+
+  .ud-header__logo img {
+    width: auto;
+    height: var(--altura-logo);
+  }
+
+  .ud-header__menu {
+    display: inline-flex;
+    width: var(--area-toque);
+    height: var(--area-toque);
+    align-items: center;
+    justify-content: center;
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-pildora);
+    background-color: transparent;
+    color: var(--color-texto);
+    cursor: pointer;
+  }
+
+  /* Tres barras dibujadas con bordes, sin imagen. */
+  .ud-header__menu-icono,
+  .ud-header__menu-icono::before,
+  .ud-header__menu-icono::after {
+    display: block;
+    width: 1.25rem;
+    border-top: 2px solid currentColor;
+  }
+
+  .ud-header__menu-icono::before,
+  .ud-header__menu-icono::after {
+    content: "";
+    position: relative;
+  }
+
+  .ud-header__menu-icono::before {
+    top: 0.3rem;
+  }
+
+  .ud-header__menu-icono::after {
+    top: 0.6rem;
+  }
+
+  /* En celular cuelga de la cápsula sin deformarla; en escritorio deja de ser
+     caja (display: contents) y estas reglas no aplican. */
+  .ud-header__panel {
+    position: absolute;
+    top: calc(100% + var(--espacio-2));
+    right: 0;
+    left: 0;
+    display: none;
+    padding: var(--espacio-2) var(--espacio-4) var(--espacio-4);
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie-1);
+    pointer-events: auto;
+  }
+
+  /* Navegación ------------------------------------------------------- */
+
+  .ud-nav__lista {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ud-nav__grupo {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-top: var(--borde) solid var(--color-linea);
+  }
+
+  .ud-nav__enlace {
+    display: inline-flex;
+    min-height: var(--area-toque);
+    flex: 1;
+    align-items: center;
+    padding: var(--espacio-2) 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-md);
+    font-weight: var(--peso-titulo);
+    text-decoration: none;
+  }
+
+  .ud-nav__enlace:hover,
+  .ud-nav__enlace:focus-visible {
+    color: var(--color-guinda-claro);
+  }
+
+  .ud-nav__enlace--activo {
+    color: var(--color-guinda-claro);
+  }
+
+  .ud-nav__enlace--rama {
+    text-decoration: underline;
+    text-decoration-color: var(--color-guinda-claro);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+  }
+
+  .ud-nav__disparador {
+    display: inline-flex;
+    width: var(--area-toque);
+    height: var(--area-toque);
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  /* Punta de flecha dibujada con bordes, sin imagen. */
+  .ud-nav__caret {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-0.15em) rotate(45deg);
+  }
+
+  .ud-nav__submenu {
+    display: none;
+    flex-basis: 100%;
+    padding: 0 0 var(--espacio-2) var(--espacio-4);
+  }
+
+  .ud-nav__enlace--submenu {
+    color: var(--color-texto-suave);
+    font-size: var(--texto-sm);
+  }
+
+  .ud-nav__enlace--submenu.ud-nav__enlace--activo {
+    color: var(--color-guinda-claro);
+  }
+
+  /* Footer ----------------------------------------------------------- */
+
+  .ud-footer {
+    background-color: var(--color-superficie-1);
+    border-top: var(--borde) solid var(--color-linea);
+    color: var(--color-texto);
+  }
+
+  .ud-footer__interior {
+    display: grid;
+    gap: var(--espacio-8);
+    padding: var(--espacio-12) var(--margen-lateral) var(--espacio-8);
+  }
+
+  .ud-footer__logo {
+    display: inline-flex;
+    margin-bottom: var(--espacio-4);
+  }
+
+  .ud-footer__logo img {
+    width: auto;
+    height: var(--altura-logo);
+  }
+
+  .ud-footer__frase {
+    max-width: var(--ancho-texto);
+    margin-bottom: var(--espacio-6);
+    color: var(--color-texto-suave);
+    font-size: var(--texto-sm);
+  }
+
+  .ud-footer__navegacion {
+    display: grid;
+    gap: var(--espacio-8);
+  }
+
+  .ud-footer__titulo {
+    margin-bottom: var(--espacio-3);
+    color: var(--color-apoyo);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaciado-letra-amplio);
+    text-transform: uppercase;
+  }
+
+  .ud-footer__lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+  }
+
+  .ud-footer__enlace {
+    display: inline-flex;
+    min-height: var(--area-toque);
+    align-items: center;
+    color: var(--color-texto);
+    font-size: var(--texto-sm);
+    text-decoration: none;
+  }
+
+  .ud-footer__enlace:hover,
+  .ud-footer__enlace:focus-visible {
+    color: var(--color-guinda-claro);
+  }
+
+  .ud-footer__domicilio {
+    max-width: var(--ancho-texto);
+    margin-bottom: var(--espacio-3);
+    color: var(--color-texto-suave);
+    font-size: var(--texto-sm);
+  }
+
+  .ud-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-2);
+    padding: var(--espacio-4) var(--margen-lateral);
+    border-top: var(--borde) solid var(--color-linea);
+  }
+
+  .ud-footer__derechos {
+    color: var(--color-texto-suave);
+    font-size: var(--texto-xs);
+  }
+
+  .ud-footer__legal .ud-footer__enlace {
+    font-size: var(--texto-xs);
+  }
+
+  /* Modal de cotización ---------------------------------------------- */
+
+  .ud-modal {
+    position: relative;
+    width: min(100%, var(--ancho-modal));
+    max-height: 92svh;
+    padding: 0;
+    border: var(--borde) solid var(--color-linea-fuerte);
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie-2);
+    box-shadow: var(--sombra-modal);
+    color: var(--color-texto);
+    overflow: hidden;
+  }
+
+  .ud-modal::backdrop {
+    background-color: var(--color-velo);
+    backdrop-filter: var(--desenfoque-header);
+    -webkit-backdrop-filter: var(--desenfoque-header);
+  }
+
+  /* En celular se desplaza el modal entero. */
+  .ud-modal__columnas {
+    display: grid;
+    max-height: 92svh;
+    overflow-y: auto;
+  }
+
+  /* En celular la imagen es solo una franja alta del bloque, con el título
+     encima; el resto del texto cae debajo, sobre el fondo del modal. */
+  .ud-modal__lado {
+    position: relative;
+    padding: calc(var(--alto-franja-modal) - 2.5rem) var(--espacio-6)
+      var(--espacio-6);
+  }
+
+  .ud-modal__imagen {
+    position: absolute;
+    inset: 0 0 auto;
+    width: 100%;
+    height: var(--alto-franja-modal);
+    object-fit: cover;
+    object-position: 45% 50%;
+  }
+
+  /* Degradado en tres paradas: la zona donde cae el texto queda bien oscura y
+     la parte alta deja ver la foto. */
+  .ud-modal__lado::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: var(--alto-franja-modal);
+    background-image: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-fondo) 96%, transparent) 0%,
+      color-mix(in srgb, var(--color-fondo) 84%, transparent) 45%,
+      color-mix(in srgb, var(--color-fondo) 25%, transparent) 100%
+    );
+  }
+
+  /* Por encima del degradado: un ::after pinta después de los hijos, así que
+     sin z-index el texto queda debajo. */
+  .ud-modal__titulo {
+    position: relative;
+    z-index: 1;
+    font-size: var(--texto-lg);
+  }
+
+  .ud-modal__lado-texto {
+    position: relative;
+    z-index: 1;
+    padding-top: var(--espacio-4);
+  }
+
+  .ud-modal__texto {
+    color: var(--color-texto-suave);
+    font-size: var(--texto-sm);
+  }
+
+  .ud-modal__contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: var(--espacio-6);
+  }
+
+  .ud-modal__etiqueta {
+    margin-bottom: var(--espacio-2);
+    color: var(--color-apoyo);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaciado-letra-amplio);
+    text-transform: uppercase;
+  }
+
+  .ud-modal__dato {
+    display: inline-flex;
+    min-height: var(--area-toque);
+    align-items: center;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-sm);
+    font-weight: var(--peso-titulo);
+    text-decoration: none;
+  }
+
+  .ud-modal__dato:hover,
+  .ud-modal__dato:focus-visible {
+    color: var(--color-guinda-claro);
+  }
+
+  .ud-modal__forma {
+    padding: var(--espacio-6);
+  }
+
+  /* Esquina superior derecha del modal, por encima de la imagen. */
+  .ud-modal__cerrar {
+    position: absolute;
+    z-index: 1;
+    top: var(--espacio-4);
+    right: var(--espacio-4);
+    display: inline-flex;
+    width: var(--area-toque);
+    height: var(--area-toque);
+    align-items: center;
+    justify-content: center;
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-pildora);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    cursor: pointer;
+    font-size: var(--texto-lg);
+    line-height: 1;
+  }
+
+  .ud-modal__cerrar:hover,
+  .ud-modal__cerrar:focus-visible {
+    background-color: var(--color-superficie-1);
+  }
+
+  /* Formulario ------------------------------------------------------- */
+
+  .ud-formulario {
+    display: grid;
+    gap: var(--espacio-4);
+  }
+
+  .ud-formulario__fila {
+    display: grid;
+    gap: var(--espacio-4);
+  }
+
+  .ud-campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-2);
+  }
+
+  .ud-campo__etiqueta {
+    color: var(--color-texto-suave);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaciado-letra-amplio);
+    text-transform: uppercase;
+  }
+
+  .ud-campo__control {
+    min-height: var(--area-toque);
+    padding: var(--espacio-3) var(--espacio-4);
+    border: var(--borde) solid var(--color-linea-fuerte);
+    border-radius: var(--radio-sm);
+    background-color: var(--color-superficie-1);
+    color: var(--color-texto);
+    font-size: var(--texto-sm);
+  }
+
+  .ud-campo__control:focus-visible {
+    border-color: var(--color-guinda-claro);
+  }
+
+  textarea.ud-campo__control {
+    min-height: 4.5rem;
+    resize: vertical;
+  }
+
+  .ud-campo--casilla {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--espacio-3);
+  }
+
+  .ud-campo--casilla .ud-campo__etiqueta {
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: var(--texto-sm);
+    font-weight: var(--peso-normal);
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  .ud-campo__casilla {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: none;
+    margin-top: 0.2rem;
+    accent-color: var(--color-guinda-vivo);
+  }
+
+  .ud-formulario__envio {
+    margin-top: var(--espacio-2);
+  }
+
+  /* Escritorio ------------------------------------------------------- */
+
+  @media (min-width: 64rem) {
+    /* Tres columnas: las de los lados se reparten por igual, así la píldora
+       del centro queda centrada en el header sin que influya el ancho del
+       logotipo ni el del botón. */
+    .ud-header__interior {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--espacio-6);
+      padding-inline: var(--espacio-6);
+    }
+
+    .ud-header__logo {
+      margin-right: 0;
+      justify-self: start;
+    }
+
+    .ud-header__menu {
+      display: none;
+    }
+
+    /* El panel deja de ser caja: sus hijos entran en la rejilla del header. */
+    .ud-header__panel {
+      display: contents;
+    }
+
+    .ud-header__cta {
+      justify-self: end;
+    }
+
+    /* Sin fondo ni borde propios: la cápsula es el header. */
+    .ud-nav__lista {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--espacio-2);
+    }
+
+    .ud-nav__grupo {
+      border-top: 0;
+    }
+
+    .ud-nav__enlace {
+      flex: none;
+      padding: 0 var(--espacio-2);
+      font-size: var(--texto-sm);
+    }
+
+    .ud-nav__disparador {
+      width: var(--espacio-6);
+      height: var(--espacio-6);
+      margin-left: calc(var(--espacio-2) * -1);
+    }
+
+    /* Del borde del enlace al borde de la cápsula hay el relleno vertical del
+       header; se suma para que el submenú caiga por debajo, alineado a su
+       enlace. */
+    .ud-nav__submenu {
+      position: absolute;
+      z-index: var(--z-header);
+      top: calc(100% + var(--espacio-3) + var(--espacio-2));
+      left: 0;
+      min-width: var(--ancho-submenu);
+      padding: var(--espacio-2);
+      border: var(--borde) solid var(--color-linea);
+      border-radius: var(--radio-md);
+      background-color: var(--color-superficie-2);
+      box-shadow: var(--sombra-submenu);
+      pointer-events: auto;
+    }
+
+    .ud-nav__grupo:hover > .ud-nav__submenu,
+    .ud-nav__grupo:focus-within > .ud-nav__submenu {
+      display: block;
+    }
+
+    .ud-nav__enlace--submenu {
+      min-height: var(--espacio-8);
+      padding: var(--espacio-1) var(--espacio-2);
+      border-radius: var(--radio-sm);
+    }
+
+    .ud-nav__enlace--submenu:hover,
+    .ud-nav__enlace--submenu:focus-visible {
+      background-color: var(--color-fondo-hover);
+    }
+
+    /* Dos columnas: la imagen manda alto y solo el formulario se desplaza si
+       la pantalla es baja. */
+    .ud-modal__columnas {
+      grid-template-columns: 1fr 1.15fr;
+      /* La fila se ciñe al alto disponible; si no, crece con el contenido y
+         se desborda en lugar de dejar que la columna se desplace. */
+      grid-template-rows: minmax(0, 1fr);
+      overflow: hidden;
+    }
+
+    /* La imagen pasa a ocupar la columna entera. */
+    .ud-modal__lado {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--espacio-8);
+      overflow: hidden;
+    }
+
+    .ud-modal__imagen,
+    .ud-modal__lado::after {
+      inset: 0;
+      height: 100%;
+    }
+
+    .ud-modal__forma {
+      /* min-height: 0 o el elemento de rejilla crece con su contenido y el
+         overflow nunca entra: se desborda en vez de desplazarse. */
+      min-height: 0;
+      padding: var(--espacio-8);
+      overflow-y: auto;
+    }
+
+    /* minmax(0, 1fr) y no 1fr: si no, el <select> con la opción más larga
+       ensancha su columna y el par deja de ser parejo. */
+    .ud-formulario__fila {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* La marca se queda con el espacio sobrante; las columnas de enlaces y la
+       de contacto se agrupan a la derecha, cada una del ancho de su contenido
+       y con una separación fija. */
+    .ud-footer__interior {
+      grid-template-columns: minmax(16rem, 1fr) auto minmax(0, 18rem);
+      column-gap: var(--espacio-12);
+      row-gap: var(--espacio-8);
+      align-items: start;
+    }
+
+    .ud-footer__navegacion {
+      grid-template-columns: repeat(3, auto);
+      gap: var(--espacio-12);
+    }
+
+  }
+}

@@ -1,0 +1,173 @@
+<dialog
+  class="ud-modal"
+  id="modal-cotizacion"
+  aria-labelledby="cotizacion-titulo"
+>
+  <button class="ud-modal__cerrar" type="button" data-cerrar-cotizacion>
+    <span aria-hidden="true">&times;</span>
+    <span class="ud-oculto-visual">Cerrar</span>
+  </button>
+
+  <div class="ud-modal__columnas">
+    <div class="ud-modal__lado">
+      <!-- [PENDIENTE: imagen propia del modal]. Por ahora la del hero. -->
+      <img
+        class="ud-modal__imagen"
+        src="/assets/img/hero/inicio.webp"
+        alt=""
+        width="1920"
+        height="1047"
+      />
+
+      <h2 class="ud-modal__titulo" id="cotizacion-titulo">
+        Solicitar cotización
+      </h2>
+
+      <div class="ud-modal__lado-texto">
+        <p class="ud-modal__texto">
+          Cuéntenos sobre su proyecto y un especialista se pondrá en contacto
+          con usted.
+        </p>
+
+        <div class="ud-modal__contacto">
+          <p class="ud-modal__etiqueta">¿Prefiere llamarnos?</p>
+          <a class="ud-modal__dato" href="tel:+528181900884"
+            >+52 81 8190 0884</a
+          >
+          <a class="ud-modal__dato" href="mailto:contacto@ultradeck.com.mx"
+            >contacto@ultradeck.com.mx</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="ud-modal__forma" data-lenis-prevent>
+      <!-- [PENDIENTE: conectar el envío con api/contact.js]. -->
+      <form class="ud-formulario" id="cotizacion-forma" method="post" novalidate>
+        <div class="ud-formulario__fila">
+          <div class="ud-campo">
+            <label class="ud-campo__etiqueta" for="cotizacion-nombre"
+              >Nombre</label
+            >
+            <input
+              class="ud-campo__control"
+              id="cotizacion-nombre"
+              name="nombre"
+              type="text"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="ud-campo">
+            <label class="ud-campo__etiqueta" for="cotizacion-empresa"
+              >Empresa</label
+            >
+            <input
+              class="ud-campo__control"
+              id="cotizacion-empresa"
+              name="empresa"
+              type="text"
+              autocomplete="organization"
+            />
+          </div>
+        </div>
+
+        <div class="ud-formulario__fila">
+          <div class="ud-campo">
+            <label class="ud-campo__etiqueta" for="cotizacion-telefono"
+              >Teléfono</label
+            >
+            <input
+              class="ud-campo__control"
+              id="cotizacion-telefono"
+              name="telefono"
+              type="tel"
+              autocomplete="tel"
+              required
+            />
+          </div>
+
+          <div class="ud-campo">
+            <label class="ud-campo__etiqueta" for="cotizacion-correo"
+              >Correo</label
+            >
+            <input
+              class="ud-campo__control"
+              id="cotizacion-correo"
+              name="correo"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="ud-formulario__fila">
+          <div class="ud-campo">
+            <label class="ud-campo__etiqueta" for="cotizacion-servicio"
+              >Tipo de servicio</label
+            >
+            <select
+              class="ud-campo__control"
+              id="cotizacion-servicio"
+              name="servicio"
+              required
+            >
+              <option value="">Seleccione una opción</option>
+              <option value="construccion">
+                Construcción de techo o nave
+              </option>
+              <option value="mantenimiento">Mantenimiento o reparación</option>
+              <option value="canalones">Canalones y bajantes</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="ud-campo">
+            <label class="ud-campo__etiqueta" for="cotizacion-ciudad"
+              >Ciudad o municipio</label
+            >
+            <input
+              class="ud-campo__control"
+              id="cotizacion-ciudad"
+              name="ciudad"
+              type="text"
+              autocomplete="address-level2"
+            />
+          </div>
+        </div>
+
+        <div class="ud-campo">
+          <label class="ud-campo__etiqueta" for="cotizacion-mensaje"
+            >Mensaje</label
+          >
+          <textarea
+            class="ud-campo__control"
+            id="cotizacion-mensaje"
+            name="mensaje"
+            rows="2"
+          ></textarea>
+        </div>
+
+        <div class="ud-campo ud-campo--casilla">
+          <input
+            class="ud-campo__casilla"
+            id="cotizacion-privacidad"
+            name="privacidad"
+            type="checkbox"
+            required
+          />
+          <label class="ud-campo__etiqueta" for="cotizacion-privacidad">
+            Acepto el
+            <a href="/aviso-de-privacidad/">aviso de privacidad</a>
+          </label>
+        </div>
+
+        <button class="ud-boton ud-formulario__envio" type="submit">
+          Enviar solicitud
+        </button>
+      </form>
+    </div>
+  </div>
+</dialog>

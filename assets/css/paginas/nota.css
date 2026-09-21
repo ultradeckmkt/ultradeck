@@ -1,0 +1,376 @@
+/**
+ * Plantilla de nota del blog. La comparten todas las notas.
+ * Fuera de toda capa y acotada a data-plantilla="nota".
+ */
+
+/* El mismo margen amplio del índice del blog, en todos los anchos. */
+[data-plantilla="nota"] .nota {
+  padding: var(--espacio-8) var(--margen-seccion-amplio) var(--espacio-12);
+}
+
+/* Migas de pan --------------------------------------------------------- */
+
+[data-plantilla="nota"] .nota__migas {
+  font-size: var(--texto-sm);
+}
+
+[data-plantilla="nota"] .nota__migas-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  color: var(--color-texto-suave);
+}
+
+[data-plantilla="nota"] .nota__migas-lista li + li::before {
+  content: "›";
+  margin-right: var(--espacio-2);
+}
+
+[data-plantilla="nota"] .nota__migas-lista a {
+  color: var(--color-texto-suave);
+  text-decoration: none;
+}
+
+[data-plantilla="nota"] .nota__migas-lista a:hover,
+[data-plantilla="nota"] .nota__migas-lista a:focus-visible {
+  color: var(--color-guinda-claro);
+}
+
+/* Encabezado ----------------------------------------------------------- */
+
+[data-plantilla="nota"] .nota__encabezado {
+  max-width: 52rem;
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="nota"] .nota__titulo {
+  margin-top: var(--espacio-4);
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+}
+
+[data-plantilla="nota"] .nota__datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Huecos de imagen ----------------------------------------------------- */
+
+[data-plantilla="nota"] .nota__portada,
+[data-plantilla="nota"] .nota__imagen {
+  display: grid;
+  place-items: center;
+  padding: var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-plantilla="nota"] .nota__portada {
+  min-height: clamp(12rem, 30vw, 22rem);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="nota"] .nota__imagen {
+  min-height: 12rem;
+}
+
+[data-plantilla="nota"] .nota__pendiente {
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Cuerpo --------------------------------------------------------------- */
+
+/* minmax(0, 1fr) y no una columna automática: si no, el ancho mínimo de la
+   tabla estira la rejilla y la nota se desborda a lo ancho en celular. */
+[data-plantilla="nota"] .nota__columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-8);
+  margin-top: var(--espacio-12);
+}
+
+/* Medida de lectura: ~68 caracteres por línea. */
+[data-plantilla="nota"] .nota__cuerpo {
+  max-width: 68ch;
+}
+
+[data-plantilla="nota"] .nota__entrada {
+  color: var(--color-texto);
+  font-size: var(--texto-lg);
+}
+
+[data-plantilla="nota"] .nota__cuerpo h2 {
+  margin-top: var(--espacio-12);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  scroll-margin-top: calc(var(--altura-header) + var(--margen-lateral) * 3);
+}
+
+[data-plantilla="nota"] .nota__cuerpo h3 {
+  margin-top: var(--espacio-8);
+  font-size: var(--texto-lg);
+}
+
+[data-plantilla="nota"] .nota__cuerpo p {
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+[data-plantilla="nota"] .nota__cuerpo ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+[data-plantilla="nota"] .nota__cuerpo ul li {
+  padding-left: var(--espacio-6);
+  text-indent: calc(var(--espacio-6) * -1);
+}
+
+[data-plantilla="nota"] .nota__cuerpo ul li::before {
+  content: "—";
+  margin-right: var(--espacio-3);
+  color: var(--color-guinda-claro);
+}
+
+[data-plantilla="nota"] .nota__cita {
+  margin: var(--espacio-8) 0 0;
+  padding-left: var(--espacio-6);
+  border-left: 2px solid var(--color-guinda-claro);
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-titulo);
+  line-height: var(--interlinea-normal);
+}
+
+[data-plantilla="nota"] .nota__figura {
+  margin: var(--espacio-8) 0 0;
+}
+
+[data-plantilla="nota"] .nota__figura figcaption {
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Tabla ---------------------------------------------------------------- */
+
+[data-plantilla="nota"] .nota__tabla-caja {
+  margin-top: var(--espacio-8);
+  overflow-x: auto;
+}
+
+[data-plantilla="nota"] .nota__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--texto-sm);
+  text-align: left;
+}
+
+[data-plantilla="nota"] .nota__tabla caption {
+  margin-bottom: var(--espacio-3);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-xs);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-align: left;
+  text-transform: uppercase;
+}
+
+[data-plantilla="nota"] .nota__tabla th,
+[data-plantilla="nota"] .nota__tabla td {
+  padding: var(--espacio-3) var(--espacio-4);
+  border-bottom: var(--borde) solid var(--color-linea);
+}
+
+[data-plantilla="nota"] .nota__tabla thead th {
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-transform: uppercase;
+}
+
+[data-plantilla="nota"] .nota__tabla tbody th {
+  color: var(--color-texto);
+  font-weight: var(--peso-medio);
+}
+
+[data-plantilla="nota"] .nota__tabla td {
+  color: var(--color-texto-suave);
+}
+
+/* Índice --------------------------------------------------------------- */
+
+[data-plantilla="nota"] .nota__indice {
+  padding: var(--espacio-4) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie-1);
+}
+
+[data-plantilla="nota"] .nota__indice-titulo {
+  color: var(--color-texto);
+  cursor: pointer;
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-amplio);
+  text-transform: uppercase;
+}
+
+[data-plantilla="nota"] .nota__indice-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  margin-top: var(--espacio-4);
+  counter-reset: indice;
+}
+
+[data-plantilla="nota"] .nota__indice-lista a {
+  display: block;
+  padding: var(--espacio-2) 0;
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+  text-decoration: none;
+}
+
+[data-plantilla="nota"] .nota__indice-lista a:hover,
+[data-plantilla="nota"] .nota__indice-lista a:focus-visible {
+  color: var(--color-guinda-claro);
+}
+
+/* Llamada a la acción -------------------------------------------------- */
+
+/* Solo la separación: la caja es el patrón ud-cta. */
+[data-plantilla="nota"] .ud-cta {
+  margin-top: var(--espacio-12);
+}
+
+/* Enlace a la página pilar --------------------------------------------- */
+
+[data-plantilla="nota"] .nota__pilar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-8);
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-titulo);
+  text-decoration: none;
+}
+
+[data-plantilla="nota"] .nota__pilar:hover,
+[data-plantilla="nota"] .nota__pilar:focus-visible {
+  color: var(--color-guinda-claro);
+}
+
+/* Preguntas frecuentes -------------------------------------------------- */
+
+[data-plantilla="nota"] .nota__preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-6);
+}
+
+[data-plantilla="nota"] .nota__pregunta {
+  padding: var(--espacio-4) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-md);
+  background-color: var(--color-superficie-1);
+}
+
+[data-plantilla="nota"] .nota__pregunta summary {
+  color: var(--color-texto);
+  cursor: pointer;
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-titulo);
+}
+
+[data-plantilla="nota"] .nota__pregunta p {
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+}
+
+/* Notas relacionadas ---------------------------------------------------- */
+
+[data-plantilla="nota"] .nota__relacionadas {
+  margin-top: var(--espacio-16);
+  padding-top: var(--espacio-8);
+  border-top: var(--borde) solid var(--color-linea);
+}
+
+[data-plantilla="nota"] .nota__relacionadas-titulo {
+  font-size: var(--texto-lg);
+}
+
+[data-plantilla="nota"] .nota__relacionadas-lista {
+  display: grid;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-6);
+}
+
+[data-plantilla="nota"] .nota__relacionada-enlace {
+  display: block;
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+[data-plantilla="nota"] .nota__relacionada-enlace:hover .nota__relacionada-titulo,
+[data-plantilla="nota"] .nota__relacionada-enlace:focus-visible .nota__relacionada-titulo {
+  color: var(--color-guinda-claro);
+}
+
+[data-plantilla="nota"] .nota__relacionada-titulo {
+  display: block;
+  margin-top: var(--espacio-4);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-titulo);
+}
+
+/* Escritorio ------------------------------------------------------------ */
+
+@media (min-width: 48rem) {
+  [data-plantilla="nota"] .nota__relacionadas-lista {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  [data-plantilla="nota"] .nota__columnas {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: var(--espacio-12);
+    align-items: start;
+  }
+
+  /* Fijo al hacer scroll, por debajo de la cápsula del header. */
+  [data-plantilla="nota"] .nota__indice {
+    position: sticky;
+    top: calc(var(--altura-header) + var(--margen-lateral) * 2);
+  }
+
+  /* En escritorio siempre está abierto: el resumen no tiene nada que hacer. */
+  [data-plantilla="nota"] .nota__indice-titulo {
+    cursor: default;
+    list-style: none;
+  }
+
+  [data-plantilla="nota"] .nota__indice-titulo::-webkit-details-marker {
+    display: none;
+  }
+}

@@ -1,8 +1,9 @@
 /**
  * Arma el sitio final en dist/.
  *
- * Borra dist/, copia src/ y assets/, y sustituye las marcas
- * <!-- @include nombre --> por el contenido de src/partials/nombre.html.
+ * Borra dist/, copia src/ y assets/, sustituye las marcas
+ * <!-- @include nombre --> por el contenido de src/partials/nombre.html,
+ * pone el año en curso y marca en el menú la página activa.
  * Sin dependencias externas.
  */
 
@@ -16,6 +17,15 @@ const dirPartials = path.join(dirSrc, "partials");
 const dirDist = path.join(raiz, "dist");
 
 const MARCA = /<!--\s*@include\s+([\w-]+)\s*-->/g;
+const MARCA_ANIO = /\[año\]/g;
+const ENLACE_NAV = /<a\b([^>]*\bclass="[^"]*\bud-nav__enlace\b[^"]*"[^>]*)>/g;
+
+// Andamiaje del repositorio: no tiene nada que hacer en el sitio publicado.
+const IGNORADOS = new Set([".DS_Store", ".gitkeep"]);
+
+function sePublica(origen) {
+  return !IGNORADOS.has(path.basename(origen));
+}
 
 /** Lee un partial una sola vez y lo guarda para las demás páginas. */
 const cache = new Map();
@@ -36,22 +46,62 @@ function leerPartial(nombre, pagina) {
   return contenido;
 }
 
-/** Recorre dist/ y resuelve las marcas de cada .html. */
-function resolverIncludes(dir) {
+/**
+ * La URL que tendrá el archivo publicado. Solo las páginas de carpeta
+ * (index.html) tienen ruta propia; 404.html no es una ruta del sitio.
+ */
+function rutaPublicada(archivo) {
+  if (path.basename(archivo) !== "index.html") return null;
+
+  const carpeta = path.relative(dirDist, path.dirname(archivo));
+  if (!carpeta) return "/";
+
+  return `/${carpeta.split(path.sep).join("/")}/`;
+}
+
+function agregarClase(atributos, clase) {
+  return atributos.replace(/class="([^"]*)"/, `class="$1 ${clase}"`);
+}
+
+/**
+ * Marca en el menú el enlace de la página y, en las subpáginas, la rama a la
+ * que pertenecen. Así el estado activo llega en el HTML, sin JavaScript.
+ */
+function marcarActivos(html, ruta) {
+  if (!ruta) return html;
+
+  return html.replace(ENLACE_NAV, (etiqueta, atributos) => {
+    const href = (atributos.match(/href="([^"]*)"/) || [])[1];
+    if (!href) return etiqueta;
+
+    if (href === ruta) {
+      return `<a${agregarClase(atributos, "ud-nav__enlace--activo")} aria-current="page">`;
+    }
+
+    if (href !== "/" && ruta.startsWith(href)) {
+      return `<a${agregarClase(atributos, "ud-nav__enlace--rama")}>`;
+    }
+
+    return etiqueta;
+  });
+}
+
+/** Recorre dist/ y deja cada .html listo para publicar. */
+function procesarHtml(dir) {
   for (const entrada of fs.readdirSync(dir, { withFileTypes: true })) {
     const ruta = path.join(dir, entrada.name);
 
     if (entrada.isDirectory()) {
-      resolverIncludes(ruta);
+      procesarHtml(ruta);
       continue;
     }
 
     if (!entrada.name.endsWith(".html")) continue;
 
     const original = fs.readFileSync(ruta, "utf8");
-    const final = original.replace(MARCA, (_, nombre) =>
-      leerPartial(nombre, ruta),
-    );
+    let final = original.replace(MARCA, (_, nombre) => leerPartial(nombre, ruta));
+    final = final.replace(MARCA_ANIO, String(new Date().getFullYear()));
+    final = marcarActivos(final, rutaPublicada(ruta));
 
     if (final !== original) fs.writeFileSync(ruta, final);
   }
@@ -63,12 +113,15 @@ function construir() {
   // src/ se publica en la raíz; los partials son fragmentos, no páginas.
   fs.cpSync(dirSrc, dirDist, {
     recursive: true,
-    filter: (origen) => origen !== dirPartials,
+    filter: (origen) => origen !== dirPartials && sePublica(origen),
   });
 
-  fs.cpSync(dirAssets, path.join(dirDist, "assets"), { recursive: true });
+  fs.cpSync(dirAssets, path.join(dirDist, "assets"), {
+    recursive: true,
+    filter: sePublica,
+  });
 
-  resolverIncludes(dirDist);
+  procesarHtml(dirDist);
 }
 
 try {

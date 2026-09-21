@@ -4,6 +4,7 @@
   "buildCommand": "node build.js",
   "outputDirectory": "dist",
   "cleanUrls": true,
+  "trailingSlash": true,
   "redirects": [
     {
       "source": "/(.*).html",
