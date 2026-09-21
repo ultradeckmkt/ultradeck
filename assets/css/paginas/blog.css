@@ -19,7 +19,7 @@
   max-width: 16em;
   margin-top: var(--espacio-4);
   margin-inline: auto;
-  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  font-size: var(--titulo-seccion);
 }
 
 [data-page="blog"] .blog__entrada {
@@ -37,15 +37,6 @@
   place-items: center;
   padding: var(--espacio-4);
   background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
-}
-
-[data-page="blog"] .blog__pendiente {
-  color: var(--color-texto-suave);
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-xs);
-  letter-spacing: var(--espaciado-letra-amplio);
-  text-align: center;
-  text-transform: uppercase;
 }
 
 /* Tarjetas -------------------------------------------------------------- */
@@ -81,11 +72,11 @@
 
 [data-page="blog"] .blog__titulo {
   margin-top: var(--espacio-4);
-  font-size: var(--texto-lg);
+  font-size: var(--titulo-tarjeta);
 }
 
 [data-page="blog"] .blog__titulo--destacado {
-  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  font-size: var(--titulo-bloque);
 }
 
 [data-page="blog"] .blog__extracto {

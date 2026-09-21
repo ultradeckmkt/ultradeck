@@ -13,24 +13,354 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,600;112.5,700&family=Manrope:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="/assets/css/vendor/lenis.css" />
     <link rel="stylesheet" href="/assets/css/tokens.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/patrones.css" />
     <link rel="stylesheet" href="/assets/css/interacciones.css" />
+    <link rel="stylesheet" href="/assets/css/paginas/nosotros.css" />
     <script src="/assets/js/menu.js" defer></script>
     <script src="/assets/js/cotizacion.js" defer></script>
+    <script src="/assets/js/carrusel.js" defer></script>
     <script src="/assets/js/vendor/lenis.min.js" defer></script>
     <script src="/assets/js/scroll.js" defer></script>
+
+    <!-- El Organization del sitio completo vive en esta página. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Ultra Deck",
+        "legalName": "Ultra Deck, S.A. de C.V.",
+        "foundingDate": "1990",
+        "url": "https://ultradeck.com.mx/",
+        "logo": "https://ultradeck.com.mx/assets/img/marca/ultradeck-logo.svg",
+        "email": "contacto@ultradeck.com.mx",
+        "telephone": ["+528181900884", "+528181900888"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Priv. Juan Escutia 115, Col. Niños Héroes",
+          "postalCode": "66052",
+          "addressLocality": "General Escobedo",
+          "addressRegion": "Nuevo León",
+          "addressCountry": "MX"
+        },
+        "areaServed": { "@type": "Country", "name": "México" }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ultradeck.com.mx/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Nosotros",
+            "item": "https://ultradeck.com.mx/nosotros/"
+          }
+        ]
+      }
+    </script>
   </head>
-  <body data-page="nosotros">
+  <body data-page="nosotros" data-plantilla="nosotros">
     <!-- @include header -->
 
-    <main>
-      <h1>Nosotros</h1>
-      <p>[PENDIENTE: contenido]</p>
+    <main class="nos">
+      <!-- Hero --------------------------------------------------------- -->
+      <section class="nos__hero" aria-labelledby="nos-titulo">
+        <div class="nos__hero-foto">
+          <p class="ud-pendiente">[PENDIENTE: foto de equipo o taller]</p>
+        </div>
+
+        <div class="nos__hero-contenido">
+          <nav class="ud-migas" aria-label="Migas de pan">
+            <ol class="ud-migas__lista">
+              <li><a href="/">Inicio</a></li>
+              <li><span aria-current="page">Nosotros</span></li>
+            </ol>
+          </nav>
+
+          <p class="ud-capsula">Nosotros</p>
+          <h1 class="nos__titulo" id="nos-titulo">
+            35 años cubriendo la industria mexicana
+          </h1>
+          <p class="nos__entrada">
+            Empezamos en 1990 instalando techos en proyectos residenciales. Hoy
+            somos una empresa especializada en naves industriales, con
+            maquinaria propia y personal certificado, presente en obras de todo
+            el país.
+          </p>
+        </div>
+      </section>
+
+      <!-- Historia ------------------------------------------------------ -->
+      <section class="nos__seccion" aria-labelledby="historia-titulo">
+        <p class="ud-capsula">Historia</p>
+        <h2 class="nos__h2" id="historia-titulo">
+          De una idea familiar a la industria nacional
+        </h2>
+
+        <ol class="nos__linea">
+          <li class="nos__hito">
+            <p class="nos__hito-anio">1990</p>
+            <p class="nos__hito-texto">Fundación de Ultra Deck</p>
+          </li>
+          <li class="nos__hito">
+            <p class="nos__hito-anio">[PENDIENTE: año]</p>
+            <p class="nos__hito-texto">Primer proyecto industrial</p>
+          </li>
+          <li class="nos__hito">
+            <p class="nos__hito-anio">[PENDIENTE: año]</p>
+            <p class="nos__hito-texto">Incorporación de maquinaria propia</p>
+          </li>
+          <li class="nos__hito">
+            <p class="nos__hito-anio">2026</p>
+            <p class="nos__hito-texto">Nueva división de mantenimiento</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Misión y visión ----------------------------------------------- -->
+      <section class="nos__seccion" aria-labelledby="proposito-titulo">
+        <h2 class="nos__h2" id="proposito-titulo">Misión y visión</h2>
+
+        <!-- Cita textual del cliente: aquí se conserva "cubiertas" aunque el
+             resto del sitio diga "techos". Ver Terminología en CLAUDE.md. -->
+        <div class="nos__proposito">
+          <article class="nos__tarjeta">
+            <h3 class="nos__tarjeta-titulo">Misión</h3>
+            <p class="nos__tarjeta-texto">
+              Dar el servicio de suministro e instalación de cubiertas
+              metálicas con la mejor calidad posible, siempre innovando tanto
+              en labor como en infraestructura.
+            </p>
+          </article>
+          <article class="nos__tarjeta">
+            <h3 class="nos__tarjeta-titulo">Visión</h3>
+            <p class="nos__tarjeta-texto">
+              Llevar a la compañía al mayor nivel posible, ser líderes a nivel
+              nacional y ser siempre la primera opción en cubiertas metálicas
+              dentro del ámbito industrial.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Valores -------------------------------------------------------- -->
+      <section
+        class="nos__seccion ud-seccion-clara"
+        aria-labelledby="valores-titulo"
+      >
+        <p class="ud-capsula">Valores</p>
+        <h2 class="nos__h2" id="valores-titulo">Cómo trabajamos</h2>
+
+        <ul class="nos__valores">
+          <li class="nos__valor">Respeto al cliente</li>
+          <li class="nos__valor">Alta calidad en material y mano de obra</li>
+          <li class="nos__valor">Superación constante</li>
+          <li class="nos__valor">Honestidad</li>
+          <li class="nos__valor">Responsabilidad social y laboral</li>
+          <li class="nos__valor">Confianza</li>
+        </ul>
+      </section>
+
+      <!-- Maquinaria ------------------------------------------------------ -->
+      <section class="nos__seccion" aria-labelledby="maquinaria-titulo">
+        <p class="ud-capsula">Infraestructura</p>
+        <h2 class="nos__h2" id="maquinaria-titulo">
+          Fabricamos con maquinaria propia
+        </h2>
+
+        <ul class="nos__maquinas">
+          <li class="nos__maquina">
+            <h3 class="nos__maquina-nombre">Acanaladoras KR-18 Black by Knudson</h3>
+            <p class="nos__maquina-texto">[PENDIENTE: descripción]</p>
+          </li>
+          <li class="nos__maquina">
+            <h3 class="nos__maquina-nombre">Acanaladoras Zimmerman</h3>
+            <p class="nos__maquina-texto">[PENDIENTE: descripción]</p>
+          </li>
+          <li class="nos__maquina">
+            <h3 class="nos__maquina-nombre">Guillotina CIDAN</h3>
+            <p class="nos__maquina-texto">[PENDIENTE: descripción]</p>
+          </li>
+          <li class="nos__maquina">
+            <h3 class="nos__maquina-nombre">Foldeadoras CIDAN</h3>
+            <p class="nos__maquina-texto">[PENDIENTE: descripción]</p>
+          </li>
+        </ul>
+
+        <div class="ud-foto nos__taller">
+          <p class="ud-pendiente">[PENDIENTE: foto del taller]</p>
+        </div>
+      </section>
+
+      <!-- Certificaciones --------------------------------------------------- -->
+      <section class="nos__seccion" aria-labelledby="certificaciones-titulo">
+        <h2 class="nos__h2" id="certificaciones-titulo">
+          Certificaciones y cumplimiento
+        </h2>
+        <p class="nos__texto">[PENDIENTE: párrafo sobre certificaciones y cumplimiento.]</p>
+
+        <ul class="ud-insignias nos__insignias">
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 3h8l4 4v14H6z"/><path d="M9 13l2 2 4-4"/>
+            </svg>
+            REPSE
+          </li>
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8"/><path d="M8.5 12l2.5 2.5 4.5-5"/>
+            </svg>
+            ISO
+          </li>
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21V5"/><path d="M6.5 10.5L12 5l5.5 5.5"/>
+            </svg>
+            DC-3 · Trabajo en alturas
+          </li>
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 20h8"/><path d="M8 20V4"/><path d="M8 4h11"/><path d="M16 4v5"/>
+            </svg>
+            Grúas certificadas
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cifras ------------------------------------------------------------ -->
+      <section class="nos__seccion" aria-labelledby="cifras-titulo">
+        <h2 class="ud-oculto-visual" id="cifras-titulo">Ultra Deck en cifras</h2>
+        <ul class="ud-cifras">
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">35+</p>
+            <p class="ud-cifra__etiqueta">Años de experiencia</p>
+          </li>
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">20</p>
+            <p class="ud-cifra__etiqueta">Marcas líderes atendidas</p>
+          </li>
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">5+</p>
+            <p class="ud-cifra__etiqueta">Estados con obra realizada</p>
+          </li>
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">100%</p>
+            <p class="ud-cifra__etiqueta">Maquinaria propia</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Proyectos ---------------------------------------------------------- -->
+      <section
+        class="nos__seccion ud-seccion-clara"
+        aria-labelledby="proyectos-titulo"
+      >
+        <div class="nos__encabezado-carrusel">
+          <div>
+            <p class="ud-capsula">Proyectos</p>
+            <h2 class="nos__h2" id="proyectos-titulo">
+              Naves donde ya está nuestro trabajo
+            </h2>
+          </div>
+
+          <div class="ud-carrusel__flechas">
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="anterior"
+              aria-controls="carrusel-proyectos-nosotros"
+              aria-label="Proyecto anterior"
+              disabled
+            >
+              <span
+                class="ud-carrusel__icono ud-carrusel__icono--anterior"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="siguiente"
+              aria-controls="carrusel-proyectos-nosotros"
+              aria-label="Proyecto siguiente"
+              disabled
+            >
+              <span class="ud-carrusel__icono" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <ul class="ud-carrusel nos__proyectos" id="carrusel-proyectos-nosotros">
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Chrysler]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Chrysler</h3>
+            <p class="ud-proyecto__lugar">Ramos Arizpe y Derramadero, Coahuila</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Audi]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Audi</h3>
+            <p class="ud-proyecto__lugar">Planta de proveedores, San José Chiapa, Puebla</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto CEDIS Costco]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">CEDIS Costco</h3>
+            <p class="ud-proyecto__lugar">Tepeji del Río, Hidalgo</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Daltile]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Daltile</h3>
+            <p class="ud-proyecto__lugar">Salamanca, Guanajuato</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Honda]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Honda</h3>
+            <p class="ud-proyecto__lugar">Celaya, Guanajuato</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Cuprum]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Cuprum</h3>
+            <p class="ud-proyecto__lugar">Santa Catarina, Nuevo León</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cierre --------------------------------------------------------------- -->
+      <aside class="ud-cta nos__cierre">
+        <p class="ud-cta__titulo">¿Su nave necesita una revisión?</p>
+        <button
+          class="ud-boton ud-boton--flecha"
+          type="button"
+          data-abrir-cotizacion
+        >
+          Solicitar cotización
+          <span class="ud-boton__flecha" aria-hidden="true"></span>
+        </button>
+      </aside>
     </main>
 
     <!-- @include footer -->

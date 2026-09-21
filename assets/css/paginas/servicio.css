@@ -1,0 +1,229 @@
+/**
+ * Plantilla de las páginas de servicio. La comparten las 6.
+ * Fuera de toda capa y acotada a data-plantilla="servicio".
+ * Lo compartido con el resto del sitio (cápsula, botones, carrusel, tarjetas,
+ * pasos, secciones claras, caja de llamada a la acción) vive en patrones.css.
+ */
+
+[data-plantilla="servicio"] .servicio {
+  padding-bottom: var(--espacio-12);
+}
+
+[data-plantilla="servicio"] .servicio__seccion {
+  margin-top: var(--espacio-12);
+  padding-inline: var(--margen-seccion-amplio);
+}
+
+[data-plantilla="servicio"] .servicio__h2 {
+  margin-top: var(--espacio-4);
+  font-size: var(--titulo-subseccion);
+}
+
+/* Hero: la mitad de la pantalla, no la pantalla entera como en el home. */
+[data-plantilla="servicio"] .servicio__hero {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  min-height: 50svh;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: var(--espacio-8) var(--margen-seccion-amplio);
+}
+
+/* El marcador va arriba: centrado se encimaba con el H1. */
+[data-plantilla="servicio"] .servicio__hero-foto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  padding: var(--espacio-4);
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+/* Velo parejo sobre la foto, para que el texto se lea. */
+[data-plantilla="servicio"] .servicio__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
+}
+
+[data-plantilla="servicio"] .servicio__hero-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+[data-plantilla="servicio"] .servicio__hero-contenido .ud-capsula {
+  margin-top: var(--espacio-6);
+}
+
+[data-plantilla="servicio"] .servicio__titulo {
+  max-width: 16em;
+  margin-top: var(--espacio-4);
+}
+
+[data-plantilla="servicio"] .servicio__entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-lg);
+}
+
+[data-plantilla="servicio"] .servicio__hero-contenido .ud-boton {
+  margin-top: var(--espacio-6);
+}
+
+/* Introducción ---------------------------------------------------------- */
+
+[data-plantilla="servicio"] .servicio__texto {
+  max-width: 68ch;
+}
+
+[data-plantilla="servicio"] .servicio__texto p {
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+/* Qué incluye ----------------------------------------------------------- */
+
+[data-plantilla="servicio"] .servicio__sistemas {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="servicio"] .servicio__sistema {
+  padding: var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-1);
+}
+
+[data-plantilla="servicio"] .servicio__sistema-nombre {
+  font-size: var(--titulo-tarjeta-sm);
+}
+
+[data-plantilla="servicio"] .servicio__sistema-texto {
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Diferenciadores ------------------------------------------------------- */
+
+[data-plantilla="servicio"] .ud-seccion-clara {
+  padding-block: var(--espacio-12);
+}
+
+[data-plantilla="servicio"] .servicio__ventajas {
+  display: grid;
+  gap: var(--espacio-8);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="servicio"] .servicio__icono {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: none;
+  stroke: var(--color-guinda);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+[data-plantilla="servicio"] .servicio__ventaja-titulo {
+  margin-top: var(--espacio-4);
+  font-size: var(--titulo-tarjeta-sm);
+}
+
+[data-plantilla="servicio"] .servicio__ventaja-texto {
+  margin-top: var(--espacio-2);
+  color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
+  font-size: var(--texto-sm);
+}
+
+/* Proceso ---------------------------------------------------------------- */
+
+[data-plantilla="servicio"] .ud-pasos {
+  margin-top: var(--espacio-8);
+}
+
+/* Proyectos -------------------------------------------------------------- */
+
+[data-plantilla="servicio"] .servicio__encabezado-carrusel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+}
+
+[data-plantilla="servicio"] .servicio__encabezado-carrusel .ud-carrusel__flechas {
+  margin-left: auto;
+}
+
+/* La pista sale a los bordes de la sección y recupera el relleno por dentro. */
+[data-plantilla="servicio"] .servicio__proyectos {
+  grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+  margin-inline: calc(var(--margen-seccion-amplio) * -1);
+  padding-inline: var(--margen-seccion-amplio);
+  scroll-padding-left: var(--margen-seccion-amplio);
+}
+
+/* Preguntas y notas ------------------------------------------------------ */
+
+[data-plantilla="servicio"] .servicio__preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="servicio"] .servicio__notas {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+}
+
+/* Cierre ------------------------------------------------------------------ */
+
+[data-plantilla="servicio"] .servicio__cierre {
+  margin-top: var(--espacio-12);
+  margin-inline: var(--margen-seccion-amplio);
+}
+
+/* Tablet ------------------------------------------------------------------ */
+
+@media (min-width: 48rem) {
+  [data-plantilla="servicio"] .servicio__sistemas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-plantilla="servicio"] .servicio__ventajas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-plantilla="servicio"] .servicio__notas {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Escritorio -------------------------------------------------------------- */
+
+@media (min-width: 64rem) {
+  [data-plantilla="servicio"] .servicio__sistemas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  [data-plantilla="servicio"] .servicio__ventajas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  [data-plantilla="servicio"] .servicio__proyectos {
+    grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
+  }
+}

@@ -3,13 +3,41 @@
   "framework": null,
   "buildCommand": "node build.js",
   "outputDirectory": "dist",
-  "cleanUrls": true,
-  "trailingSlash": true,
   "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+
+    { "source": "/nosotros.html", "destination": "/nosotros/", "permanent": true },
+
+    { "source": "/servicios.html", "destination": "/construccion/", "permanent": true },
+    { "source": "/servicios", "destination": "/construccion/", "permanent": true },
+    { "source": "/servicios/", "destination": "/construccion/", "permanent": true },
+
+    { "source": "/galeria.html", "destination": "/proyectos/", "permanent": true },
+    { "source": "/galeria", "destination": "/proyectos/", "permanent": true },
+    { "source": "/galeria/", "destination": "/proyectos/", "permanent": true },
+
+    { "source": "/clientes.html", "destination": "/proyectos/", "permanent": true },
+    { "source": "/clientes", "destination": "/proyectos/", "permanent": true },
+    { "source": "/clientes/", "destination": "/proyectos/", "permanent": true },
+
+    { "source": "/contacto.html", "destination": "/#cotizar", "permanent": true },
+    { "source": "/contacto", "destination": "/#cotizar", "permanent": true },
+    { "source": "/contacto/", "destination": "/#cotizar", "permanent": true },
+
+    { "source": "/ventajas.html", "destination": "/nosotros/", "permanent": true },
+    { "source": "/ventajas", "destination": "/nosotros/", "permanent": true },
+    { "source": "/ventajas/", "destination": "/nosotros/", "permanent": true },
+
+    { "source": "/sst.html", "destination": "/construccion/techos-metalicos/", "permanent": true },
+    { "source": "/sst", "destination": "/construccion/techos-metalicos/", "permanent": true },
+    { "source": "/sst/", "destination": "/construccion/techos-metalicos/", "permanent": true },
+
+    { "source": "/:ruta*.html", "destination": "/", "permanent": true },
+
     {
-      "source": "/(.*).html",
-      "destination": "/",
-      "permanent": false
+      "source": "/:ruta((?!\\.well-known)(?:[^/]+/)*[^/.]+)",
+      "destination": "/:ruta/",
+      "permanent": true
     }
   ]
 }

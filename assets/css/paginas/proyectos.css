@@ -1,0 +1,127 @@
+/**
+ * Página Proyectos. Fuera de toda capa y acotada a data-plantilla="proyectos".
+ * Lo compartido con el resto del sitio vive en patrones.css.
+ */
+
+[data-plantilla="proyectos"] .proy {
+  padding-bottom: var(--espacio-12);
+}
+
+[data-plantilla="proyectos"] .proy__seccion {
+  margin-top: var(--espacio-12);
+  padding-inline: var(--margen-seccion-amplio);
+}
+
+[data-plantilla="proyectos"] .proy__h2 {
+  font-size: var(--titulo-subseccion);
+}
+
+[data-plantilla="proyectos"] .proy__texto {
+  max-width: 68ch;
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+/* Hero ------------------------------------------------------------------ */
+
+[data-plantilla="proyectos"] .proy__hero {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  min-height: 50svh;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: var(--espacio-8) var(--margen-seccion-amplio);
+}
+
+/* El marcador va arriba para no encimarse con el título. */
+[data-plantilla="proyectos"] .proy__hero-foto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  padding: var(--espacio-4);
+  place-items: start center;
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-plantilla="proyectos"] .proy__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
+}
+
+[data-plantilla="proyectos"] .proy__hero-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+[data-plantilla="proyectos"] .proy__hero-contenido .ud-capsula {
+  margin-top: var(--espacio-6);
+}
+
+[data-plantilla="proyectos"] .proy__titulo {
+  max-width: 16em;
+  margin-top: var(--espacio-4);
+}
+
+[data-plantilla="proyectos"] .proy__entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-lg);
+}
+
+/* Cuadrícula de obras ----------------------------------------------------- */
+
+[data-plantilla="proyectos"] .proy__obras {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-8) var(--espacio-6);
+}
+
+/* La tarjeta usa el patrón ud-proyecto; aquí solo su foto y el alcance. */
+[data-plantilla="proyectos"] .proy__foto {
+  aspect-ratio: 16 / 10;
+}
+
+[data-plantilla="proyectos"] .proy__alcance {
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Confianza --------------------------------------------------------------- */
+
+[data-plantilla="proyectos"] .proy__insignias {
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="proyectos"] .proy__cifras {
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="proyectos"] .proy__cierre {
+  margin-top: var(--espacio-12);
+  margin-inline: var(--margen-seccion-amplio);
+}
+
+/* Tablet -------------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  [data-plantilla="proyectos"] .proy__obras {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Escritorio ----------------------------------------------------------------- */
+
+@media (min-width: 64rem) {
+  [data-plantilla="proyectos"] .proy__obras {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  [data-plantilla="proyectos"] .ud-insignias {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

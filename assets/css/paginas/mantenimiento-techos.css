@@ -1,0 +1,273 @@
+/**
+ * Landing pilar de Mantenimiento de techos industriales.
+ * Fuera de toda capa y acotada a su data-page. Lo compartido con el resto del
+ * sitio vive en patrones.css.
+ */
+
+[data-page="techos-industriales"] .mant {
+  padding-bottom: var(--espacio-12);
+}
+
+[data-page="techos-industriales"] .mant__seccion {
+  margin-top: var(--espacio-12);
+  padding-inline: var(--margen-seccion-amplio);
+}
+
+[data-page="techos-industriales"] .mant__h2 {
+  margin-top: var(--espacio-4);
+  font-size: var(--titulo-subseccion);
+}
+
+/* Hero ------------------------------------------------------------------ */
+
+[data-page="techos-industriales"] .mant__hero {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  min-height: 50svh;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: var(--espacio-8) var(--margen-seccion-amplio);
+}
+
+/* El marcador va arriba para no encimarse con el título. */
+[data-page="techos-industriales"] .mant__hero-foto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  padding: var(--espacio-4);
+  place-items: start center;
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-page="techos-industriales"] .mant__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
+}
+
+[data-page="techos-industriales"] .mant__hero-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+[data-page="techos-industriales"] .mant__hero-contenido .ud-capsula {
+  margin-top: var(--espacio-6);
+}
+
+[data-page="techos-industriales"] .mant__titulo {
+  max-width: 16em;
+  margin-top: var(--espacio-4);
+}
+
+[data-page="techos-industriales"] .mant__entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-lg);
+}
+
+[data-page="techos-industriales"] .mant__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-6);
+}
+
+[data-page="techos-industriales"] .mant__telefono {
+  display: inline-flex;
+  min-height: var(--area-toque);
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-titulo);
+  text-decoration: none;
+}
+
+[data-page="techos-industriales"] .mant__telefono:hover,
+[data-page="techos-industriales"] .mant__telefono:focus-visible {
+  color: var(--color-guinda-claro);
+}
+
+[data-page="techos-industriales"] .mant__telefono-nota {
+  color: var(--color-texto-suave);
+  font-family: var(--fuente-texto);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-normal);
+}
+
+/* Señales ---------------------------------------------------------------- */
+
+[data-page="techos-industriales"] .mant__senales {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+}
+
+[data-page="techos-industriales"] .mant__senal {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espacio-4);
+  padding: var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-1);
+}
+
+[data-page="techos-industriales"] .mant__senal-icono {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: none;
+  fill: none;
+  stroke: var(--color-guinda-claro);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+[data-page="techos-industriales"] .mant__senal-texto {
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-titulo);
+}
+
+/* Qué hacemos ------------------------------------------------------------ */
+
+[data-page="techos-industriales"] .mant__bloques {
+  display: grid;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+}
+
+[data-page="techos-industriales"] .mant__bloque {
+  padding: var(--espacio-8) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea-fuerte);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-2);
+}
+
+[data-page="techos-industriales"] .mant__bloque-titulo {
+  font-size: var(--titulo-tarjeta);
+}
+
+[data-page="techos-industriales"] .mant__bloque-texto {
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+}
+
+[data-page="techos-industriales"] .mant__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-6);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+[data-page="techos-industriales"] .mant__pilar {
+  margin-top: var(--espacio-8);
+}
+
+/* Sin detener su operación ------------------------------------------------ */
+
+[data-page="techos-industriales"] .ud-seccion-clara {
+  padding-block: var(--espacio-12);
+}
+
+[data-page="techos-industriales"] .mant__texto-claro {
+  max-width: 68ch;
+  margin-top: var(--espacio-4);
+  color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
+}
+
+/* Proceso y confianza ----------------------------------------------------- */
+
+[data-page="techos-industriales"] .ud-pasos {
+  margin-top: var(--espacio-8);
+}
+
+[data-page="techos-industriales"] .mant__insignias {
+  margin-top: var(--espacio-8);
+}
+
+[data-page="techos-industriales"] .mant__marcas {
+  margin-top: var(--espacio-8);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Carruseles -------------------------------------------------------------- */
+
+[data-page="techos-industriales"] .mant__encabezado-carrusel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+}
+
+[data-page="techos-industriales"] .mant__acciones-carrusel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-6);
+  margin-left: auto;
+}
+
+[data-page="techos-industriales"] .mant__proyectos,
+[data-page="techos-industriales"] .mant__notas {
+  grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+  margin-inline: calc(var(--margen-seccion-amplio) * -1);
+  padding-inline: var(--margen-seccion-amplio);
+  scroll-padding-left: var(--margen-seccion-amplio);
+}
+
+/* Preguntas y cierre ------------------------------------------------------- */
+
+[data-page="techos-industriales"] .mant__preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-8);
+}
+
+[data-page="techos-industriales"] .mant__cierre {
+  margin-top: var(--espacio-12);
+  margin-inline: var(--margen-seccion-amplio);
+}
+
+/* Tablet -------------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  [data-page="techos-industriales"] .mant__senales {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-page="techos-industriales"] .mant__bloques {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Escritorio ----------------------------------------------------------------- */
+
+@media (min-width: 64rem) {
+  [data-page="techos-industriales"] .mant__senales {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  [data-page="techos-industriales"] .ud-insignias {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  [data-page="techos-industriales"] .mant__proyectos,
+  [data-page="techos-industriales"] .mant__notas {
+    grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
+  }
+}

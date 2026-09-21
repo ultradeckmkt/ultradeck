@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Mantenimiento | Ultra Deck</title>
+    <title>Mantenimiento de naves industriales | Ultra Deck</title>
     <meta name="description" content="[PENDIENTE]" />
     <link rel="canonical" href="https://ultradeck.com.mx/mantenimiento/" />
     <link rel="icon" href="/assets/img/marca/favicon.png" type="image/png" />
@@ -13,24 +13,318 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,600;112.5,700&family=Manrope:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="/assets/css/vendor/lenis.css" />
     <link rel="stylesheet" href="/assets/css/tokens.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/patrones.css" />
     <link rel="stylesheet" href="/assets/css/interacciones.css" />
+    <link rel="stylesheet" href="/assets/css/paginas/rama.css" />
     <script src="/assets/js/menu.js" defer></script>
     <script src="/assets/js/cotizacion.js" defer></script>
+    <script src="/assets/js/carrusel.js" defer></script>
     <script src="/assets/js/vendor/lenis.min.js" defer></script>
     <script src="/assets/js/scroll.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Mantenimiento de naves industriales",
+        "url": "https://ultradeck.com.mx/mantenimiento/",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Ultra Deck",
+          "url": "https://ultradeck.com.mx/"
+        },
+        "hasPart": [
+
+          {
+            "@type": "WebPage",
+            "name": "Mantenimiento de techos industriales",
+            "url": "https://ultradeck.com.mx/mantenimiento/techos-industriales/"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Canalones y bajantes",
+            "url": "https://ultradeck.com.mx/mantenimiento/canalones-y-bajantes/"
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ultradeck.com.mx/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Mantenimiento",
+            "item": "https://ultradeck.com.mx/mantenimiento/"
+          }
+        ]
+      }
+    </script>
   </head>
-  <body data-page="mantenimiento">
+  <body data-page="mantenimiento" data-plantilla="rama">
     <!-- @include header -->
 
-    <main>
-      <h1>Mantenimiento</h1>
-      <p>[PENDIENTE: contenido]</p>
+    <main class="rama">
+      <!-- Hero --------------------------------------------------------- -->
+      <section class="rama__hero" aria-labelledby="rama-titulo">
+        <div class="rama__hero-foto">
+          <p class="ud-pendiente">[PENDIENTE: foto de mantenimiento en cubierta]</p>
+        </div>
+
+        <div class="rama__hero-contenido">
+          <nav class="ud-migas" aria-label="Migas de pan">
+            <ol class="ud-migas__lista">
+              <li><a href="/">Inicio</a></li>
+              <li><span aria-current="page">Mantenimiento</span></li>
+            </ol>
+          </nav>
+
+          <p class="ud-capsula">Mantenimiento</p>
+          <h1 class="rama__titulo" id="rama-titulo">Mantenimiento de naves industriales</h1>
+          <p class="rama__entrada">Reparamos y mantenemos el techo y el sistema pluvial de su nave para que siga operando sin interrupciones.</p>
+
+          <button
+            class="ud-boton ud-boton--flecha"
+            type="button"
+            data-abrir-cotizacion
+          >
+            Solicitar cotización
+            <span class="ud-boton__flecha" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Introducción -------------------------------------------------- -->
+      <section class="rama__seccion" aria-labelledby="intro-titulo">
+        <h2 class="rama__h2" id="intro-titulo">
+          [PENDIENTE: título de la introducción]
+        </h2>
+        <div class="rama__texto">
+          <p>[PENDIENTE: párrafo que explique el alcance de la rama.]</p>
+          <p>[PENDIENTE: párrafo que explique para quién es.]</p>
+        </div>
+      </section>
+
+      <!-- Servicios ------------------------------------------------------ -->
+      <section class="rama__seccion" aria-labelledby="servicios-titulo">
+        <p class="ud-capsula">Servicios</p>
+        <h2 class="rama__h2" id="servicios-titulo">
+          Lo que resolvemos en esta rama
+        </h2>
+
+        <ul class="rama__servicios">
+          <li class="rama__servicio">
+            <a class="rama__servicio-enlace" href="/mantenimiento/techos-industriales/">
+              <span class="ud-foto rama__servicio-foto">
+                <span class="ud-pendiente">[PENDIENTE: foto mantenimiento de techos industriales]</span>
+              </span>
+              <span class="rama__servicio-cuerpo">
+                <h3 class="rama__servicio-nombre">Mantenimiento de techos industriales</h3>
+                <span class="rama__servicio-texto">Reparación de goteras, filtraciones y láminas dañadas.</span>
+                <span class="rama__servicio-mas">
+                  Ver más
+                  <span class="ud-boton__flecha" aria-hidden="true"></span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="rama__servicio">
+            <a class="rama__servicio-enlace" href="/mantenimiento/canalones-y-bajantes/">
+              <span class="ud-foto rama__servicio-foto">
+                <span class="ud-pendiente">[PENDIENTE: foto canalones y bajantes]</span>
+              </span>
+              <span class="rama__servicio-cuerpo">
+                <h3 class="rama__servicio-nombre">Canalones y bajantes</h3>
+                <span class="rama__servicio-texto">Diseño, fabricación, instalación y reparación de sistemas pluviales.</span>
+                <span class="rama__servicio-mas">
+                  Ver más
+                  <span class="ud-boton__flecha" aria-hidden="true"></span>
+                </span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Proyectos ------------------------------------------------------- -->
+      <section
+        class="rama__seccion ud-seccion-clara"
+        aria-labelledby="proyectos-titulo"
+      >
+        <div class="rama__encabezado-carrusel">
+          <div>
+            <p class="ud-capsula">Proyectos</p>
+            <h2 class="rama__h2" id="proyectos-titulo">
+              Naves donde ya está nuestro trabajo
+            </h2>
+          </div>
+
+          <div class="ud-carrusel__flechas">
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="anterior"
+              aria-controls="carrusel-proyectos-mantenimiento"
+              aria-label="Proyecto anterior"
+              disabled
+            >
+              <span
+                class="ud-carrusel__icono ud-carrusel__icono--anterior"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="siguiente"
+              aria-controls="carrusel-proyectos-mantenimiento"
+              aria-label="Proyecto siguiente"
+              disabled
+            >
+              <span class="ud-carrusel__icono" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <ul
+          class="ud-carrusel rama__proyectos"
+          id="carrusel-proyectos-mantenimiento"
+        >
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Chrysler]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Chrysler</h3>
+            <p class="ud-proyecto__lugar">Ramos Arizpe y Derramadero, Coahuila</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Audi]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Audi</h3>
+            <p class="ud-proyecto__lugar">Planta de proveedores, San José Chiapa, Puebla</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto CEDIS Costco]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">CEDIS Costco</h3>
+            <p class="ud-proyecto__lugar">Tepeji del Río, Hidalgo</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Daltile]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Daltile</h3>
+            <p class="ud-proyecto__lugar">Salamanca, Guanajuato</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Honda]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Honda</h3>
+            <p class="ud-proyecto__lugar">Celaya, Guanajuato</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Cuprum]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Cuprum</h3>
+            <p class="ud-proyecto__lugar">Santa Catarina, Nuevo León</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Confianza -------------------------------------------------------- -->
+      <section class="rama__seccion" aria-labelledby="confianza-titulo">
+        <h2 class="rama__h2" id="confianza-titulo">
+          Con qué respaldo trabajamos
+        </h2>
+
+        <ul class="ud-insignias rama__insignias">
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>
+            </svg>
+            35 años
+          </li>
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 3h8l4 4v14H6z"/><path d="M9 13l2 2 4-4"/>
+            </svg>
+            REPSE
+          </li>
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8"/><path d="M8.5 12l2.5 2.5 4.5-5"/>
+            </svg>
+            ISO
+          </li>
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21V5"/><path d="M6.5 10.5L12 5l5.5 5.5"/>
+            </svg>
+            DC-3 · Trabajo en alturas
+          </li>
+          <li class="ud-insignia">
+            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 20h8"/><path d="M8 20V4"/><path d="M8 4h11"/><path d="M16 4v5"/>
+            </svg>
+            Grúas certificadas
+          </li>
+        </ul>
+      </section>
+
+      <!-- Preguntas frecuentes ---------------------------------------------- -->
+      <section class="rama__seccion" aria-labelledby="preguntas-titulo">
+        <h2 class="rama__h2" id="preguntas-titulo">Preguntas frecuentes</h2>
+
+        <div class="rama__preguntas">
+          <details class="ud-pregunta">
+            <summary>¿Atienden naves que están en operación?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+          <details class="ud-pregunta">
+            <summary>¿Hacen un diagnóstico antes de cotizar?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+          <details class="ud-pregunta">
+            <summary>¿Trabajan con contratos anuales de mantenimiento?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+          <details class="ud-pregunta">
+            <summary>¿Atienden urgencias por filtraciones en temporada de lluvias?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Cierre -------------------------------------------------------------- -->
+      <aside class="ud-cta rama__cierre">
+        <p class="ud-cta__titulo">¿Su nave necesita una revisión?</p>
+        <button
+          class="ud-boton ud-boton--flecha"
+          type="button"
+          data-abrir-cotizacion
+        >
+          Solicitar cotización
+          <span class="ud-boton__flecha" aria-hidden="true"></span>
+        </button>
+      </aside>
     </main>
 
     <!-- @include footer -->

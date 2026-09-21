@@ -48,8 +48,10 @@
 
   .ud-cta__titulo {
     font-family: var(--fuente-titulos);
-    font-size: var(--texto-lg);
-    font-weight: var(--peso-titulo);
+    font-size: var(--titulo-tarjeta);
+    font-weight: var(--peso-encabezado);
+    font-stretch: var(--ancho-encabezado);
+    text-wrap: balance;
   }
 
   /* Botones ---------------------------------------------------------- */
@@ -182,6 +184,336 @@
 
   .ud-carrusel__icono--anterior {
     transform: translateX(0.15em) rotate(225deg);
+  }
+
+  /* Cifras. Home y Nosotros. */
+  .ud-cifras {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-4);
+  }
+
+  .ud-cifra {
+    padding: var(--espacio-6);
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-md);
+    background-color: var(--color-superficie-1);
+  }
+
+  .ud-cifra__numero {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.9rem, 0.6rem + 5.6vw, 4rem);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaciado-letra-titulo);
+    line-height: var(--interlinea-apretada);
+  }
+
+  .ud-cifra__etiqueta {
+    margin-top: var(--espacio-2);
+    color: var(--color-texto-suave);
+    font-size: var(--texto-sm);
+  }
+
+  /* Cuatro columnas hasta que la cifra más ancha ("100%") quepa en su
+     tarjeta; antes de 75rem se queda en dos. */
+  @media (min-width: 75rem) {
+    .ud-cifras {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /* Enlace de texto con flecha. Home, notas y landings. */
+  .ud-enlace-flecha {
+    display: inline-flex;
+    min-height: var(--area-toque);
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: var(--color-texto);
+    cursor: pointer;
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-sm);
+    font-weight: var(--peso-titulo);
+    text-decoration: none;
+  }
+
+  .ud-enlace-flecha:hover,
+  .ud-enlace-flecha:focus-visible {
+    color: var(--color-guinda-claro);
+  }
+
+  /* El círculo del patrón se invierte cuando va suelto, sin pastilla. */
+  .ud-enlace-flecha .ud-boton__flecha {
+    background-color: var(--color-guinda-vivo);
+    color: var(--color-texto);
+  }
+
+  .ud-seccion-clara .ud-enlace-flecha {
+    color: var(--color-guinda);
+  }
+
+  .ud-seccion-clara .ud-enlace-flecha:hover,
+  .ud-seccion-clara .ud-enlace-flecha:focus-visible {
+    color: var(--color-primario);
+  }
+
+  .ud-seccion-clara .ud-enlace-flecha .ud-boton__flecha {
+    background-color: var(--color-guinda);
+    color: var(--color-apoyo);
+  }
+
+  /* Insignias de certificación. Home y landing de mantenimiento. */
+  /* Divisores con cualquier número de columnas: cada insignia dibuja el suyo
+     justo a su izquierda. La caja se extiende hacia fuera lo que mide el
+     relleno y recorta lo que sobresale, así el divisor de la primera
+     insignia de cada fila queda fuera y los demás caen entre columnas. Vale
+     igual para una sola fila que para varias. */
+  .ud-insignias {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--espacio-4) 0;
+    margin-inline: calc(var(--espacio-4) * -1);
+    overflow: hidden;
+  }
+
+  .ud-insignia {
+    position: relative;
+    display: flex;
+    /* El texto baja bajo el ícono cuando la columna es estrecha, en vez de
+       desbordarse. */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: var(--espacio-1) var(--espacio-4);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-xs);
+    font-weight: var(--peso-titulo);
+    letter-spacing: var(--espaciado-letra-amplio);
+    text-transform: uppercase;
+  }
+
+  .ud-insignia::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--borde) * -1);
+    border-left: var(--borde) solid var(--color-linea-fuerte);
+  }
+
+  .ud-insignia__icono {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
+    fill: none;
+    stroke: var(--color-guinda-claro);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+  }
+
+  /* Migas de pan. Las piden las notas y las páginas de servicio. */
+  .ud-migas {
+    font-size: var(--texto-sm);
+  }
+
+  .ud-migas__lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+    color: var(--color-texto-suave);
+  }
+
+  .ud-migas__lista li + li::before {
+    content: "›";
+    margin-right: var(--espacio-2);
+  }
+
+  .ud-migas__lista a {
+    color: var(--color-texto-suave);
+    text-decoration: none;
+  }
+
+  .ud-migas__lista a:hover,
+  .ud-migas__lista a:focus-visible {
+    color: var(--color-guinda-claro);
+  }
+
+  /* Hueco de imagen mientras no hay foto. Lo piden home, notas, blog y
+     servicio. */
+  .ud-foto {
+    display: grid;
+    place-items: center;
+    padding: var(--espacio-4);
+    border-radius: var(--radio-lg);
+    background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+  }
+
+  .ud-foto--clara {
+    background-color: color-mix(in srgb, var(--color-primario) 12%, var(--color-apoyo));
+  }
+
+  .ud-pendiente {
+    color: var(--color-texto-suave);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-xs);
+    letter-spacing: var(--espaciado-letra-amplio);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* Sección clara: fondo Tender Light Blue y texto en azul de marca. */
+  .ud-seccion-clara {
+    border-radius: var(--radio-lg);
+    background-color: var(--color-apoyo);
+    color: var(--color-primario);
+  }
+
+  .ud-seccion-clara .ud-capsula {
+    border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
+    color: var(--color-primario);
+  }
+
+  .ud-seccion-clara .ud-pendiente {
+    color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
+  }
+
+  .ud-seccion-clara .ud-carrusel__boton {
+    border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
+    color: var(--color-primario);
+  }
+
+  .ud-seccion-clara .ud-carrusel__boton:hover:not([disabled]),
+  .ud-seccion-clara .ud-carrusel__boton:focus-visible {
+    background-color: color-mix(in srgb, var(--color-blanco) 45%, var(--color-apoyo));
+  }
+
+  /* Pasos del proceso. Los piden el home y las páginas de servicio. */
+  .ud-pasos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--espacio-4);
+  }
+
+  .ud-paso {
+    padding: var(--espacio-6);
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-md);
+    background-color: var(--color-superficie-1);
+  }
+
+  .ud-paso__numero {
+    color: var(--color-guinda-claro);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-lg);
+    font-weight: var(--peso-titulo);
+  }
+
+  .ud-paso__titulo {
+    margin-top: var(--espacio-2);
+    font-size: var(--titulo-tarjeta-sm);
+  }
+
+  /* Tarjeta de proyecto del carrusel. Home y páginas de servicio. */
+  .ud-proyecto {
+    border-radius: var(--radio-lg);
+  }
+
+  .ud-proyecto .ud-foto {
+    min-height: 11rem;
+  }
+
+  .ud-proyecto:focus-visible {
+    outline: 2px solid var(--color-guinda);
+    outline-offset: 4px;
+  }
+
+  .ud-proyecto__nombre {
+    margin-top: var(--espacio-4);
+    font-size: var(--titulo-tarjeta);
+  }
+
+  .ud-proyecto__lugar {
+    margin-top: var(--espacio-1);
+    font-size: var(--texto-sm);
+  }
+
+  .ud-seccion-clara .ud-proyecto__lugar {
+    color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
+  }
+
+  /* Tarjeta de nota del blog. Home y páginas de servicio. */
+  .ud-nota__enlace {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie-1);
+    color: var(--color-texto);
+    text-decoration: none;
+  }
+
+  .ud-nota__enlace:focus-visible {
+    outline: 2px solid var(--color-guinda-claro);
+    outline-offset: 4px;
+  }
+
+  .ud-nota__enlace .ud-foto {
+    aspect-ratio: 16 / 10;
+    border-radius: 0;
+  }
+
+  .ud-nota__cuerpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--espacio-6);
+  }
+
+  .ud-nota__titulo {
+    margin-top: var(--espacio-4);
+    font-size: var(--titulo-tarjeta-sm);
+  }
+
+  .ud-nota__enlace:hover .ud-nota__titulo,
+  .ud-nota__enlace:focus-visible .ud-nota__titulo {
+    color: var(--color-guinda-claro);
+  }
+
+  .ud-nota__datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+    margin-top: auto;
+    padding-top: var(--espacio-6);
+    color: var(--color-texto-suave);
+    font-size: var(--texto-xs);
+  }
+
+  /* Pregunta desplegable. Notas y páginas de servicio. */
+  .ud-pregunta {
+    padding: var(--espacio-4) var(--espacio-6);
+    border: var(--borde) solid var(--color-linea);
+    border-radius: var(--radio-md);
+    background-color: var(--color-superficie-1);
+  }
+
+  .ud-pregunta summary {
+    color: var(--color-texto);
+    cursor: pointer;
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-md);
+    font-weight: var(--peso-titulo);
+  }
+
+  .ud-pregunta p {
+    margin-top: var(--espacio-3);
+    color: var(--color-texto-suave);
   }
 
   /* Header ----------------------------------------------------------- */
@@ -364,16 +696,22 @@
 
   /* Footer ----------------------------------------------------------- */
 
+  /* Dos tarjetas: la principal y la legal, separadas del borde de la
+     ventana por el margen del sitio y entre sí por un espacio pequeño. Las
+     tarjetas hacen de separador: no hay líneas. */
   .ud-footer {
-    background-color: var(--color-superficie-1);
-    border-top: var(--borde) solid var(--color-linea);
+    display: grid;
+    gap: var(--espacio-2);
+    padding: 0 var(--margen-lateral) var(--margen-lateral);
     color: var(--color-texto);
   }
 
   .ud-footer__interior {
     display: grid;
     gap: var(--espacio-8);
-    padding: var(--espacio-12) var(--margen-lateral) var(--espacio-8);
+    padding: var(--espacio-8);
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie-1);
   }
 
   .ud-footer__logo {
@@ -404,6 +742,7 @@
     font-family: var(--fuente-titulos);
     font-size: var(--texto-xs);
     font-weight: var(--peso-titulo);
+    font-stretch: normal;
     letter-spacing: var(--espaciado-letra-amplio);
     text-transform: uppercase;
   }
@@ -435,14 +774,43 @@
     font-size: var(--texto-sm);
   }
 
+  /* Tarjeta inferior, más baja: copyright a la izquierda; aviso y sello a
+     la derecha, con el sello en la esquina. Al partirse en celular, el grupo
+     de la derecha se queda alineado a la derecha. */
   .ud-footer__legal {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: var(--espacio-2);
-    padding: var(--espacio-4) var(--margen-lateral);
-    border-top: var(--borde) solid var(--color-linea);
+    gap: var(--espacio-2) var(--espacio-6);
+    padding: var(--espacio-2) var(--espacio-8);
+    border-radius: var(--radio-lg);
+    background-color: var(--color-superficie-1);
+  }
+
+  .ud-footer__legal-derecha {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-6);
+    margin-left: auto;
+  }
+
+  .ud-footer__sello {
+    display: inline-flex;
+    min-height: var(--area-toque);
+    align-items: center;
+    opacity: var(--opacidad-atenuada);
+    transition: opacity var(--transicion);
+  }
+
+  .ud-footer__sello:hover,
+  .ud-footer__sello:focus-visible {
+    opacity: 1;
+  }
+
+  .ud-footer__sello img {
+    width: auto;
+    height: var(--altura-sello);
   }
 
   .ud-footer__derechos {
@@ -519,7 +887,7 @@
   .ud-modal__titulo {
     position: relative;
     z-index: 1;
-    font-size: var(--texto-lg);
+    font-size: var(--titulo-tarjeta);
   }
 
   .ud-modal__lado-texto {
@@ -802,6 +1170,11 @@
       column-gap: var(--espacio-12);
       row-gap: var(--espacio-8);
       align-items: start;
+      padding: var(--espacio-12);
+    }
+
+    .ud-footer__legal {
+      padding-inline: var(--espacio-12);
     }
 
     .ud-footer__navegacion {

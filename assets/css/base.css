@@ -36,13 +36,17 @@
   h2,
   h3 {
     font-family: var(--fuente-titulos);
-    font-weight: var(--peso-titulo);
+    font-weight: var(--peso-encabezado);
+    font-stretch: var(--ancho-encabezado);
     line-height: var(--interlinea-apretada);
+    /* Líneas parejas: con la fuente ancha, el corte normal deja palabras
+       sueltas en la última línea. */
+    text-wrap: balance;
     letter-spacing: var(--espaciado-letra-titulo);
   }
 
   h1 {
-    font-size: var(--texto-xl);
+    font-size: var(--titulo-hero);
   }
 
   a {

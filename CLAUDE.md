@@ -1,5 +1,7 @@
 # Ultra Deck · Sitio web
 
+Responde siempre en español.
+
 Sitio corporativo de Ultra Deck, S.A. de C.V. (cubiertas metálicas para naves
 industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
 
@@ -69,6 +71,71 @@ industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
 - `build.js` no usa dependencias externas. Si una tarea parece requerir una,
   detente y repórtalo.
 
+### Estructura del footer
+- Dos tarjetas redondeadas (radio grande, fondo `--color-superficie-1`),
+  separadas del borde de la ventana por `--margen-lateral` y entre sí por
+  `--espacio-2`. No lleva líneas: las tarjetas hacen de separador.
+- Tarjeta principal (`ud-footer__interior`): logotipo, frase, botón de
+  cotizar y las cuatro columnas (Construcción, Mantenimiento, Empresa y
+  Contacto), con relleno interior generoso en los cuatro lados.
+- Tarjeta inferior (`ud-footer__legal`), más baja: copyright a la izquierda;
+  a la derecha "Aviso de privacidad" y, en la esquina, el sello de SCNDAL.
+
+### Sello de SCNDAL
+- Archivo `assets/img/marca/White-webtag.svg`, con `alt="SCNDAL"`, `width` y
+  `height` según su viewBox (1812.85 × 220.52) y la altura visual del token
+  `--altura-sello`.
+- Enlaza a https://scndal.com en pestaña nueva (`target="_blank"`,
+  `rel="noopener"`) con `aria-label="Sitio desarrollado por SCNDAL"`.
+- Atenuado en reposo (`--opacidad-atenuada`) y a opacidad completa al pasar
+  el cursor o con foco.
+
+## Sitemap, robots y redirecciones
+
+### sitemap.xml y robots.txt
+- `build.js` genera `dist/sitemap.xml` con todas las páginas publicables
+  (cada `index.html` de `dist/`), en URL absoluta con
+  `https://ultradeck.com.mx` y barra final. Quedan fuera `404.html` y la
+  carátula de mantenimiento.
+- `lastmod`: las notas del blog llevan su fecha de publicación (se toma de su
+  JSON-LD `datePublished`); el resto, la fecha del build.
+- `build.js` también escribe `dist/robots.txt`. Con el sitio completo permite
+  todo a todos los agentes, incluidos de forma explícita GPTBot, ClaudeBot,
+  PerplexityBot y Google-Extended, y declara el sitemap.
+- En modo mantenimiento no hay sitemap y `robots.txt` bloquea todo.
+- Las páginas siguen con `noindex` hasta el lanzamiento: el rastreo tiene que
+  estar permitido para que los buscadores vean ese `noindex`.
+
+### Redirecciones del sitio viejo (vercel.json)
+Todas permanentes (308). Cada URL vieja se atiende en sus tres formas —con
+`.html`, sin extensión y con barra final— para llegar en un solo salto:
+
+      /index.html                         → /
+      /nosotros.html                      → /nosotros/
+      /servicios(.html)                   → /construccion/
+      /galeria(.html)                     → /proyectos/
+      /clientes(.html)                    → /proyectos/
+      /contacto(.html)                    → /#cotizar  (abre el modal)
+      /ventajas(.html)                    → /nosotros/
+      /sst(.html)                         → /construccion/techos-metalicos/
+      cualquier otro *.html               → /  (respaldo)
+
+### Orden de evaluación (por qué no hay cleanUrls ni trailingSlash)
+- `vercel.json` es JSON estricto: no admite comentarios y una clave extra
+  rompe la validación. Por eso esta explicación vive aquí.
+- Vercel evalúa primero las reglas que generan `cleanUrls` y `trailingSlash`
+  y solo después las `redirects` propias. Con `cleanUrls`, `/servicios.html`
+  se convertía en `/servicios/` (404) antes de llegar a su redirección; con
+  `trailingSlash`, `/servicios` recibía la barra antes que su regla.
+- El sitio no necesita `cleanUrls`: todas las páginas son carpetas con
+  `index.html`. Se quitó.
+- La barra final se impone con la **última** regla de `redirects`, que
+  replica la de Vercel: cualquier ruta sin punto en el último tramo y sin
+  barra final recibe la barra (excepto `/.well-known`). Al ir al final, las
+  redirecciones del sitio viejo se evalúan antes.
+- Reglas nuevas: van **antes** del respaldo `*.html` y de la regla de la
+  barra final.
+
 ## Modo mantenimiento
 - `build.js` empieza con la constante `MODO_MANTENIMIENTO`, que se cambia a
   mano y hay que volver a correr `node build.js` para que surta efecto.
@@ -112,8 +179,9 @@ industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
 - El toque tecnológico viene de los detalles, no de adornos: header translúcido
   con desenfoque, títulos grandes y compactos, cifras protagonistas y etiquetas
   tipo cápsula.
-- Tender Light Blue es el fondo de las secciones claras y el color con el que se
-  tiñen las imágenes.
+- Tender Light Blue es el fondo de las secciones claras en tarjeta (SST Elite y
+  Proyectos) y el color con el que se tiñen las imágenes. Medium Seashell
+  (`--color-fondo-claro`) es el fondo de la franja clara de Servicios del home.
 - El sitio es de ancho completo: header, footer y secciones llegan al borde de
   la ventana, con un único margen lateral mínimo y uniforme (`--margen-lateral`).
   Solo se usa un ancho máximo en una sección cuando se indique expresamente.
@@ -141,6 +209,9 @@ industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
 - Las reglas de una hoja de página van acotadas a su `data-page` para que no se
   filtren a otras páginas. No hay hojas globales de página.
 - Un patrón sube a patrones.css cuando lo piden dos páginas, no antes.
+- Ya son patrones compartidos: `ud-capsula`, `ud-boton`, `ud-carrusel`,
+  `ud-cta`, `ud-migas`, `ud-foto` y `ud-pendiente`, `ud-seccion-clara`,
+  `ud-pasos`/`ud-paso`, `ud-proyecto`, `ud-nota` y `ud-pregunta`.
 - No inventes valores fuera del sistema: usa los tokens de tokens.css. Si un
   valor no está, no lo escribas suelto: decide si toca añadirlo al sistema.
 - Ningún archivo fuera de tokens.css contiene colores hex.
@@ -163,9 +234,39 @@ industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
 - Radios: pequeño 12px, mediano 20px, grande 32px y píldora.
 - Pendiente: el logotipo usa #182B4B y #700519, distintos a la paleta. Se
   decidirá cuál manda; el cambio se hace solo en tokens.css.
-- Tipografía (Google Fonts): Archivo SemiBold (600) en títulos, cifras, botones,
-  menú y etiquetas; Manrope (400, 500, 600) en párrafos y textos largos.
+- Tipografía (Google Fonts): Archivo en títulos, cifras, botones, menú y
+  etiquetas; Manrope (400, 500, 600) en párrafos y textos largos.
   DM Sans ya no se usa.
+- La petición de Google Fonts incluye el eje de ancho de Archivo y carga solo
+  dos combinaciones: ancho normal en 600 y ancho 112.5 en 700
+  (`Archivo:wdth,wght@100,600;112.5,700`). Es la misma en todas las páginas.
+
+### Títulos
+- H1, H2 y H3 de todo el sitio, y los títulos de tarjeta aunque no sean
+  encabezado (`ud-cta__titulo`, `nota__relacionada-titulo`): Archivo Bold
+  semi expandida. Tokens: `--peso-encabezado: 700` y
+  `--ancho-encabezado: 112.5%`.
+- Cifras, botones, menú y etiquetas cápsula no cambian: Archivo SemiBold de
+  ancho normal (`--peso-titulo: 600`). Dos excepciones son H2
+  con estilo de etiqueta y se quedan en ancho normal: los títulos de columna
+  del footer y el título de la barra de clientes del home
+  (`inicio__clientes-titulo`).
+- Los tamaños salen de la escala de títulos de tokens.css, nunca de un valor
+  suelto en la hoja de página:
+      --titulo-hero          H1 de los heros
+      --titulo-seccion       H2 de sección del home y H1 sin hero (blog, nota,
+                             aviso, 404)
+      --titulo-subseccion    H2 de las plantillas de servicio, rama, landing,
+                             Nosotros y Proyectos
+      --titulo-bloque        H2 del cuerpo de nota y nota destacada del blog
+      --titulo-tarjeta       títulos de tarjeta grandes (proyectos, CTA, modal)
+      --titulo-tarjeta-sm    títulos de tarjeta chicos (servicios, pasos, notas)
+  Para subir o bajar todos los títulos se ajusta la escala, no cada título.
+- Los títulos llevan `text-wrap: balance`, así sus líneas quedan parejas.
+  Donde un título debe partirse en un punto concreto, además lleva un
+  `max-width` en `em`; con la fuente ancha, ese valor se mide en el navegador
+  (por ejemplo, el hero del home: 16em para "Construimos y mantenemos" /
+  "techos para naves industriales").
 
 ### Marca
 - El nombre se escribe "Ultra Deck" en texto corrido.
@@ -179,6 +280,10 @@ industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
       ultradeck-logo.svg                              logotipo a color, para las
                                                       secciones claras. Sin uso
                                                       todavía
+      White-webtag.svg                                sello de SCNDAL en el
+                                                      footer (ver Sello de
+                                                      SCNDAL). No es de Ultra
+                                                      Deck
       favicon.png                                     favicon y apple-touch-icon
                                                       de todas las páginas.
                                                       500 × 500 px
@@ -192,6 +297,60 @@ industriales, General Escobedo, N.L.). Desarrollado por SCNDAL.
   (`src/partials/cotizacion.html`, comportamiento en `assets/js/cotizacion.js`).
 - El modal se abre desde cualquier elemento con `data-abrir-cotizacion` y al
   cargar cualquier página cuya URL traiga `#cotizar`.
+
+## Nosotros
+- `/nosotros/` tiene estructura propia: `data-plantilla="nosotros"` y la hoja
+  `assets/css/paginas/nosotros.css`.
+- Estructura: hero de media pantalla, historia en línea de tiempo, misión y
+  visión, valores (sección clara), maquinaria e infraestructura,
+  certificaciones con insignias, las cuatro cifras, carrusel de proyectos y
+  cierre.
+- **El JSON-LD de `Organization` del sitio completo vive en esta página**:
+  nombre legal, fundación, domicilio, teléfonos, correo y logotipo. Si cambia
+  un dato de la empresa, se actualiza aquí.
+- Misión y visión son cita textual del cliente y conservan la palabra
+  "cubiertas"; es la excepción a la regla de Terminología y está comentada en
+  el código.
+
+## Páginas de rama
+- `/construccion/` y `/mantenimiento/` comparten plantilla: `body` con
+  `data-plantilla="rama"` y `data-page` igual al slug de la rama. Estilos en
+  `assets/css/paginas/rama.css`.
+- Son páginas cortas de reparto: migas, hero de media pantalla, introducción,
+  tarjetas de los servicios de la rama, carrusel de proyectos, confianza con
+  insignias, preguntas frecuentes y cierre.
+- JSON-LD de `CollectionPage` (con las páginas hijas) y `BreadcrumbList`.
+
+## Landing pilar de Mantenimiento
+- `/mantenimiento/techos-industriales/` no usa la plantilla de servicio: es la
+  landing principal de la rama y la página pilar del blog, así que lleva
+  estructura propia y su hoja `assets/css/paginas/mantenimiento-techos.css`.
+- Estructura: migas, hero con teléfono junto al botón, señales de alerta,
+  preventivo y correctivo, "Sin detener su operación" (sección clara), proceso
+  propio de mantenimiento, confianza con insignias y marcas, carrusel de
+  proyectos, preguntas frecuentes, carrusel con las 8 notas del blog y cierre.
+- JSON-LD de `Service` y `BreadcrumbList`; el de `FAQPage` va comentado hasta
+  que las respuestas sean reales.
+
+## Plantilla de servicio
+- La comparten las 6 páginas de servicio: `body` con `data-plantilla="servicio"`
+  y `data-page` igual al slug. Los estilos propios viven en
+  `assets/css/paginas/servicio.css`; lo compartido, en `patrones.css`.
+- Márgenes laterales: el amplio (`--margen-seccion-amplio`), como en el home.
+- Estructura, en orden:
+      migas de pan (Inicio › rama › página)
+      hero de media pantalla: foto con velo, cápsula de la rama, H1, entrada y
+        botón que abre el modal
+      introducción: H2 y dos o tres párrafos
+      "Qué incluye": tarjetas de los sistemas o productos de esa página
+      diferenciadores: 4 puntos con ícono, sobre sección clara
+      proceso: los mismos 4 pasos del home
+      proyectos: el carrusel con las mismas obras, sobre sección clara
+      preguntas frecuentes: 4 `<details>`
+      notas del blog relacionadas: 3 tarjetas
+      cierre: la caja `ud-cta`
+- JSON-LD de `Service` y `BreadcrumbList`. El de `FAQPage` se activa solo
+  cuando las preguntas tengan texto real; mientras tanto va comentado.
 
 ## Blog
 - El índice vive en `/blog/` y las notas en `/blog/slug/`. La página pilar

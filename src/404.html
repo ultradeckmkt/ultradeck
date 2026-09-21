@@ -12,13 +12,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,600;112.5,700&family=Manrope:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="/assets/css/vendor/lenis.css" />
     <link rel="stylesheet" href="/assets/css/tokens.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/patrones.css" />
     <link rel="stylesheet" href="/assets/css/interacciones.css" />
+    <link rel="stylesheet" href="/assets/css/paginas/404.css" />
     <script src="/assets/js/menu.js" defer></script>
     <script src="/assets/js/cotizacion.js" defer></script>
     <script src="/assets/js/vendor/lenis.min.js" defer></script>
@@ -27,9 +28,58 @@
   <body data-page="404">
     <!-- @include header -->
 
-    <main>
-      <h1>Esta página no existe</h1>
-      <p><a href="/">Ir al inicio</a></p>
+    <main class="e404">
+      <section class="e404__bloque" aria-labelledby="e404-titulo">
+        <p class="e404__codigo" aria-hidden="true">404</p>
+        <h1 class="e404__titulo" id="e404-titulo">Esta página no existe</h1>
+        <p class="e404__texto">
+          Puede que la dirección haya cambiado o que el enlace esté roto. Estas
+          páginas pueden ayudarle:
+        </p>
+
+        <ul class="e404__accesos">
+          <li>
+            <a class="e404__acceso" href="/construccion/techos-metalicos/">
+              Techos metálicos
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a class="e404__acceso" href="/mantenimiento/techos-industriales/">
+              Mantenimiento de techos industriales
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a class="e404__acceso" href="/mantenimiento/canalones-y-bajantes/">
+              Canalones y bajantes
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a class="e404__acceso" href="/proyectos/">
+              Proyectos
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </li>
+          <li>
+            <a class="e404__acceso" href="/blog/">
+              Blog
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="e404__acciones">
+          <a class="ud-boton ud-boton--flecha" href="/">
+            Volver al inicio
+            <span class="ud-boton__flecha" aria-hidden="true"></span>
+          </a>
+          <button class="e404__secundario" type="button" data-abrir-cotizacion>
+            Solicitar cotización
+          </button>
+        </div>
+      </section>
     </main>
 
     <!-- @include footer -->

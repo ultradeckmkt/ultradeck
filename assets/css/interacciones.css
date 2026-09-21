@@ -26,17 +26,3 @@
   scroll-snap-type: none;
   user-select: none;
 }
-
-/* Servicios del home plegados: 4 tarjetas en celular, 8 de tablet en adelante.
-   Lleva el data-page para ganarle a la hoja de la página, que carga después. */
-@media (max-width: 47.999rem) {
-  [data-page="inicio"] .inicio__servicios.esta-plegado > li:nth-child(n + 5) {
-    display: none;
-  }
-}
-
-@media (min-width: 48rem) {
-  [data-page="inicio"] .inicio__servicios.esta-plegado > li:nth-child(n + 9) {
-    display: none;
-  }
-}

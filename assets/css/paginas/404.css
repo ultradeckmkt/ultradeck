@@ -1,0 +1,120 @@
+/**
+ * Página 404. Fuera de toda capa y acotada a su data-page.
+ */
+
+/* Una pantalla menos el header: la caja del header ocupa su alto más el
+   margen superior. */
+[data-page="404"] .e404__bloque {
+  display: flex;
+  min-height: calc(100vh - var(--altura-header) - var(--margen-lateral));
+  min-height: calc(100svh - var(--altura-header) - var(--margen-lateral));
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--espacio-12) var(--margen-seccion-amplio);
+  text-align: center;
+}
+
+[data-page="404"] .e404__codigo {
+  color: var(--color-guinda-claro);
+  font-family: var(--fuente-titulos);
+  font-size: clamp(6rem, 3rem + 14vw, 12rem);
+  font-weight: var(--peso-titulo);
+  letter-spacing: var(--espaciado-letra-titulo);
+  line-height: 1;
+}
+
+[data-page="404"] .e404__titulo {
+  margin-top: var(--espacio-4);
+  font-size: var(--titulo-seccion);
+}
+
+[data-page="404"] .e404__texto {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+/* Accesos rápidos ----------------------------------------------------------- */
+
+[data-page="404"] .e404__accesos {
+  display: grid;
+  width: 100%;
+  max-width: var(--ancho-contenido);
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-8);
+}
+
+[data-page="404"] .e404__acceso {
+  display: flex;
+  min-height: var(--area-toque);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-3) var(--espacio-3) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-pildora);
+  background-color: var(--color-superficie-1);
+  color: var(--color-texto);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-titulo);
+  text-align: left;
+  text-decoration: none;
+  transition: background-color var(--transicion);
+}
+
+[data-page="404"] .e404__acceso:hover,
+[data-page="404"] .e404__acceso:focus-visible {
+  background-color: var(--color-superficie-2);
+  color: var(--color-texto);
+}
+
+/* El círculo de la flecha, en guinda vivo porque va suelto. */
+[data-page="404"] .e404__acceso .ud-boton__flecha {
+  background-color: var(--color-guinda-vivo);
+  color: var(--color-texto);
+}
+
+/* Botones ------------------------------------------------------------------- */
+
+[data-page="404"] .e404__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+}
+
+[data-page="404"] .e404__secundario {
+  display: inline-flex;
+  min-height: var(--area-toque);
+  align-items: center;
+  padding: 0 var(--espacio-6);
+  border: var(--borde) solid var(--color-linea-fuerte);
+  border-radius: var(--radio-pildora);
+  background-color: transparent;
+  color: var(--color-texto);
+  cursor: pointer;
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-titulo);
+  transition: background-color var(--transicion);
+}
+
+[data-page="404"] .e404__secundario:hover,
+[data-page="404"] .e404__secundario:focus-visible {
+  background-color: var(--color-fondo-hover);
+}
+
+@media (min-width: 48rem) {
+  [data-page="404"] .e404__accesos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Si la última tarjeta queda sola en su fila, ocupa la fila entera. */
+  [data-page="404"] .e404__accesos li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}

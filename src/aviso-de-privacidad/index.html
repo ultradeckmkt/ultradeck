@@ -13,24 +13,176 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,600;112.5,700&family=Manrope:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="/assets/css/vendor/lenis.css" />
     <link rel="stylesheet" href="/assets/css/tokens.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/patrones.css" />
     <link rel="stylesheet" href="/assets/css/interacciones.css" />
+    <link rel="stylesheet" href="/assets/css/paginas/legal.css" />
     <script src="/assets/js/menu.js" defer></script>
     <script src="/assets/js/cotizacion.js" defer></script>
     <script src="/assets/js/vendor/lenis.min.js" defer></script>
     <script src="/assets/js/scroll.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ultradeck.com.mx/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Aviso de privacidad",
+            "item": "https://ultradeck.com.mx/aviso-de-privacidad/"
+          }
+        ]
+      }
+    </script>
   </head>
-  <body data-page="aviso-de-privacidad">
+  <body data-page="aviso-de-privacidad" data-plantilla="legal">
     <!-- @include header -->
 
-    <main>
-      <h1>Aviso de privacidad</h1>
-      <p>[PENDIENTE: contenido]</p>
+    <!-- [PENDIENTE: este aviso debe ser revisado y aprobado por el área legal
+         del cliente antes de publicarse.] -->
+    <main class="legal">
+      <nav class="ud-migas" aria-label="Migas de pan">
+        <ol class="ud-migas__lista">
+          <li><a href="/">Inicio</a></li>
+          <li><span aria-current="page">Aviso de privacidad</span></li>
+        </ol>
+      </nav>
+
+      <header class="legal__encabezado">
+        <h1 class="legal__titulo">Aviso de privacidad</h1>
+        <p class="legal__fecha">Última actualización: [PENDIENTE: fecha]</p>
+      </header>
+
+      <article class="legal__cuerpo">
+        <h2>Identidad y domicilio del responsable</h2>
+        <p>
+          Ultra Deck, S.A. de C.V. es responsable del tratamiento de sus datos
+          personales, conforme a la Ley Federal de Protección de Datos
+          Personales en Posesión de los Particulares.
+        </p>
+        <p>
+          Domicilio: Priv. Juan Escutia 115, Col. Niños Héroes, C.P. 66052,
+          General Escobedo, N.L.<br />
+          Correo electrónico:
+          <a href="mailto:contacto@ultradeck.com.mx">contacto@ultradeck.com.mx</a>
+        </p>
+
+        <h2>Datos personales que se recaban</h2>
+        <p>
+          A través del formulario de cotización de este sitio recabamos los
+          siguientes datos:
+        </p>
+        <ul>
+          <li>Nombre</li>
+          <li>Empresa</li>
+          <li>Teléfono</li>
+          <li>Correo electrónico</li>
+          <li>Ciudad o municipio donde se ubica la nave</li>
+          <li>El mensaje que usted escriba</li>
+        </ul>
+        <p>
+          No le solicitamos datos personales sensibles ni datos patrimoniales o
+          financieros.
+        </p>
+
+        <h2>Finalidades del tratamiento</h2>
+        <p>
+          Sus datos se utilizan para las siguientes finalidades necesarias, sin
+          las cuales no podríamos atenderle:
+        </p>
+        <ul>
+          <li>Atender su solicitud de cotización.</li>
+          <li>Ponernos en contacto con usted.</li>
+          <li>Dar seguimiento comercial a su solicitud.</li>
+        </ul>
+        <p>
+          Finalidades que no son necesarias para atender su solicitud:
+          [PENDIENTE: confirmar si se usará para envío de comunicaciones o
+          promociones].
+        </p>
+        <p>
+          Si no desea que sus datos se traten para las finalidades no
+          necesarias, puede comunicarlo al correo
+          <a href="mailto:contacto@ultradeck.com.mx">contacto@ultradeck.com.mx</a>.
+          Negarse no será motivo para dejar de atender su solicitud.
+        </p>
+
+        <h2>Transferencias de datos</h2>
+        <p>
+          En este apartado se indican las transferencias de datos personales
+          que, en su caso, se realizan a terceros.
+          [PENDIENTE: confirmar con el cliente si comparte datos con terceros].
+        </p>
+
+        <h2>Medios para ejercer los derechos ARCO</h2>
+        <p>
+          Usted tiene derecho a conocer qué datos personales tenemos suyos, para
+          qué los usamos y en qué condiciones (Acceso); a pedir que se corrijan
+          si están desactualizados o son inexactos (Rectificación); a solicitar
+          que los eliminemos de nuestros registros cuando considere que no se
+          están usando conforme a este aviso (Cancelación); y a oponerse al uso
+          de sus datos para fines específicos (Oposición).
+        </p>
+        <p>
+          Para ejercer cualquiera de estos derechos, envíe una solicitud al
+          correo
+          <a href="mailto:contacto@ultradeck.com.mx">contacto@ultradeck.com.mx</a>
+          indicando:
+        </p>
+        <ul>
+          <li>Su nombre y un medio para comunicarle la respuesta.</li>
+          <li>
+            Una copia de su identificación oficial, o del documento que acredite
+            su representación.
+          </li>
+          <li>Una descripción clara de los datos y del derecho que desea ejercer.</li>
+        </ul>
+        <p>
+          Le responderemos por el medio que nos indique, dentro de los plazos
+          que establece la ley.
+          [PENDIENTE: confirmar si habrá un responsable o departamento
+          designado].
+        </p>
+
+        <h2>Revocación del consentimiento</h2>
+        <p>
+          Puede revocar en cualquier momento el consentimiento que nos otorgó
+          para el tratamiento de sus datos personales. Para hacerlo, envíe su
+          solicitud al correo
+          <a href="mailto:contacto@ultradeck.com.mx">contacto@ultradeck.com.mx</a>,
+          con los mismos datos y documentos señalados en el apartado anterior.
+        </p>
+        <p>
+          Tenga en cuenta que, por razones legales, en algunos casos no podremos
+          atender su solicitud de inmediato o será necesario conservar ciertos
+          datos.
+        </p>
+
+        <h2>Uso de cookies y tecnologías de rastreo</h2>
+        <p>
+          [PENDIENTE: se completa cuando se instale Google Tag Manager y
+          Analytics].
+        </p>
+
+        <h2>Cambios al aviso de privacidad</h2>
+        <p>
+          Cualquier modificación a este aviso de privacidad se publicará en esta
+          misma página, con la fecha de su última actualización. Le
+          recomendamos consultarla periódicamente.
+        </p>
+      </article>
     </main>
 
     <!-- @include footer -->

@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,600;112.5,700&family=Manrope:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="/assets/css/vendor/lenis.css" />
     <link rel="stylesheet" href="/assets/css/tokens.css" />
@@ -29,7 +29,6 @@
     <script src="/assets/js/vendor/lenis.min.js" defer></script>
     <script src="/assets/js/scroll.js" defer></script>
     <script src="/assets/js/carrusel.js" defer></script>
-    <script src="/assets/js/servicios.js" defer></script>
   </head>
   <body data-page="inicio">
     <!-- @include header -->
@@ -53,7 +52,7 @@
         </div>
 
         <div class="inicio__hero-contenido">
-          <p class="ud-capsula">Desde 1990 · General Escobedo, N.L.</p>
+          <p class="ud-capsula">Techos industriales en Monterrey y todo México</p>
           <h1 class="inicio__hero-titulo" id="hero-titulo">
             Construimos y mantenemos techos para naves industriales
           </h1>
@@ -76,16 +75,12 @@
               >Ver proyectos</a
             >
           </div>
-
-          <p class="inicio__confianza">
-            Proyectos para Chrysler, Audi, Costco, John Deere y Caterpillar
-          </p>
         </div>
       </section>
 
       <!-- Nosotros y cifras ---------------------------------------- -->
       <section
-        class="inicio__seccion inicio__seccion--con-margen"
+        class="inicio__seccion inicio__seccion--con-margen inicio__seccion--nosotros"
         aria-labelledby="nosotros-titulo"
       >
         <div class="inicio__nosotros">
@@ -107,10 +102,10 @@
           </div>
 
           <div>
-            <ul class="inicio__insignias">
-              <li class="inicio__insignia">
+            <ul class="ud-insignias">
+              <li class="ud-insignia">
                 <svg
-                  class="inicio__insignia-icono"
+                  class="ud-insignia__icono"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -119,9 +114,9 @@
                 </svg>
                 REPSE
               </li>
-              <li class="inicio__insignia">
+              <li class="ud-insignia">
                 <svg
-                  class="inicio__insignia-icono"
+                  class="ud-insignia__icono"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -130,9 +125,9 @@
                 </svg>
                 ISO
               </li>
-              <li class="inicio__insignia">
+              <li class="ud-insignia">
                 <svg
-                  class="inicio__insignia-icono"
+                  class="ud-insignia__icono"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -141,9 +136,9 @@
                 </svg>
                 DC-3 · Trabajo en alturas
               </li>
-              <li class="inicio__insignia">
+              <li class="ud-insignia">
                 <svg
-                  class="inicio__insignia-icono"
+                  class="ud-insignia__icono"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -168,7 +163,7 @@
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
               <button
-                class="inicio__enlace-flecha"
+                class="ud-enlace-flecha"
                 type="button"
                 data-abrir-cotizacion
               >
@@ -179,181 +174,263 @@
           </div>
         </div>
 
-        <ul class="inicio__cifras">
-          <li class="inicio__cifra">
-            <p class="inicio__cifra-numero">35+</p>
-            <p class="inicio__cifra-etiqueta">Años de experiencia</p>
+        <ul class="ud-cifras">
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">35+</p>
+            <p class="ud-cifra__etiqueta">Años de experiencia</p>
           </li>
-          <li class="inicio__cifra">
-            <p class="inicio__cifra-numero">20</p>
-            <p class="inicio__cifra-etiqueta">Marcas líderes atendidas</p>
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">20</p>
+            <p class="ud-cifra__etiqueta">Marcas líderes atendidas</p>
           </li>
-          <li class="inicio__cifra">
-            <p class="inicio__cifra-numero">5+</p>
-            <p class="inicio__cifra-etiqueta">Estados con obra realizada</p>
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">5+</p>
+            <p class="ud-cifra__etiqueta">Estados con obra realizada</p>
           </li>
-          <li class="inicio__cifra">
-            <p class="inicio__cifra-numero">100%</p>
-            <p class="inicio__cifra-etiqueta">Maquinaria propia</p>
+          <li class="ud-cifra">
+            <p class="ud-cifra__numero">100%</p>
+            <p class="ud-cifra__etiqueta">Maquinaria propia</p>
           </li>
         </ul>
       </section>
 
+      <!-- Clientes ---------------------------------------------------- -->
+      <!-- [PENDIENTE: sustituir por logotipos reales cuando el cliente
+           autorice su publicación] -->
+      <section class="inicio__clientes" aria-labelledby="clientes-titulo">
+        <h2 class="inicio__clientes-titulo" id="clientes-titulo">
+          Proyectos para las marcas líderes de la industria
+        </h2>
+
+        <div class="inicio__clientes-marco">
+          <div class="inicio__clientes-pista">
+            <ul class="inicio__clientes-lista" aria-label="Clientes">
+              <li class="inicio__cliente">Chrysler</li>
+              <li class="inicio__cliente">Audi</li>
+              <li class="inicio__cliente">Honda</li>
+              <li class="inicio__cliente">John Deere</li>
+              <li class="inicio__cliente">Caterpillar</li>
+              <li class="inicio__cliente">Costco</li>
+              <li class="inicio__cliente">Daltile</li>
+              <li class="inicio__cliente">Helvex</li>
+              <li class="inicio__cliente">Michelin</li>
+              <li class="inicio__cliente">Schneider Electric</li>
+              <li class="inicio__cliente">Lenovo</li>
+              <li class="inicio__cliente">Mabe</li>
+              <li class="inicio__cliente">American Standard</li>
+              <li class="inicio__cliente">DHL</li>
+              <li class="inicio__cliente">Oxxo</li>
+              <li class="inicio__cliente">Cuprum</li>
+            </ul>
+            <!-- Copia para que el desplazamiento no tenga corte. -->
+            <ul class="inicio__clientes-lista" aria-hidden="true">
+              <li class="inicio__cliente">Chrysler</li>
+              <li class="inicio__cliente">Audi</li>
+              <li class="inicio__cliente">Honda</li>
+              <li class="inicio__cliente">John Deere</li>
+              <li class="inicio__cliente">Caterpillar</li>
+              <li class="inicio__cliente">Costco</li>
+              <li class="inicio__cliente">Daltile</li>
+              <li class="inicio__cliente">Helvex</li>
+              <li class="inicio__cliente">Michelin</li>
+              <li class="inicio__cliente">Schneider Electric</li>
+              <li class="inicio__cliente">Lenovo</li>
+              <li class="inicio__cliente">Mabe</li>
+              <li class="inicio__cliente">American Standard</li>
+              <li class="inicio__cliente">DHL</li>
+              <li class="inicio__cliente">Oxxo</li>
+              <li class="inicio__cliente">Cuprum</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- Servicios -------------------------------------------------- -->
       <section
-        class="inicio__seccion inicio__seccion--con-margen"
+        class="inicio__seccion inicio__seccion--con-margen inicio__seccion--servicios"
         aria-labelledby="ramas-titulo"
       >
-        <div class="inicio__servicios-encabezado">
-          <p class="ud-capsula">Servicios</p>
-          <h2 class="inicio__titulo" id="ramas-titulo">
-            Soluciones para su nave, de la estructura al mantenimiento
-          </h2>
-          <p class="inicio__servicios-entrada">
-            Del techo a los canalones, resolvemos cada sistema de su nave con
-            un solo equipo responsable, desde el diseño hasta el mantenimiento.
-          </p>
+        <div class="inicio__carrusel-encabezado inicio__servicios-encabezado">
+          <div>
+            <p class="ud-capsula">Servicios</p>
+            <h2 class="inicio__titulo" id="ramas-titulo">
+              Soluciones para su nave, de la estructura al mantenimiento
+            </h2>
+            <p class="inicio__servicios-entrada">
+              Del techo a los canalones, resolvemos cada sistema de su nave con
+              un solo equipo responsable, desde el diseño hasta el
+              mantenimiento.
+            </p>
+          </div>
+
+          <!-- Sin JavaScript quedan deshabilitadas; el carrusel se sigue
+               desplazando con dedo, trackpad y teclado. -->
+          <div class="ud-carrusel__flechas">
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="anterior"
+              aria-controls="carrusel-servicios"
+              aria-label="Servicio anterior"
+              disabled
+            >
+              <span
+                class="ud-carrusel__icono ud-carrusel__icono--anterior"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="siguiente"
+              aria-controls="carrusel-servicios"
+              aria-label="Servicio siguiente"
+              disabled
+            >
+              <span class="ud-carrusel__icono" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
 
-        <ul class="inicio__servicios" id="lista-servicios">
+        <ul class="ud-carrusel inicio__servicios" id="carrusel-servicios">
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Lámina SST Elite 3"]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
-              <h3 class="inicio__servicio-nombre">Lámina SST Elite 3"</h3>
-              <p class="inicio__servicio-linea">Techo con inyección de sello automatizada en cada traslape.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
-                Ver más
-                <span class="ud-boton__flecha" aria-hidden="true"></span>
-              </a>
-            </div>
-          </li>
-          <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Lámina SSR KR-18 2.5"]</p>
-            </div>
-            <div class="inicio__servicio-cuerpo">
-              <h3 class="inicio__servicio-nombre">Lámina SSR KR-18 2.5"</h3>
-              <p class="inicio__servicio-linea">Lámina de junta alzada formada con maquinaria propia.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
-                Ver más
-                <span class="ud-boton__flecha" aria-hidden="true"></span>
-              </a>
-            </div>
-          </li>
-          <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Mantenimiento de techos industriales]</p>
-            </div>
-            <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 7h18"/><path d="M12 11s3.5 4 3.5 6a3.5 3.5 0 0 1-7 0c0-2 3.5-6 3.5-6z"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Mantenimiento de techos industriales</h3>
               <p class="inicio__servicio-linea">Reparación de goteras, filtraciones y láminas dañadas.</p>
-              <a class="inicio__enlace-flecha" href="/mantenimiento/techos-industriales/">
+              <a class="ud-enlace-flecha" href="/mantenimiento/techos-industriales/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
             </div>
           </li>
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Canalones y bajantes pluviales]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 7h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M12 14v7"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Canalones y bajantes pluviales</h3>
               <p class="inicio__servicio-linea">Diseño, fabricación e instalación de sistemas pluviales.</p>
-              <a class="inicio__enlace-flecha" href="/mantenimiento/canalones-y-bajantes/">
+              <a class="ud-enlace-flecha" href="/mantenimiento/canalones-y-bajantes/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
             </div>
           </li>
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Estructura metálica]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
-              <h3 class="inicio__servicio-nombre">Estructura metálica</h3>
-              <p class="inicio__servicio-linea">Ingeniería, fabricación y montaje de estructura para naves.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/estructura-metalica/">
-                Ver más
-                <span class="ud-boton__flecha" aria-hidden="true"></span>
-              </a>
-            </div>
-          </li>
-          <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Lámina R-101 y panel para muros]</p>
-            </div>
-            <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="16" height="16" rx="1"/><path d="M8 4v16M12 4v16M16 4v16"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Lámina R-101 y panel para muros</h3>
               <p class="inicio__servicio-linea">Sistemas de lámina y panel para cerrar y proteger su nave.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/muros-y-fachadas/">
+              <a class="ud-enlace-flecha" href="/construccion/muros-y-fachadas/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
             </div>
           </li>
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Domos de policarbonato tipo cañón]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 17h18"/><path d="M3 14l2.5-5h3L11 14h2l2.5-5h3L21 14"/>
+              </svg>
+              <h3 class="inicio__servicio-nombre">Lámina SST Elite 3"</h3>
+              <p class="inicio__servicio-linea">Techo con inyección de sello automatizada en cada traslape.</p>
+              <a class="ud-enlace-flecha" href="/construccion/techos-metalicos/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 4h12M6 20h12M12 4v16"/>
+              </svg>
+              <h3 class="inicio__servicio-nombre">Estructura metálica</h3>
+              <p class="inicio__servicio-linea">Ingeniería, fabricación y montaje de estructura para naves.</p>
+              <a class="ud-enlace-flecha" href="/construccion/estructura-metalica/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 18h18"/><path d="M5 18a7 7 0 0 1 14 0"/><path d="M12 11v7"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Domos de policarbonato tipo cañón</h3>
               <p class="inicio__servicio-linea">Luz natural para su nave con domos de policarbonato.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/domos-e-iluminacion/">
+              <a class="ud-enlace-flecha" href="/construccion/domos-e-iluminacion/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
             </div>
           </li>
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Domos Sunoptics]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 18h18"/><path d="M6 18V8M12 18V8M18 18V8"/><path d="M5 8h2M11 8h2M17 8h2"/>
+              </svg>
+              <h3 class="inicio__servicio-nombre">Lámina SSR KR-18 2.5"</h3>
+              <p class="inicio__servicio-linea">Lámina de junta alzada formada con maquinaria propia.</p>
+              <a class="ud-enlace-flecha" href="/construccion/techos-metalicos/">
+                Ver más
+                <span class="ud-boton__flecha" aria-hidden="true"></span>
+              </a>
+            </div>
+          </li>
+          <li class="inicio__servicio">
+            <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 18h18"/><path d="M6 18l3-8h6l3 8"/><path d="M9 10l3 8 3-8"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Domos Sunoptics</h3>
               <p class="inicio__servicio-linea">Domos prismáticos de alto rendimiento para iluminación natural.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/domos-e-iluminacion/">
+              <a class="ud-enlace-flecha" href="/construccion/domos-e-iluminacion/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
             </div>
           </li>
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Louvers fijos y móviles]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 8l16 2.5M4 12.5l16 2.5M4 17l16 2.5"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Louvers fijos y móviles</h3>
               <p class="inicio__servicio-linea">Ventilación natural para muros y fachadas industriales.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/muros-y-fachadas/">
+              <a class="ud-enlace-flecha" href="/construccion/muros-y-fachadas/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
             </div>
           </li>
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Molduras y perfiles especiales]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h7v6h9v6"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Molduras y perfiles especiales</h3>
               <p class="inicio__servicio-linea">Remates y perfiles a la medida de cada proyecto.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
+              <a class="ud-enlace-flecha" href="/construccion/techos-metalicos/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
             </div>
           </li>
           <li class="inicio__servicio">
-            <div class="inicio__servicio-foto">
-              <p class="inicio__pendiente">[PENDIENTE: foto Roof curves (brocales)]</p>
-            </div>
             <div class="inicio__servicio-cuerpo">
+              <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 18h18"/><path d="M7 18v-6h10v6"/><path d="M9 12V9h6v3"/>
+              </svg>
               <h3 class="inicio__servicio-nombre">Roof curves (brocales)</h3>
               <p class="inicio__servicio-linea">Bases para domos, extractores, ventiladores y equipos de A/C.</p>
-              <a class="inicio__enlace-flecha" href="/construccion/techos-metalicos/">
+              <a class="ud-enlace-flecha" href="/construccion/techos-metalicos/">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
@@ -369,7 +446,7 @@
                 ayudarle.
               </p>
               <button
-                class="inicio__enlace-flecha"
+                class="ud-enlace-flecha"
                 type="button"
                 data-abrir-cotizacion
               >
@@ -379,23 +456,11 @@
             </div>
           </li>
         </ul>
-
-        <!-- Nace oculto: sin JavaScript se ven las 12 tarjetas y el botón no
-             hace falta. servicios.js lo muestra y pliega la lista. -->
-        <button
-          class="inicio__boton-secundario inicio__mostrar-mas"
-          id="mostrar-servicios"
-          type="button"
-          aria-controls="lista-servicios"
-          hidden
-        >
-          Mostrar más servicios
-        </button>
       </section>
 
       <!-- Diferenciador ---------------------------------------------- -->
       <section
-        class="inicio__seccion inicio__seccion--clara"
+        class="inicio__seccion ud-seccion-clara inicio__seccion--sst"
         aria-labelledby="sst-titulo"
       >
         <div class="inicio__dos-columnas">
@@ -419,7 +484,7 @@
             </div>
 
             <a
-              class="inicio__enlace-flecha"
+              class="ud-enlace-flecha"
               href="/construccion/techos-metalicos/"
             >
               Conocer techos metálicos
@@ -427,44 +492,17 @@
             </a>
           </div>
 
-          <div class="inicio__foto inicio__foto--clara">
-            <p class="inicio__pendiente">
+          <div class="ud-foto ud-foto--clara">
+            <p class="ud-pendiente">
               [PENDIENTE: foto del sistema SST Elite]
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Proceso ---------------------------------------------------- -->
-      <section class="inicio__seccion" aria-labelledby="proceso-titulo">
-        <p class="ud-capsula">Cómo trabajamos</p>
-        <h2 class="inicio__titulo" id="proceso-titulo">
-          De la visita técnica a la entrega
-        </h2>
-
-        <ol class="inicio__pasos">
-          <li class="inicio__paso">
-            <p class="inicio__paso-numero">01</p>
-            <h3 class="inicio__paso-titulo">Visita técnica y diagnóstico</h3>
-          </li>
-          <li class="inicio__paso">
-            <p class="inicio__paso-numero">02</p>
-            <h3 class="inicio__paso-titulo">Propuesta y cotización</h3>
-          </li>
-          <li class="inicio__paso">
-            <p class="inicio__paso-numero">03</p>
-            <h3 class="inicio__paso-titulo">Fabricación e instalación</h3>
-          </li>
-          <li class="inicio__paso">
-            <p class="inicio__paso-numero">04</p>
-            <h3 class="inicio__paso-titulo">Entrega y seguimiento</h3>
-          </li>
-        </ol>
-      </section>
-
       <!-- Proyectos -------------------------------------------------- -->
       <section
-        class="inicio__seccion inicio__seccion--clara"
+        class="inicio__seccion ud-seccion-clara"
         aria-labelledby="proyectos-titulo"
       >
         <div class="inicio__carrusel-encabezado">
@@ -505,51 +543,51 @@
         </div>
 
         <ul class="ud-carrusel inicio__proyectos" id="carrusel-proyectos">
-          <li class="inicio__proyecto" tabindex="0">
-            <div class="inicio__foto inicio__foto--clara">
-              <p class="inicio__pendiente">[PENDIENTE: foto Chrysler]</p>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Chrysler]</p>
             </div>
-            <h3 class="inicio__proyecto-nombre">Chrysler</h3>
-            <p class="inicio__proyecto-lugar">
+            <h3 class="ud-proyecto__nombre">Chrysler</h3>
+            <p class="ud-proyecto__lugar">
               Ramos Arizpe y Derramadero, Coahuila
             </p>
           </li>
-          <li class="inicio__proyecto" tabindex="0">
-            <div class="inicio__foto inicio__foto--clara">
-              <p class="inicio__pendiente">[PENDIENTE: foto Audi]</p>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Audi]</p>
             </div>
-            <h3 class="inicio__proyecto-nombre">Audi</h3>
-            <p class="inicio__proyecto-lugar">
+            <h3 class="ud-proyecto__nombre">Audi</h3>
+            <p class="ud-proyecto__lugar">
               Planta de proveedores, San José Chiapa, Puebla
             </p>
           </li>
-          <li class="inicio__proyecto" tabindex="0">
-            <div class="inicio__foto inicio__foto--clara">
-              <p class="inicio__pendiente">[PENDIENTE: foto CEDIS Costco]</p>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto CEDIS Costco]</p>
             </div>
-            <h3 class="inicio__proyecto-nombre">CEDIS Costco</h3>
-            <p class="inicio__proyecto-lugar">Tepeji del Río, Hidalgo</p>
+            <h3 class="ud-proyecto__nombre">CEDIS Costco</h3>
+            <p class="ud-proyecto__lugar">Tepeji del Río, Hidalgo</p>
           </li>
-          <li class="inicio__proyecto" tabindex="0">
-            <div class="inicio__foto inicio__foto--clara">
-              <p class="inicio__pendiente">[PENDIENTE: foto Daltile]</p>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Daltile]</p>
             </div>
-            <h3 class="inicio__proyecto-nombre">Daltile</h3>
-            <p class="inicio__proyecto-lugar">Salamanca, Guanajuato</p>
+            <h3 class="ud-proyecto__nombre">Daltile</h3>
+            <p class="ud-proyecto__lugar">Salamanca, Guanajuato</p>
           </li>
-          <li class="inicio__proyecto" tabindex="0">
-            <div class="inicio__foto inicio__foto--clara">
-              <p class="inicio__pendiente">[PENDIENTE: foto Honda]</p>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Honda]</p>
             </div>
-            <h3 class="inicio__proyecto-nombre">Honda</h3>
-            <p class="inicio__proyecto-lugar">Celaya, Guanajuato</p>
+            <h3 class="ud-proyecto__nombre">Honda</h3>
+            <p class="ud-proyecto__lugar">Celaya, Guanajuato</p>
           </li>
-          <li class="inicio__proyecto" tabindex="0">
-            <div class="inicio__foto inicio__foto--clara">
-              <p class="inicio__pendiente">[PENDIENTE: foto Cuprum]</p>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Cuprum]</p>
             </div>
-            <h3 class="inicio__proyecto-nombre">Cuprum</h3>
-            <p class="inicio__proyecto-lugar">Santa Catarina, Nuevo León</p>
+            <h3 class="ud-proyecto__nombre">Cuprum</h3>
+            <p class="ud-proyecto__lugar">Santa Catarina, Nuevo León</p>
           </li>
         </ul>
 
@@ -613,7 +651,7 @@
           </div>
 
           <div class="inicio__blog-acciones">
-            <a class="inicio__enlace-flecha inicio__blog-todas" href="/blog/">
+            <a class="ud-enlace-flecha inicio__blog-todas" href="/blog/">
               Ver todas las notas
               <span class="inicio__flecha-larga" aria-hidden="true"></span>
             </a>
@@ -647,15 +685,15 @@
         </div>
 
         <ul class="ud-carrusel inicio__notas" id="carrusel-blog">
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/cada-cuanto-dar-mantenimiento-techo-industrial/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/cada-cuanto-dar-mantenimiento-techo-industrial/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">¿Cada cuánto dar mantenimiento a un techo industrial?</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">¿Cada cuánto dar mantenimiento a un techo industrial?</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-19">19 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>
@@ -663,15 +701,15 @@
               </span>
             </a>
           </li>
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/goteras-en-naves-industriales/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/goteras-en-naves-industriales/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">Goteras en naves industriales: causas y cómo detectarlas a tiempo</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">Goteras en naves industriales: causas y cómo detectarlas a tiempo</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-16">16 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>
@@ -679,15 +717,15 @@
               </span>
             </a>
           </li>
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/revisar-techo-nave-industrial-antes-de-lluvias/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/revisar-techo-nave-industrial-antes-de-lluvias/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">Qué revisar en el techo de su nave industrial antes de la temporada de lluvias</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">Qué revisar en el techo de su nave industrial antes de la temporada de lluvias</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-12">12 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>
@@ -695,15 +733,15 @@
               </span>
             </a>
           </li>
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/mantenimiento-preventivo-vs-correctivo-techos/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/mantenimiento-preventivo-vs-correctivo-techos/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">Mantenimiento preventivo vs. correctivo en techos industriales</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">Mantenimiento preventivo vs. correctivo en techos industriales</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-10">10 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>
@@ -711,15 +749,15 @@
               </span>
             </a>
           </li>
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/vida-util-techo-nave-industrial/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/vida-util-techo-nave-industrial/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">¿Cuánto dura el techo de lámina de una nave industrial y cómo alargar su vida útil?</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">¿Cuánto dura el techo de lámina de una nave industrial y cómo alargar su vida útil?</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-08">8 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>
@@ -727,15 +765,15 @@
               </span>
             </a>
           </li>
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/canalones-nave-industrial-desbordan/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/canalones-nave-industrial-desbordan/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">Por qué se desbordan los canalones de una nave industrial y cómo evitarlo</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">Por qué se desbordan los canalones de una nave industrial y cómo evitarlo</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-05">5 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>
@@ -743,15 +781,15 @@
               </span>
             </a>
           </li>
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/reparar-o-cambiar-techo-nave-industrial/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/reparar-o-cambiar-techo-nave-industrial/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">¿Reparar o cambiar el techo de su nave industrial? Cuándo conviene un retechado</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">¿Reparar o cambiar el techo de su nave industrial? Cuándo conviene un retechado</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-03">3 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>
@@ -759,15 +797,15 @@
               </span>
             </a>
           </li>
-          <li class="inicio__nota">
-            <a class="inicio__nota-enlace" href="/blog/costo-mantenimiento-techo-industrial/">
-              <span class="inicio__nota-foto">
-                <span class="inicio__pendiente">[PENDIENTE: portada]</span>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/costo-mantenimiento-techo-industrial/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
               </span>
-              <span class="inicio__nota-cuerpo">
+              <span class="ud-nota__cuerpo">
                 <span class="ud-capsula">Mantenimiento</span>
-                <h3 class="inicio__nota-titulo">Cuánto cuesta el mantenimiento de un techo industrial y de qué depende</h3>
-                <span class="inicio__nota-datos">
+                <h3 class="ud-nota__titulo">Cuánto cuesta el mantenimiento de un techo industrial y de qué depende</h3>
+                <span class="ud-nota__datos">
                   <time datetime="2026-09-02">2 de septiembre de 2026</time>
                   <span aria-hidden="true">·</span>
                   <span>6 min de lectura</span>

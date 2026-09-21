@@ -1,0 +1,71 @@
+/**
+ * Documentos legales. Fuera de toda capa y acotada a data-plantilla="legal".
+ * Una sola columna, medida de lectura cómoda y jerarquía clara de títulos.
+ */
+
+[data-plantilla="legal"] .legal {
+  padding: var(--espacio-8) var(--margen-seccion-amplio) var(--espacio-12);
+}
+
+[data-plantilla="legal"] .legal__encabezado {
+  margin-top: var(--espacio-8);
+  padding-bottom: var(--espacio-8);
+  border-bottom: var(--borde) solid var(--color-linea);
+}
+
+[data-plantilla="legal"] .legal__titulo {
+  font-size: var(--titulo-seccion);
+}
+
+[data-plantilla="legal"] .legal__fecha {
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Cuerpo del documento --------------------------------------------------- */
+
+/* ~68 caracteres reales por línea en escritorio. Con 68ch salían ~85:
+   la "ch" de Manrope es más ancha que el promedio de sus letras. */
+[data-plantilla="legal"] .legal__cuerpo {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="legal"] .legal__cuerpo h2 {
+  margin-top: var(--espacio-12);
+  font-size: var(--titulo-tarjeta);
+}
+
+[data-plantilla="legal"] .legal__cuerpo h2:first-child {
+  margin-top: 0;
+}
+
+[data-plantilla="legal"] .legal__cuerpo p {
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+[data-plantilla="legal"] .legal__cuerpo ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+[data-plantilla="legal"] .legal__cuerpo li {
+  padding-left: var(--espacio-6);
+  text-indent: calc(var(--espacio-6) * -1);
+}
+
+[data-plantilla="legal"] .legal__cuerpo li::before {
+  content: "—";
+  margin-right: var(--espacio-3);
+  color: var(--color-guinda-claro);
+}
+
+[data-plantilla="legal"] .legal__cuerpo a {
+  color: var(--color-guinda-claro);
+  overflow-wrap: anywhere;
+}

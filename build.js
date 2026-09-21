@@ -20,7 +20,7 @@ const path = require("node:path");
 //
 // Se cambia a mano aquí y hay que volver a correr `node build.js`.
 // ---------------------------------------------------------------------------
-const MODO_MANTENIMIENTO = true;
+const MODO_MANTENIMIENTO = false;
 
 const raiz = __dirname;
 const dirSrc = path.join(raiz, "src");
@@ -28,7 +28,11 @@ const dirAssets = path.join(raiz, "assets");
 const dirPartials = path.join(dirSrc, "partials");
 const dirDist = path.join(raiz, "dist");
 
+const DOMINIO = "https://ultradeck.com.mx";
 const CARATULA = "mantenimiento-temporal.html";
+
+// Rastreadores de IA que se permiten de forma explícita en robots.txt.
+const RASTREADORES_IA = ["GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"];
 const RECURSO = /(?:href|src)="(\/assets\/[^"]+)"/g;
 
 const MARCA = /<!--\s*@include\s+([\w-]+)\s*-->/g;
@@ -122,6 +126,72 @@ function procesarHtml(dir) {
   }
 }
 
+/** Fecha del build (AAAA-MM-DD), en la zona de quien lo corre. En Vercel es UTC. */
+function hoy() {
+  const fecha = new Date();
+  const dos = (n) => String(n).padStart(2, "0");
+  return `${fecha.getFullYear()}-${dos(fecha.getMonth() + 1)}-${dos(fecha.getDate())}`;
+}
+
+/** Todas las páginas publicables: cada index.html de dist/, con su URL. */
+function paginasPublicables(dir, lista = []) {
+  for (const entrada of fs.readdirSync(dir, { withFileTypes: true })) {
+    const ruta = path.join(dir, entrada.name);
+    if (entrada.isDirectory()) {
+      paginasPublicables(ruta, lista);
+    } else if (entrada.name === "index.html") {
+      lista.push(ruta);
+    }
+  }
+  return lista;
+}
+
+/**
+ * dist/sitemap.xml con todas las páginas. Las notas del blog llevan su fecha
+ * de publicación (la toman de su JSON-LD); el resto, la fecha del build.
+ */
+function generarSitemap() {
+  const fechaBuild = hoy();
+  const urls = paginasPublicables(dirDist)
+    .map((archivo) => {
+      const html = fs.readFileSync(archivo, "utf8");
+      const publicada = html.match(/"datePublished":\s*"(\d{4}-\d{2}-\d{2})"/);
+      return {
+        loc: DOMINIO + rutaPublicada(archivo),
+        lastmod: publicada ? publicada[1] : fechaBuild,
+      };
+    })
+    .sort((a, b) => a.loc.localeCompare(b.loc));
+
+  const cuerpo = urls
+    .map((u) => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n  </url>`)
+    .join("\n");
+
+  fs.writeFileSync(
+    path.join(dirDist, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${cuerpo}\n</urlset>\n`,
+  );
+  return urls.length;
+}
+
+/**
+ * dist/robots.txt. En el sitio completo permite todo, incluidos los
+ * rastreadores de IA, y declara el sitemap. En mantenimiento bloquea todo.
+ */
+function escribirRobots(mantenimiento) {
+  let texto;
+  if (mantenimiento) {
+    texto = "User-agent: *\nDisallow: /\n";
+  } else {
+    const bloques = ["*", ...RASTREADORES_IA].map(
+      (agente) => `User-agent: ${agente}\nAllow: /\n`,
+    );
+    texto = `${bloques.join("\n")}\nSitemap: ${DOMINIO}/sitemap.xml\n`;
+  }
+  fs.writeFileSync(path.join(dirDist, "robots.txt"), texto);
+}
+
 /** Solo la carátula, con los archivos de assets/ que ella misma referencia. */
 function construirCaratula() {
   const origen = path.join(dirSrc, CARATULA);
@@ -149,6 +219,7 @@ function construirCaratula() {
     fs.copyFileSync(desde, hasta);
   }
 
+  escribirRobots(true);
   return recursos.size;
 }
 
@@ -170,14 +241,15 @@ function construirSitio() {
   });
 
   procesarHtml(dirDist);
+  escribirRobots(false);
+  return generarSitemap();
 }
 
 function construir() {
   fs.rmSync(dirDist, { recursive: true, force: true });
 
   if (MODO_MANTENIMIENTO) return construirCaratula();
-  construirSitio();
-  return null;
+  return construirSitio();
 }
 
 try {
@@ -187,12 +259,13 @@ try {
     console.log("──────────────────────────────────────────────");
     console.log("  MODO MANTENIMIENTO: solo la carátula");
     console.log(`  dist/index.html + ${recursos} archivo(s) de assets/`);
-    console.log("  El resto del sitio NO se publicó.");
+    console.log("  El resto del sitio NO se publicó. robots.txt bloquea todo.");
     console.log("  Se apaga en la constante MODO_MANTENIMIENTO de build.js.");
     console.log("──────────────────────────────────────────────");
   } else {
     console.log("──────────────────────────────────────────────");
     console.log("  SITIO COMPLETO");
+    console.log(`  sitemap.xml con ${recursos} página(s) · robots.txt abierto`);
     console.log("──────────────────────────────────────────────");
   }
 } catch (error) {

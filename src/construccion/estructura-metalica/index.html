@@ -4,33 +4,434 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Estructura metálica | Ultra Deck</title>
+    <title>Estructura metálica para naves industriales | Ultra Deck</title>
     <meta name="description" content="[PENDIENTE]" />
-    <link rel="canonical" href="https://ultradeck.com.mx/construccion/estructura-metalica/" />
+    <link
+      rel="canonical"
+      href="https://ultradeck.com.mx/construccion/estructura-metalica/"
+    />
     <link rel="icon" href="/assets/img/marca/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/img/marca/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Manrope:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,600;112.5,700&family=Manrope:wght@400;500;600&display=swap"
     />
     <link rel="stylesheet" href="/assets/css/vendor/lenis.css" />
     <link rel="stylesheet" href="/assets/css/tokens.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/patrones.css" />
     <link rel="stylesheet" href="/assets/css/interacciones.css" />
+    <link rel="stylesheet" href="/assets/css/paginas/servicio.css" />
     <script src="/assets/js/menu.js" defer></script>
     <script src="/assets/js/cotizacion.js" defer></script>
+    <script src="/assets/js/carrusel.js" defer></script>
     <script src="/assets/js/vendor/lenis.min.js" defer></script>
     <script src="/assets/js/scroll.js" defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Estructura metálica para naves industriales",
+        "serviceType": "Ingeniería, fabricación y montaje de estructura metálica",
+        "areaServed": { "@type": "Country", "name": "México" },
+        "provider": {
+          "@type": "Organization",
+          "name": "Ultra Deck",
+          "url": "https://ultradeck.com.mx/",
+          "telephone": "+528181900884",
+          "email": "contacto@ultradeck.com.mx",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Priv. Juan Escutia 115, Col. Niños Héroes",
+            "postalCode": "66052",
+            "addressLocality": "General Escobedo",
+            "addressRegion": "Nuevo León",
+            "addressCountry": "MX"
+          }
+        },
+        "url": "https://ultradeck.com.mx/construccion/estructura-metalica/"
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://ultradeck.com.mx/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Construcción",
+            "item": "https://ultradeck.com.mx/construccion/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Estructura metálica",
+            "item": "https://ultradeck.com.mx/construccion/estructura-metalica/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- [PENDIENTE: el JSON-LD de FAQPage se activa cuando las preguntas
+         frecuentes tengan texto real. Hoy son provisionales y publicarlas
+         como datos estructurados sería declarar contenido que no existe.] -->
   </head>
-  <body data-page="estructura-metalica">
+  <body data-page="estructura-metalica" data-plantilla="servicio">
     <!-- @include header -->
 
-    <main>
-      <h1>Estructura metálica</h1>
-      <p>[PENDIENTE: contenido]</p>
+    <main class="servicio">
+      <!-- Hero --------------------------------------------------------- -->
+      <section class="servicio__hero" aria-labelledby="servicio-titulo">
+        <div class="servicio__hero-foto">
+          <p class="ud-pendiente">[PENDIENTE: foto de estructura metálica en montaje]</p>
+        </div>
+
+        <div class="servicio__hero-contenido">
+          <nav class="ud-migas" aria-label="Migas de pan">
+            <ol class="ud-migas__lista">
+              <li><a href="/">Inicio</a></li>
+              <li><a href="/construccion/">Construcción</a></li>
+              <li><span aria-current="page">Estructura metálica</span></li>
+            </ol>
+          </nav>
+
+          <p class="ud-capsula">Construcción</p>
+          <h1 class="servicio__titulo" id="servicio-titulo">
+            Estructura metálica para naves industriales
+          </h1>
+          <p class="servicio__entrada">
+            Diseñamos, fabricamos y montamos la estructura de su nave, desde la ingeniería hasta el montaje en sitio.
+          </p>
+
+          <button
+            class="ud-boton ud-boton--flecha"
+            type="button"
+            data-abrir-cotizacion
+          >
+            Solicitar cotización
+            <span class="ud-boton__flecha" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Introducción ------------------------------------------------- -->
+      <section class="servicio__seccion" aria-labelledby="intro-titulo">
+        <h2 class="servicio__h2" id="intro-titulo">
+          [PENDIENTE: título de la introducción]
+        </h2>
+        <div class="servicio__texto">
+          <p>
+            [PENDIENTE: párrafo que explique el servicio, qué resuelve y en qué
+            consiste.]
+          </p>
+          <p>
+            [PENDIENTE: párrafo que explique para quién es y en qué tipo de nave
+            aplica.]
+          </p>
+        </div>
+      </section>
+
+      <!-- Qué incluye --------------------------------------------------- -->
+      <section class="servicio__seccion" aria-labelledby="incluye-titulo">
+        <p class="ud-capsula">Qué incluye</p>
+        <h2 class="servicio__h2" id="incluye-titulo">
+          Sistemas y productos de esta página
+        </h2>
+
+        <ul class="servicio__sistemas">
+          <li class="servicio__sistema">
+            <h3 class="servicio__sistema-nombre">Ingeniería y diseño</h3>
+            <p class="servicio__sistema-texto">Cálculo y planos de la estructura según el uso y los claros de su nave.</p>
+          </li>
+          <li class="servicio__sistema">
+            <h3 class="servicio__sistema-nombre">Fabricación</h3>
+            <p class="servicio__sistema-texto">Habilitado y armado de elementos estructurales.</p>
+          </li>
+          <li class="servicio__sistema">
+            <h3 class="servicio__sistema-nombre">Montaje en sitio</h3>
+            <p class="servicio__sistema-texto">Montaje con grúas certificadas y personal capacitado para trabajo en alturas.</p>
+          </li>
+          <li class="servicio__sistema">
+            <h3 class="servicio__sistema-nombre">Entrepisos y estructuras complementarias</h3>
+            <p class="servicio__sistema-texto">[PENDIENTE: confirmar alcance con el cliente]</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Diferenciadores ----------------------------------------------- -->
+      <section
+        class="servicio__seccion ud-seccion-clara"
+        aria-labelledby="ventajas-titulo"
+      >
+        <p class="ud-capsula">Por qué con nosotros</p>
+        <h2 class="servicio__h2" id="ventajas-titulo">
+          Lo que ponemos en cada obra
+        </h2>
+
+        <ul class="servicio__ventajas">
+          <li class="servicio__ventaja">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="9" width="18" height="10" rx="1" />
+              <path d="M7 9V6h10v3" />
+              <path d="M7 14h10" />
+            </svg>
+            <h3 class="servicio__ventaja-titulo">Maquinaria propia</h3>
+            <p class="servicio__ventaja-texto">
+              Acanaladoras KR-18 Black by Knudson y Zimmerman, guillotina y
+              foldeadoras CIDAN.
+            </p>
+          </li>
+          <li class="servicio__ventaja">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21V5" />
+              <path d="M6.5 10.5L12 5l5.5 5.5" />
+            </svg>
+            <h3 class="servicio__ventaja-titulo">Personal certificado</h3>
+            <p class="servicio__ventaja-texto">
+              DC-3 para trabajo en alturas.
+            </p>
+          </li>
+          <li class="servicio__ventaja">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8" />
+              <path d="M8.5 12l2.5 2.5 4.5-5" />
+            </svg>
+            <h3 class="servicio__ventaja-titulo">REPSE e ISO</h3>
+            <p class="servicio__ventaja-texto">[PENDIENTE: descripción]</p>
+          </li>
+          <li class="servicio__ventaja">
+            <svg class="servicio__icono" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8" />
+              <path d="M12 7v5l3 2" />
+            </svg>
+            <h3 class="servicio__ventaja-titulo">35 años de experiencia</h3>
+            <p class="servicio__ventaja-texto">En naves industriales.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Proceso -------------------------------------------------------- -->
+      <section class="servicio__seccion" aria-labelledby="proceso-titulo">
+        <p class="ud-capsula">Cómo trabajamos</p>
+        <h2 class="servicio__h2" id="proceso-titulo">
+          De la visita técnica a la entrega
+        </h2>
+
+        <ol class="ud-pasos">
+          <li class="ud-paso">
+            <p class="ud-paso__numero">01</p>
+            <h3 class="ud-paso__titulo">Visita técnica y diagnóstico</h3>
+          </li>
+          <li class="ud-paso">
+            <p class="ud-paso__numero">02</p>
+            <h3 class="ud-paso__titulo">Propuesta y cotización</h3>
+          </li>
+          <li class="ud-paso">
+            <p class="ud-paso__numero">03</p>
+            <h3 class="ud-paso__titulo">Fabricación e instalación</h3>
+          </li>
+          <li class="ud-paso">
+            <p class="ud-paso__numero">04</p>
+            <h3 class="ud-paso__titulo">Entrega y seguimiento</h3>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Proyectos ------------------------------------------------------ -->
+      <section
+        class="servicio__seccion ud-seccion-clara"
+        aria-labelledby="proyectos-titulo"
+      >
+        <div class="servicio__encabezado-carrusel">
+          <div>
+            <p class="ud-capsula">Proyectos</p>
+            <h2 class="servicio__h2" id="proyectos-titulo">
+              Naves donde ya está nuestro trabajo
+            </h2>
+          </div>
+
+          <div class="ud-carrusel__flechas">
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="anterior"
+              aria-controls="carrusel-proyectos-estructura-metalica"
+              aria-label="Proyecto anterior"
+              disabled
+            >
+              <span
+                class="ud-carrusel__icono ud-carrusel__icono--anterior"
+                aria-hidden="true"
+              ></span>
+            </button>
+            <button
+              class="ud-carrusel__boton"
+              type="button"
+              data-carrusel="siguiente"
+              aria-controls="carrusel-proyectos-estructura-metalica"
+              aria-label="Proyecto siguiente"
+              disabled
+            >
+              <span class="ud-carrusel__icono" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <ul
+          class="ud-carrusel servicio__proyectos"
+          id="carrusel-proyectos-estructura-metalica"
+        >
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Chrysler]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Chrysler</h3>
+            <p class="ud-proyecto__lugar">Ramos Arizpe y Derramadero, Coahuila</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Audi]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Audi</h3>
+            <p class="ud-proyecto__lugar">
+              Planta de proveedores, San José Chiapa, Puebla
+            </p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto CEDIS Costco]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">CEDIS Costco</h3>
+            <p class="ud-proyecto__lugar">Tepeji del Río, Hidalgo</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Daltile]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Daltile</h3>
+            <p class="ud-proyecto__lugar">Salamanca, Guanajuato</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Honda]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Honda</h3>
+            <p class="ud-proyecto__lugar">Celaya, Guanajuato</p>
+          </li>
+          <li class="ud-proyecto" tabindex="0">
+            <div class="ud-foto ud-foto--clara">
+              <p class="ud-pendiente">[PENDIENTE: foto Cuprum]</p>
+            </div>
+            <h3 class="ud-proyecto__nombre">Cuprum</h3>
+            <p class="ud-proyecto__lugar">Santa Catarina, Nuevo León</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Preguntas frecuentes ------------------------------------------- -->
+      <section class="servicio__seccion" aria-labelledby="preguntas-titulo">
+        <h2 class="servicio__h2" id="preguntas-titulo">Preguntas frecuentes</h2>
+
+        <div class="servicio__preguntas">
+          <details class="ud-pregunta">
+            <summary>¿Hacen el cálculo estructural o trabajan con el proyecto del cliente?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+          <details class="ud-pregunta">
+            <summary>¿Qué claros pueden cubrir con estructura metálica?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+          <details class="ud-pregunta">
+            <summary>¿Cuánto tarda la fabricación y el montaje de una nave?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+          <details class="ud-pregunta">
+            <summary>¿Trabajan en obra nueva y también en ampliaciones de naves existentes?</summary>
+            <p>[PENDIENTE: respuesta]</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Notas relacionadas ---------------------------------------------- -->
+      <section class="servicio__seccion" aria-labelledby="notas-titulo">
+        <p class="ud-capsula">Blog</p>
+        <h2 class="servicio__h2" id="notas-titulo">Notas relacionadas</h2>
+
+        <ul class="servicio__notas">
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/cada-cuanto-dar-mantenimiento-techo-industrial/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="ud-nota__cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="ud-nota__titulo">¿Cada cuánto dar mantenimiento a un techo industrial?</h3>
+                <span class="ud-nota__datos">
+                  <time datetime="2026-09-19">19 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/vida-util-techo-nave-industrial/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="ud-nota__cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="ud-nota__titulo">¿Cuánto dura el techo de lámina de una nave industrial y cómo alargar su vida útil?</h3>
+                <span class="ud-nota__datos">
+                  <time datetime="2026-09-08">8 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="ud-nota">
+            <a class="ud-nota__enlace" href="/blog/reparar-o-cambiar-techo-nave-industrial/">
+              <span class="ud-foto">
+                <span class="ud-pendiente">[PENDIENTE: portada]</span>
+              </span>
+              <span class="ud-nota__cuerpo">
+                <span class="ud-capsula">Mantenimiento</span>
+                <h3 class="ud-nota__titulo">¿Reparar o cambiar el techo de su nave industrial? Cuándo conviene un retechado</h3>
+                <span class="ud-nota__datos">
+                  <time datetime="2026-09-03">3 de septiembre de 2026</time>
+                  <span aria-hidden="true">·</span>
+                  <span>6 min de lectura</span>
+                </span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cierre ----------------------------------------------------------- -->
+      <aside class="ud-cta servicio__cierre">
+        <p class="ud-cta__titulo">¿Su nave necesita una revisión?</p>
+        <button
+          class="ud-boton ud-boton--flecha"
+          type="button"
+          data-abrir-cotizacion
+        >
+          Solicitar cotización
+          <span class="ud-boton__flecha" aria-hidden="true"></span>
+        </button>
+      </aside>
     </main>
 
     <!-- @include footer -->

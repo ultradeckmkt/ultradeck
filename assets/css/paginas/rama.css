@@ -1,0 +1,228 @@
+/**
+ * Páginas de rama (/construccion/ y /mantenimiento/).
+ * Fuera de toda capa y acotada a data-plantilla="rama".
+ * Lo compartido con el resto del sitio vive en patrones.css.
+ */
+
+[data-plantilla="rama"] .rama {
+  padding-bottom: var(--espacio-12);
+}
+
+[data-plantilla="rama"] .rama__seccion {
+  margin-top: var(--espacio-12);
+  padding-inline: var(--margen-seccion-amplio);
+}
+
+[data-plantilla="rama"] .rama__h2 {
+  margin-top: var(--espacio-4);
+  font-size: var(--titulo-subseccion);
+}
+
+/* Hero ------------------------------------------------------------------ */
+
+[data-plantilla="rama"] .rama__hero {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  min-height: 50svh;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: var(--espacio-8) var(--margen-seccion-amplio);
+}
+
+/* El marcador va arriba para no encimarse con el título. */
+[data-plantilla="rama"] .rama__hero-foto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  padding: var(--espacio-4);
+  place-items: start center;
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-plantilla="rama"] .rama__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
+}
+
+[data-plantilla="rama"] .rama__hero-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+[data-plantilla="rama"] .rama__hero-contenido .ud-capsula {
+  margin-top: var(--espacio-6);
+}
+
+[data-plantilla="rama"] .rama__titulo {
+  max-width: 16em;
+  margin-top: var(--espacio-4);
+}
+
+[data-plantilla="rama"] .rama__entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-lg);
+}
+
+[data-plantilla="rama"] .rama__hero-contenido .ud-boton {
+  margin-top: var(--espacio-6);
+}
+
+/* Introducción ----------------------------------------------------------- */
+
+[data-plantilla="rama"] .rama__texto {
+  max-width: 68ch;
+}
+
+[data-plantilla="rama"] .rama__texto p {
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+/* Servicios de la rama ---------------------------------------------------- */
+
+[data-plantilla="rama"] .rama__servicios {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="rama"] .rama__servicio-enlace {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-1);
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+[data-plantilla="rama"] .rama__servicio-enlace:focus-visible {
+  outline: 2px solid var(--color-guinda-claro);
+  outline-offset: 4px;
+}
+
+[data-plantilla="rama"] .rama__servicio-foto {
+  aspect-ratio: 16 / 10;
+  border-radius: 0;
+}
+
+[data-plantilla="rama"] .rama__servicio-cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--espacio-8) var(--espacio-6);
+}
+
+[data-plantilla="rama"] .rama__servicio-nombre {
+  font-size: var(--titulo-tarjeta);
+}
+
+[data-plantilla="rama"] .rama__servicio-texto {
+  display: block;
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* "Ver más" siempre al fondo de la tarjeta. */
+[data-plantilla="rama"] .rama__servicio-mas {
+  display: inline-flex;
+  min-height: var(--area-toque);
+  align-items: center;
+  gap: var(--espacio-3);
+  margin-top: auto;
+  padding-top: var(--espacio-6);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-titulo);
+}
+
+[data-plantilla="rama"] .rama__servicio-enlace:hover .rama__servicio-nombre,
+[data-plantilla="rama"] .rama__servicio-enlace:focus-visible .rama__servicio-nombre {
+  color: var(--color-guinda-claro);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-plantilla="rama"] .rama__servicio-mas .ud-boton__flecha {
+    transition: transform var(--transicion);
+  }
+
+  [data-plantilla="rama"] .rama__servicio-enlace:hover .ud-boton__flecha,
+  [data-plantilla="rama"] .rama__servicio-enlace:focus-visible .ud-boton__flecha {
+    transform: translateX(var(--espacio-1));
+  }
+}
+
+/* Proyectos y confianza ---------------------------------------------------- */
+
+[data-plantilla="rama"] .ud-seccion-clara {
+  padding-block: var(--espacio-12);
+}
+
+[data-plantilla="rama"] .rama__encabezado-carrusel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+}
+
+[data-plantilla="rama"] .rama__encabezado-carrusel .ud-carrusel__flechas {
+  margin-left: auto;
+}
+
+[data-plantilla="rama"] .rama__proyectos {
+  grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+  margin-inline: calc(var(--margen-seccion-amplio) * -1);
+  padding-inline: var(--margen-seccion-amplio);
+  scroll-padding-left: var(--margen-seccion-amplio);
+}
+
+[data-plantilla="rama"] .rama__insignias {
+  margin-top: var(--espacio-8);
+}
+
+/* Preguntas y cierre -------------------------------------------------------- */
+
+[data-plantilla="rama"] .rama__preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="rama"] .rama__cierre {
+  margin-top: var(--espacio-12);
+  margin-inline: var(--margen-seccion-amplio);
+}
+
+/* Tablet --------------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  [data-plantilla="rama"] .rama__servicios {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Escritorio ------------------------------------------------------------------ */
+
+@media (min-width: 64rem) {
+  [data-plantilla="rama"] .ud-insignias {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  [data-plantilla="rama"] .rama__proyectos {
+    grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
+  }
+}

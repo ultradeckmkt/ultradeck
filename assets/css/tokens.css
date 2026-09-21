@@ -32,17 +32,26 @@
   --color-fondo-hover: color-mix(in srgb, var(--color-blanco) 6%, transparent);
   --color-velo: color-mix(in srgb, var(--color-fondo) 78%, transparent);
 
+  /* Franja clara en Medium Seashell (Servicios del home): el mismo valor que
+     el texto sobre oscuro, con nombre de fondo. Tarjetas blancas encima. */
+  --color-fondo-claro: var(--color-texto);
+  --color-primario-suave: color-mix(in srgb, var(--color-primario) 72%, var(--color-blanco));
+  --color-linea-clara: color-mix(in srgb, var(--color-primario) 14%, transparent);
+
   /* Header translúcido: deja ver el contenido que pasa por debajo. */
   --color-header: color-mix(in srgb, var(--color-fondo) 72%, transparent);
   --desenfoque-header: blur(14px);
 
   /* Tipografía
-     Archivo SemiBold en títulos, cifras, botones, menú y etiquetas.
+     Títulos (H1, H2, H3 y títulos de tarjeta): Archivo Bold semi expandida.
+     Cifras, botones, menú y etiquetas: Archivo SemiBold de ancho normal.
      Manrope en párrafos y textos largos. */
   --fuente-titulos: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
   --fuente-texto: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --peso-titulo: 600;
+  --peso-encabezado: 700;
+  --ancho-encabezado: 112.5%;
   --peso-normal: 400;
   --peso-medio: 500;
   --peso-fuerte: 600;
@@ -51,7 +60,15 @@
   --texto-sm: 0.875rem;
   --texto-md: 1rem;
   --texto-lg: 1.125rem;
-  --texto-xl: clamp(2rem, 1.3rem + 3vw, 3.5rem);
+
+  /* Escala de títulos. Para subir o bajar todos los títulos se ajusta aquí,
+     no en cada hoja. */
+  --titulo-hero: clamp(1.75rem, 1.15rem + 2.65vw, 3.1rem);
+  --titulo-seccion: clamp(1.75rem, 1.2rem + 2.25vw, 2.8rem);
+  --titulo-subseccion: clamp(1.55rem, 1.2rem + 1.2vw, 2.25rem);
+  --titulo-bloque: clamp(1.55rem, 1.2rem + 1.2vw, 2rem);
+  --titulo-tarjeta: 1.125rem;
+  --titulo-tarjeta-sm: 1rem;
 
   --interlinea-apretada: 1.05;
   --interlinea-normal: 1.65;
@@ -84,12 +101,15 @@
      12rem para que no se dispare en monitores grandes. */
   --margen-seccion-amplio: clamp(3rem, 10.4vw, 12rem);
   --ancho-texto: 34rem;
+  --ancho-contenido: 44rem;
   --ancho-modal: 58rem;
   --alto-franja-modal: 9rem;
   --ancho-submenu: 15rem;
   --area-toque: 2.75rem;
   --altura-header: 4.5rem;
   --altura-logo: 2rem;
+  --altura-sello: 1.0625rem;
+  --icono-grande: 2.5rem;
   --borde: 1px;
 
   /* Radios: todo va redondeado */
@@ -103,6 +123,9 @@
   --sombra-modal: 0 24px 60px color-mix(in srgb, var(--color-negro) 55%, transparent);
   --z-header: 100;
   --transicion: 150ms ease;
+  --opacidad-atenuada: 0.7;
+  /* Vuelta completa de la barra de clientes del home: lenta a propósito. */
+  --duracion-clientes: 60s;
 }
 
 @media (min-width: 64rem) {

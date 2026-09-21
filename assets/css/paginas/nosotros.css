@@ -1,0 +1,252 @@
+/**
+ * Página Nosotros. Fuera de toda capa y acotada a data-plantilla="nosotros".
+ * Lo compartido con el resto del sitio vive en patrones.css.
+ */
+
+[data-plantilla="nosotros"] .nos {
+  padding-bottom: var(--espacio-12);
+}
+
+[data-plantilla="nosotros"] .nos__seccion {
+  margin-top: var(--espacio-12);
+  padding-inline: var(--margen-seccion-amplio);
+}
+
+[data-plantilla="nosotros"] .nos__h2 {
+  margin-top: var(--espacio-4);
+  font-size: var(--titulo-subseccion);
+}
+
+[data-plantilla="nosotros"] .nos__texto {
+  max-width: 68ch;
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+/* Hero ------------------------------------------------------------------ */
+
+[data-plantilla="nosotros"] .nos__hero {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  min-height: 50svh;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: var(--espacio-8) var(--margen-seccion-amplio);
+}
+
+/* El marcador va arriba para no encimarse con el título. */
+[data-plantilla="nosotros"] .nos__hero-foto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  padding: var(--espacio-4);
+  place-items: start center;
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-plantilla="nosotros"] .nos__hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
+}
+
+[data-plantilla="nosotros"] .nos__hero-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+[data-plantilla="nosotros"] .nos__hero-contenido .ud-capsula {
+  margin-top: var(--espacio-6);
+}
+
+[data-plantilla="nosotros"] .nos__titulo {
+  max-width: 14em;
+  margin-top: var(--espacio-4);
+}
+
+[data-plantilla="nosotros"] .nos__entrada {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-lg);
+}
+
+/* Línea de tiempo --------------------------------------------------------- */
+
+[data-plantilla="nosotros"] .nos__linea {
+  display: grid;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="nosotros"] .nos__hito {
+  padding-top: var(--espacio-4);
+  border-top: 2px solid var(--color-guinda-vivo);
+}
+
+[data-plantilla="nosotros"] .nos__hito-anio {
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-lg);
+  font-weight: var(--peso-titulo);
+}
+
+[data-plantilla="nosotros"] .nos__hito-texto {
+  margin-top: var(--espacio-2);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* Misión y visión ---------------------------------------------------------- */
+
+[data-plantilla="nosotros"] .nos__proposito {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="nosotros"] .nos__tarjeta {
+  padding: var(--espacio-8) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea-fuerte);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-2);
+}
+
+[data-plantilla="nosotros"] .nos__tarjeta-titulo {
+  font-size: var(--titulo-tarjeta);
+}
+
+[data-plantilla="nosotros"] .nos__tarjeta-texto {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+}
+
+/* Valores ------------------------------------------------------------------ */
+
+[data-plantilla="nosotros"] .ud-seccion-clara {
+  padding-block: var(--espacio-12);
+}
+
+[data-plantilla="nosotros"] .nos__valores {
+  display: grid;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="nosotros"] .nos__valor {
+  padding: var(--espacio-4) 0 var(--espacio-4) var(--espacio-6);
+  border-left: 2px solid var(--color-guinda);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-md);
+  font-weight: var(--peso-titulo);
+}
+
+/* Maquinaria --------------------------------------------------------------- */
+
+[data-plantilla="nosotros"] .nos__maquinas {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="nosotros"] .nos__maquina {
+  padding: var(--espacio-6);
+  border: var(--borde) solid var(--color-linea);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-superficie-1);
+}
+
+[data-plantilla="nosotros"] .nos__maquina-nombre {
+  font-size: var(--titulo-tarjeta-sm);
+}
+
+[data-plantilla="nosotros"] .nos__maquina-texto {
+  margin-top: var(--espacio-3);
+  color: var(--color-texto-suave);
+  font-size: var(--texto-sm);
+}
+
+[data-plantilla="nosotros"] .nos__taller {
+  min-height: clamp(12rem, 30vw, 22rem);
+  margin-top: var(--espacio-6);
+}
+
+/* Certificaciones y carrusel ------------------------------------------------ */
+
+[data-plantilla="nosotros"] .nos__insignias {
+  margin-top: var(--espacio-8);
+}
+
+[data-plantilla="nosotros"] .nos__encabezado-carrusel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--espacio-4);
+}
+
+[data-plantilla="nosotros"] .nos__encabezado-carrusel .ud-carrusel__flechas {
+  margin-left: auto;
+}
+
+[data-plantilla="nosotros"] .nos__proyectos {
+  grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-8);
+  margin-inline: calc(var(--margen-seccion-amplio) * -1);
+  padding-inline: var(--margen-seccion-amplio);
+  scroll-padding-left: var(--margen-seccion-amplio);
+}
+
+[data-plantilla="nosotros"] .nos__cierre {
+  margin-top: var(--espacio-12);
+  margin-inline: var(--margen-seccion-amplio);
+}
+
+/* Tablet --------------------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  [data-plantilla="nosotros"] .nos__linea {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-plantilla="nosotros"] .nos__proposito {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-plantilla="nosotros"] .nos__valores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-plantilla="nosotros"] .nos__maquinas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Escritorio ------------------------------------------------------------------ */
+
+@media (min-width: 64rem) {
+  [data-plantilla="nosotros"] .nos__linea {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  [data-plantilla="nosotros"] .nos__valores {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  [data-plantilla="nosotros"] .nos__maquinas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  [data-plantilla="nosotros"] .ud-insignias {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  [data-plantilla="nosotros"] .nos__proyectos {
+    grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
+  }
+}

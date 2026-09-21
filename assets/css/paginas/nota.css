@@ -8,34 +8,6 @@
   padding: var(--espacio-8) var(--margen-seccion-amplio) var(--espacio-12);
 }
 
-/* Migas de pan --------------------------------------------------------- */
-
-[data-plantilla="nota"] .nota__migas {
-  font-size: var(--texto-sm);
-}
-
-[data-plantilla="nota"] .nota__migas-lista {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--espacio-2);
-  color: var(--color-texto-suave);
-}
-
-[data-plantilla="nota"] .nota__migas-lista li + li::before {
-  content: "›";
-  margin-right: var(--espacio-2);
-}
-
-[data-plantilla="nota"] .nota__migas-lista a {
-  color: var(--color-texto-suave);
-  text-decoration: none;
-}
-
-[data-plantilla="nota"] .nota__migas-lista a:hover,
-[data-plantilla="nota"] .nota__migas-lista a:focus-visible {
-  color: var(--color-guinda-claro);
-}
-
 /* Encabezado ----------------------------------------------------------- */
 
 [data-plantilla="nota"] .nota__encabezado {
@@ -45,7 +17,7 @@
 
 [data-plantilla="nota"] .nota__titulo {
   margin-top: var(--espacio-4);
-  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  font-size: var(--titulo-seccion);
 }
 
 [data-plantilla="nota"] .nota__datos {
@@ -78,15 +50,6 @@
   min-height: 12rem;
 }
 
-[data-plantilla="nota"] .nota__pendiente {
-  color: var(--color-texto-suave);
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-xs);
-  letter-spacing: var(--espaciado-letra-amplio);
-  text-align: center;
-  text-transform: uppercase;
-}
-
 /* Cuerpo --------------------------------------------------------------- */
 
 /* minmax(0, 1fr) y no una columna automática: si no, el ancho mínimo de la
@@ -98,9 +61,11 @@
   margin-top: var(--espacio-12);
 }
 
-/* Medida de lectura: ~68 caracteres por línea. */
+/* ~68 caracteres reales por línea en escritorio, igual que el aviso de
+   privacidad. Con 68ch salían ~81: la "ch" de Manrope es más ancha que el
+   promedio de sus letras. */
 [data-plantilla="nota"] .nota__cuerpo {
-  max-width: 68ch;
+  max-width: var(--ancho-texto);
 }
 
 [data-plantilla="nota"] .nota__entrada {
@@ -110,13 +75,13 @@
 
 [data-plantilla="nota"] .nota__cuerpo h2 {
   margin-top: var(--espacio-12);
-  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  font-size: var(--titulo-bloque);
   scroll-margin-top: calc(var(--altura-header) + var(--margen-lateral) * 3);
 }
 
 [data-plantilla="nota"] .nota__cuerpo h3 {
   margin-top: var(--espacio-8);
-  font-size: var(--texto-lg);
+  font-size: var(--titulo-tarjeta);
 }
 
 [data-plantilla="nota"] .nota__cuerpo p {
@@ -152,6 +117,13 @@
   font-size: var(--texto-lg);
   font-weight: var(--peso-titulo);
   line-height: var(--interlinea-normal);
+}
+
+/* Enlace a la página pilar, al final del cuerpo: más grande y separado que el
+   enlace con flecha del patrón. */
+[data-plantilla="nota"] .nota__cuerpo > .ud-enlace-flecha {
+  margin-top: var(--espacio-8);
+  font-size: var(--texto-md);
 }
 
 [data-plantilla="nota"] .nota__figura {
@@ -258,27 +230,6 @@
   margin-top: var(--espacio-12);
 }
 
-/* Enlace a la página pilar --------------------------------------------- */
-
-[data-plantilla="nota"] .nota__pilar {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--espacio-3);
-  margin-top: var(--espacio-8);
-  color: var(--color-texto);
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-md);
-  font-weight: var(--peso-titulo);
-  text-decoration: none;
-}
-
-[data-plantilla="nota"] .nota__pilar:hover,
-[data-plantilla="nota"] .nota__pilar:focus-visible {
-  color: var(--color-guinda-claro);
-}
-
-/* Preguntas frecuentes -------------------------------------------------- */
-
 [data-plantilla="nota"] .nota__preguntas {
   display: flex;
   flex-direction: column;
@@ -286,24 +237,8 @@
   margin-top: var(--espacio-6);
 }
 
-[data-plantilla="nota"] .nota__pregunta {
-  padding: var(--espacio-4) var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
-  border-radius: var(--radio-md);
-  background-color: var(--color-superficie-1);
-}
-
-[data-plantilla="nota"] .nota__pregunta summary {
-  color: var(--color-texto);
-  cursor: pointer;
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-md);
-  font-weight: var(--peso-titulo);
-}
-
-[data-plantilla="nota"] .nota__pregunta p {
+[data-plantilla="nota"] .ud-pregunta p {
   margin-top: var(--espacio-3);
-  color: var(--color-texto-suave);
 }
 
 /* Notas relacionadas ---------------------------------------------------- */
@@ -315,7 +250,7 @@
 }
 
 [data-plantilla="nota"] .nota__relacionadas-titulo {
-  font-size: var(--texto-lg);
+  font-size: var(--titulo-tarjeta);
 }
 
 [data-plantilla="nota"] .nota__relacionadas-lista {
@@ -339,8 +274,10 @@
   display: block;
   margin-top: var(--espacio-4);
   font-family: var(--fuente-titulos);
-  font-size: var(--texto-md);
-  font-weight: var(--peso-titulo);
+  font-size: var(--titulo-tarjeta-sm);
+  font-weight: var(--peso-encabezado);
+  font-stretch: var(--ancho-encabezado);
+  text-wrap: balance;
 }
 
 /* Escritorio ------------------------------------------------------------ */

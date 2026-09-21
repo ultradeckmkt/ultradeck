@@ -17,7 +17,7 @@
 
 [data-page="inicio"] .inicio__titulo {
   margin-top: var(--espacio-4);
-  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  font-size: var(--titulo-seccion);
 }
 
 [data-page="inicio"] .inicio__resalte {
@@ -62,59 +62,6 @@
 [data-page="inicio"] .inicio__boton-secundario:focus-visible {
   background-color: var(--color-fondo-hover);
   color: var(--color-texto);
-}
-
-[data-page="inicio"] .inicio__enlace-flecha {
-  display: inline-flex;
-  min-height: var(--area-toque);
-  align-items: center;
-  gap: var(--espacio-3);
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  color: var(--color-texto);
-  cursor: pointer;
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-sm);
-  font-weight: var(--peso-titulo);
-  text-decoration: none;
-}
-
-[data-page="inicio"] .inicio__enlace-flecha:hover,
-[data-page="inicio"] .inicio__enlace-flecha:focus-visible {
-  color: var(--color-guinda-claro);
-}
-
-/* El círculo del patrón se invierte cuando va suelto, sin pastilla. */
-[data-page="inicio"] .inicio__enlace-flecha .ud-boton__flecha {
-  background-color: var(--color-guinda-vivo);
-  color: var(--color-texto);
-}
-
-/* Huecos de foto ------------------------------------------------------ */
-
-[data-page="inicio"] .inicio__foto {
-  display: grid;
-  min-height: 14rem;
-  place-items: center;
-  padding: var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
-  border-radius: var(--radio-lg);
-  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
-}
-
-[data-page="inicio"] .inicio__foto--clara {
-  border-color: color-mix(in srgb, var(--color-primario) 22%, transparent);
-  background-color: color-mix(in srgb, var(--color-primario) 12%, var(--color-apoyo));
-}
-
-[data-page="inicio"] .inicio__pendiente {
-  color: var(--color-texto-suave);
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-xs);
-  letter-spacing: var(--espaciado-letra-amplio);
-  text-align: center;
-  text-transform: uppercase;
 }
 
 /* Hero ---------------------------------------------------------------- */
@@ -177,7 +124,7 @@
 /* La medida corta el título en dos líneas parejas en escritorio:
    "Construimos y mantenemos" / "techos para naves industriales". */
 [data-page="inicio"] .inicio__hero-titulo {
-  max-width: 15em;
+  max-width: 16em;
   margin-top: var(--espacio-4);
 }
 
@@ -188,132 +135,243 @@
   font-size: var(--texto-lg);
 }
 
-[data-page="inicio"] .inicio__confianza {
-  margin-top: var(--espacio-6);
-  color: var(--color-texto-suave);
-  font-size: var(--texto-sm);
-}
-
 /* Ramas y tarjetas ---------------------------------------------------- */
 
-/* Servicios: cuadrícula de tarjetas -------------------------------------- */
+/* Clientes ------------------------------------------------------------ */
 
-/* Encabezado centrado; las tarjetas conservan su texto a la izquierda. */
-[data-page="inicio"] .inicio__servicios-encabezado {
-  text-align: center;
+/* La tarjeta se alinea con el margen amplio de Nosotros: sus bordes quedan a
+   plomo con las tarjetas de cifras. Descuenta el margen del <main>, que ya
+   la separa del borde. La pista corre de borde a borde de la tarjeta y se
+   desvanece en los dos extremos. */
+[data-page="inicio"] .inicio__clientes {
+  /* Contenedor de consulta: los marcadores se miden contra el ancho de la
+     tarjeta (cqi), no contra la ventana. */
+  container-type: inline-size;
+  overflow: hidden;
+  /* Más angosta que las cifras y centrada respecto a ellas: parte del margen
+     amplio (sin el del <main>, que ya la separa) y entra un poco más. */
+  margin-inline: calc(var(--margen-seccion-amplio) - var(--margen-lateral) + var(--espacio-6));
+  padding-block: var(--espacio-12);
+  border-radius: var(--radio-lg);
+  background-color: var(--color-blanco);
 }
+
+/* H2 por semántica, pero con el texto de una etiqueta cápsula y sin la
+   cápsula: deshace el peso, el ancho y el espaciado de los títulos. */
+[data-page="inicio"] .inicio__clientes-titulo {
+  margin-bottom: var(--espacio-6);
+  padding-inline: var(--espacio-6);
+  color: var(--color-primario-suave);
+  font-size: var(--texto-xs);
+  font-weight: var(--peso-titulo);
+  font-stretch: normal;
+  letter-spacing: var(--espaciado-letra-amplio);
+  line-height: var(--interlinea-normal);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* El desvanecido va en un contenedor quieto, no en la pista que se mueve:
+   si fuera en la pista, se desplazaría con ella. Es una máscara: los
+   extremos se vuelven transparentes y dejan ver el fondo de la tarjeta, así
+   que se funden con el color que tenga la tarjeta. */
+[data-page="inicio"] .inicio__clientes-marco {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-negro) var(--espacio-16),
+    var(--color-negro) calc(100% - var(--espacio-16)),
+    transparent
+  );
+}
+
+[data-page="inicio"] .inicio__clientes-pista {
+  display: flex;
+  width: max-content;
+}
+
+/* Las dos listas son idénticas y cada una deja al final el mismo hueco que
+   hay entre pastillas: al recorrer la mitad, la segunda ocupa el lugar exacto
+   de la primera y el ciclo no se nota. */
+[data-page="inicio"] .inicio__clientes-lista {
+  display: flex;
+  flex: none;
+  gap: var(--espacio-6);
+  padding-right: var(--espacio-6);
+}
+
+/* Unas dos y media marcas visibles en celular y seis en escritorio: el ancho
+   mínimo es la fracción de la tarjeta menos el hueco. Una marca de nombre
+   largo crece sobre ese mínimo, así que a veces caben menos, nunca más. */
+[data-page="inicio"] .inicio__cliente {
+  flex: none;
+  min-width: calc(100cqi / 2.5 - var(--espacio-6));
+  padding: var(--espacio-3) var(--espacio-6);
+  border: var(--borde) solid var(--color-linea-clara);
+  border-radius: var(--radio-pildora);
+  color: var(--color-primario);
+  font-family: var(--fuente-titulos);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-titulo);
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (min-width: 64rem) {
+  [data-page="inicio"] .inicio__clientes-lista {
+    gap: var(--espacio-8);
+    padding-right: var(--espacio-8);
+  }
+
+  [data-page="inicio"] .inicio__cliente {
+    min-width: calc(100cqi / 6 - var(--espacio-8));
+  }
+}
+
+/* Solo se mueve si el usuario no pidió menos movimiento; si lo pidió, queda
+   quieta. Se detiene al pasar el cursor. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-page="inicio"] .inicio__clientes-pista {
+    animation: inicio-clientes var(--duracion-clientes) linear infinite;
+  }
+
+  [data-page="inicio"] .inicio__clientes:hover .inicio__clientes-pista {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes inicio-clientes {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Servicios: carrusel de tarjetas con ícono -------------------------------- */
 
 [data-page="inicio"] .inicio__servicios-encabezado .inicio__titulo {
   max-width: 16em;
-  margin-inline: auto;
 }
 
 [data-page="inicio"] .inicio__servicios-entrada {
   max-width: var(--ancho-texto);
   margin-top: var(--espacio-4);
-  margin-inline: auto;
-  color: var(--color-texto-suave);
+  color: var(--color-primario);
 }
 
+/* Sobre fondo claro, cápsula y flechas en azul de marca, como en Proyectos. */
+[data-page="inicio"] .inicio__seccion--servicios .ud-capsula {
+  border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__seccion--servicios .ud-carrusel__boton {
+  border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__seccion--servicios .ud-carrusel__boton:hover:not([disabled]),
+[data-page="inicio"] .inicio__seccion--servicios .ud-carrusel__boton:focus-visible {
+  background-color: color-mix(in srgb, var(--color-blanco) 45%, var(--color-apoyo));
+}
+
+/* La pista sale hasta los bordes de la franja (margen negativo igual a su
+   relleno) y lo recupera por dentro: en reposo la primera tarjeta queda a
+   plomo con el título y al final la última deja el mismo espacio a la
+   derecha. En una sola fila, todas las tarjetas miden lo mismo.
+   Celular: una tarjeta y un asomo. */
 [data-page="inicio"] .inicio__servicios {
-  display: grid;
-  /* Filas iguales: todas las tarjetas miden lo mismo. */
-  grid-auto-rows: 1fr;
+  grid-auto-columns: calc((100% - var(--espacio-4)) / 1.25);
   gap: var(--espacio-4);
   margin-top: var(--espacio-8);
+  margin-inline: calc(var(--margen-seccion-amplio) * -1);
+  padding-inline: var(--margen-seccion-amplio);
+  scroll-padding-left: var(--margen-seccion-amplio);
 }
 
 [data-page="inicio"] .inicio__servicio {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  border: var(--borde) solid var(--color-linea);
+  border: var(--borde) solid var(--color-linea-clara);
   border-radius: var(--radio-lg);
-  background-color: var(--color-superficie-1);
-}
-
-[data-page="inicio"] .inicio__servicio-foto {
-  display: grid;
-  aspect-ratio: 4 / 3;
-  place-items: center;
-  padding: var(--espacio-4);
-  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+  background-color: var(--color-blanco);
 }
 
 [data-page="inicio"] .inicio__servicio-cuerpo {
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: var(--espacio-6) var(--espacio-4) var(--espacio-4);
+  align-items: flex-start;
+  padding: var(--espacio-6);
+}
+
+[data-page="inicio"] .inicio__servicio-icono {
+  width: var(--icono-grande);
+  height: var(--icono-grande);
+  flex: none;
+  fill: none;
+  stroke: var(--color-guinda);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
 }
 
 [data-page="inicio"] .inicio__servicio-nombre {
-  font-size: var(--texto-md);
+  margin-top: var(--espacio-6);
+  color: var(--color-primario);
+  font-size: var(--titulo-tarjeta-sm);
 }
 
 [data-page="inicio"] .inicio__servicio-linea {
   margin-top: var(--espacio-2);
-  color: var(--color-texto-suave);
+  color: var(--color-primario-suave);
   font-size: var(--texto-sm);
 }
 
-/* Siempre al fondo de la tarjeta, aunque el texto sea más corto. */
-[data-page="inicio"] .inicio__servicio .inicio__enlace-flecha {
+/* "Ver más" al fondo de la tarjeta en todas, aunque el título ocupe dos
+   líneas: con tarjetas del mismo alto, quedan alineados. */
+[data-page="inicio"] .inicio__servicio .ud-enlace-flecha {
   margin-top: auto;
   padding-top: var(--espacio-4);
+  color: var(--color-guinda);
 }
 
-/* Tarjeta 12: llamada a la acción, sin foto y en guinda vivo. */
+[data-page="inicio"] .inicio__servicio .ud-enlace-flecha:hover,
+[data-page="inicio"] .inicio__servicio .ud-enlace-flecha:focus-visible {
+  color: var(--color-primario);
+}
+
+[data-page="inicio"] .inicio__servicio .ud-boton__flecha {
+  background-color: var(--color-guinda);
+  color: var(--color-blanco);
+}
+
+/* Tarjeta 12: llamada a la acción, sin ícono y en guinda vivo. */
 [data-page="inicio"] .inicio__servicio--cta {
   border-color: transparent;
   background-color: var(--color-guinda-vivo);
 }
 
-[data-page="inicio"] .inicio__servicio--cta .inicio__servicio-cuerpo {
-  justify-content: center;
-  padding: var(--espacio-8) var(--espacio-6);
+/* La franja pinta el texto de azul; la tarjeta guinda lo mantiene claro. */
+[data-page="inicio"] .inicio__servicio--cta .inicio__servicio-nombre {
+  margin-top: 0;
+  color: var(--color-texto);
 }
 
 [data-page="inicio"] .inicio__servicio--cta .inicio__servicio-linea {
   color: color-mix(in srgb, var(--color-texto) 88%, var(--color-guinda-vivo));
 }
 
-/* Sobre guinda, el círculo se queda claro: invertirlo lo haría desaparecer. */
-[data-page="inicio"] .inicio__servicio--cta .inicio__enlace-flecha:hover,
-[data-page="inicio"] .inicio__servicio--cta .inicio__enlace-flecha:focus-visible {
+/* Sobre guinda, texto y círculo claros, también al pasar el cursor: el
+   patrón los pinta de guinda y aquí desaparecerían. */
+[data-page="inicio"] .inicio__servicio--cta .ud-enlace-flecha,
+[data-page="inicio"] .inicio__servicio--cta .ud-enlace-flecha:hover,
+[data-page="inicio"] .inicio__servicio--cta .ud-enlace-flecha:focus-visible {
   color: var(--color-texto);
 }
 
-[data-page="inicio"] .inicio__servicio--cta:hover .ud-boton__flecha,
-[data-page="inicio"] .inicio__servicio--cta:focus-within .ud-boton__flecha {
+[data-page="inicio"] .inicio__servicio--cta .ud-boton__flecha {
   background-color: var(--color-texto);
   color: var(--color-guinda-vivo);
-}
-
-[data-page="inicio"] .inicio__mostrar-mas {
-  display: flex;
-  width: fit-content;
-  margin-top: var(--espacio-6);
-  margin-inline: auto;
-}
-
-/* Al pasar el cursor o al enfocar el enlace: la imagen se acerca y la flecha
-   se llena de guinda vivo. */
-@media (prefers-reduced-motion: no-preference) {
-  [data-page="inicio"] .inicio__servicio-foto {
-    transition: transform var(--transicion);
-  }
-
-  [data-page="inicio"] .inicio__servicio:hover .inicio__servicio-foto,
-  [data-page="inicio"] .inicio__servicio:focus-within .inicio__servicio-foto {
-    transform: scale(1.03);
-  }
-}
-
-[data-page="inicio"] .inicio__servicio:hover .ud-boton__flecha,
-[data-page="inicio"] .inicio__servicio:focus-within .ud-boton__flecha {
-  background-color: var(--color-guinda-vivo);
-  color: var(--color-texto);
 }
 
 /* Nosotros ------------------------------------------------------------ */
@@ -331,9 +389,37 @@
   padding-inline: var(--margen-seccion-amplio);
 }
 
+/* Servicios es una franja clara de borde a borde: --con-margen ya la saca
+   del margen del <main> y le da el margen amplio por dentro; aquí solo el
+   fondo Medium Seashell, el texto en azul de marca y el relleno vertical. */
+[data-page="inicio"] .inicio__seccion--servicios {
+  padding-block: var(--espacio-16);
+  background-color: var(--color-fondo-claro);
+  color: var(--color-primario);
+}
+
 [data-page="inicio"] .inicio__nosotros {
   display: grid;
-  gap: var(--espacio-8);
+  gap: var(--espacio-12);
+}
+
+/* Nosotros + cifras respira más que el resto del home: más separación del
+   hero y entre sus propios bloques. */
+[data-page="inicio"] .inicio__seccion--nosotros {
+  margin-top: var(--espacio-16);
+}
+
+[data-page="inicio"] .inicio__nosotros .inicio__texto {
+  margin-top: var(--espacio-8);
+}
+
+[data-page="inicio"] .inicio__nosotros .inicio__acciones {
+  margin-top: var(--espacio-8);
+}
+
+/* Botones y cifras, bien separados: más que la distancia entre secciones. */
+[data-page="inicio"] .inicio__seccion--nosotros .ud-cifras {
+  margin-top: var(--espacio-16);
 }
 
 /* La medida parte el título en dos líneas parejas:
@@ -401,43 +487,6 @@
   font-weight: var(--peso-normal);
 }
 
-/* Insignias de certificación ------------------------------------------ */
-
-[data-page="inicio"] .inicio__insignias {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--espacio-4) 0;
-}
-
-[data-page="inicio"] .inicio__insignia {
-  display: flex;
-  align-items: center;
-  gap: var(--espacio-3);
-  padding: var(--espacio-1) var(--espacio-4);
-  border-left: var(--borde) solid var(--color-linea-fuerte);
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-xs);
-  font-weight: var(--peso-titulo);
-  letter-spacing: var(--espaciado-letra-amplio);
-  text-transform: uppercase;
-}
-
-[data-page="inicio"] .inicio__insignia:nth-child(odd) {
-  padding-left: 0;
-  border-left: 0;
-}
-
-[data-page="inicio"] .inicio__insignia-icono {
-  width: 1.5rem;
-  height: 1.5rem;
-  flex: none;
-  fill: none;
-  stroke: var(--color-guinda-claro);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-}
-
 /* Flecha larga horizontal, al estilo de la referencia. */
 [data-page="inicio"] .inicio__flecha-larga {
   position: relative;
@@ -459,73 +508,37 @@
   transform: translateY(-50%) rotate(45deg);
 }
 
-/* Cifras -------------------------------------------------------------- */
+/* Sección clara: el patrón está en patrones.css; aquí solo el relleno que
+   usa el home y el color del enlace con flecha. --------------------------- */
 
-[data-page="inicio"] .inicio__cifras {
-  display: grid;
-  /* minmax(0, 1fr) y no 1fr: si no, la etiqueta más larga ensancha su columna
-     y las cuatro tarjetas dejan de medir igual. */
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--espacio-4);
-  margin-top: var(--espacio-12);
-}
-
-[data-page="inicio"] .inicio__cifra {
-  padding: var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
-  border-radius: var(--radio-md);
-  background-color: var(--color-superficie-1);
-}
-
-[data-page="inicio"] .inicio__cifra-numero {
-  font-family: var(--fuente-titulos);
-  /* Con las columnas ya parejas, la cifra más ancha ("100%") no cabía en
-     celular. Baja solo en pantallas chicas: de ~975px en adelante sigue
-     topada en 4rem, igual que antes. */
-  font-size: clamp(1.9rem, 0.6rem + 5.6vw, 4rem);
-  font-weight: var(--peso-titulo);
-  letter-spacing: var(--espaciado-letra-titulo);
-  line-height: var(--interlinea-apretada);
-}
-
-[data-page="inicio"] .inicio__cifra-etiqueta {
-  margin-top: var(--espacio-2);
-  color: var(--color-texto-suave);
-  font-size: var(--texto-sm);
-}
-
-/* Sección clara ------------------------------------------------------- */
-
-[data-page="inicio"] .inicio__seccion--clara {
+[data-page="inicio"] .ud-seccion-clara {
   padding: var(--espacio-12) var(--espacio-6);
-  border-radius: var(--radio-lg);
-  background-color: var(--color-apoyo);
-  color: var(--color-primario);
 }
 
-[data-page="inicio"] .inicio__seccion--clara .ud-capsula {
-  border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
-  color: var(--color-primario);
+/* La tarjeta de SST se alinea con el margen amplio, igual que Nosotros:
+   descuenta el margen del <main>, que ya la separa del borde. */
+[data-page="inicio"] .inicio__seccion--sst {
+  margin-inline: calc(var(--margen-seccion-amplio) - var(--margen-lateral));
 }
 
-[data-page="inicio"] .inicio__seccion--clara .inicio__texto,
-[data-page="inicio"] .inicio__seccion--clara .inicio__pendiente,
-[data-page="inicio"] .inicio__seccion--clara .inicio__proyecto-lugar {
+/* Sobre fondo claro el párrafo va en azul de marca; el gris suave del home
+   no se lee sobre Tender Light Blue. */
+[data-page="inicio"] .ud-seccion-clara .inicio__texto {
   color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
 }
 
-[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha {
-  color: var(--color-guinda);
+[data-page="inicio"] .ud-seccion-clara .ud-enlace-flecha {
+  margin-top: var(--espacio-8);
 }
 
-[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha:hover,
-[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha:focus-visible {
-  color: var(--color-primario);
+/* Los huecos de foto del home llevan borde y más relleno que el patrón. */
+[data-page="inicio"] .ud-foto--clara {
+  padding: var(--espacio-6);
+  border: var(--borde) solid color-mix(in srgb, var(--color-primario) 22%, transparent);
 }
 
-[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha .ud-boton__flecha {
-  background-color: var(--color-guinda);
-  color: var(--color-apoyo);
+[data-page="inicio"] .inicio__dos-columnas > .ud-foto {
+  min-height: 14rem;
 }
 
 [data-page="inicio"] .inicio__maquinaria {
@@ -548,40 +561,6 @@
   color: var(--color-primario);
 }
 
-[data-page="inicio"] .inicio__seccion--clara .inicio__enlace-flecha {
-  margin-top: var(--espacio-8);
-}
-
-/* Proceso ------------------------------------------------------------- */
-
-[data-page="inicio"] .inicio__pasos {
-  display: grid;
-  /* Ancho mínimo por tarjeta y separación fija: en pantallas grandes crecen
-     las tarjetas, no los huecos. */
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: var(--espacio-4);
-  margin-top: var(--espacio-8);
-}
-
-[data-page="inicio"] .inicio__paso {
-  padding: var(--espacio-6);
-  border: var(--borde) solid var(--color-linea);
-  border-radius: var(--radio-md);
-  background-color: var(--color-superficie-1);
-}
-
-[data-page="inicio"] .inicio__paso-numero {
-  color: var(--color-guinda-claro);
-  font-family: var(--fuente-titulos);
-  font-size: var(--texto-lg);
-  font-weight: var(--peso-titulo);
-}
-
-[data-page="inicio"] .inicio__paso-titulo {
-  margin-top: var(--espacio-2);
-  font-size: var(--texto-md);
-}
-
 /* Proyectos ----------------------------------------------------------- */
 
 [data-page="inicio"] .inicio__carrusel-encabezado {
@@ -594,17 +573,6 @@
 
 [data-page="inicio"] .ud-carrusel__flechas {
   margin-left: auto;
-}
-
-/* Sobre la sección clara manda el azul de marca. */
-[data-page="inicio"] .inicio__seccion--clara .ud-carrusel__boton {
-  border-color: color-mix(in srgb, var(--color-primario) 30%, transparent);
-  color: var(--color-primario);
-}
-
-[data-page="inicio"] .inicio__seccion--clara .ud-carrusel__boton:hover:not([disabled]),
-[data-page="inicio"] .inicio__seccion--clara .ud-carrusel__boton:focus-visible {
-  background-color: color-mix(in srgb, var(--color-blanco) 45%, var(--color-apoyo));
 }
 
 /* Carrusel: desplazamiento nativo con parada en cada tarjeta.
@@ -624,37 +592,14 @@
   scroll-padding-left: var(--espacio-6);
 }
 
-[data-page="inicio"] .inicio__proyecto {
-  border-radius: var(--radio-lg);
-}
-
-/* El foco rodea la tarjeta completa y sigue su redondeo. Sobre la sección
-   clara manda el guinda de marca, no el claro. */
-[data-page="inicio"] .inicio__proyecto:focus-visible {
-  outline: 2px solid var(--color-guinda);
-  outline-offset: 4px;
-}
-
-[data-page="inicio"] .inicio__proyecto .inicio__foto {
-  min-height: 11rem;
-}
-
-[data-page="inicio"] .inicio__proyecto-nombre {
-  margin-top: var(--espacio-4);
-  font-size: var(--texto-lg);
-}
-
-[data-page="inicio"] .inicio__proyecto-lugar {
-  margin-top: var(--espacio-1);
-  font-size: var(--texto-sm);
-}
-
 /* Blog en el home ------------------------------------------------------ */
 
 /* Sale del margen del <main> para que la pista llegue a los dos bordes de la
-   ventana; el encabezado y el botón recuperan el margen amplio por dentro. */
+   ventana; el encabezado y el botón recuperan el margen amplio por dentro.
+   Relleno vertical propio para que la sección respire más que las demás. */
 [data-page="inicio"] .inicio__blog {
   margin-inline: calc(var(--margen-lateral) * -1);
+  padding-block: var(--espacio-16);
 }
 
 [data-page="inicio"] .inicio__blog-encabezado {
@@ -670,62 +615,8 @@
   grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
   gap: var(--espacio-6);
   margin-top: var(--espacio-8);
-  margin-bottom: var(--espacio-8);
   padding-inline: var(--margen-seccion-amplio);
   scroll-padding-left: var(--margen-seccion-amplio);
-}
-
-[data-page="inicio"] .inicio__nota-enlace {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  overflow: hidden;
-  border: var(--borde) solid var(--color-linea);
-  border-radius: var(--radio-lg);
-  background-color: var(--color-superficie-1);
-  color: var(--color-texto);
-  text-decoration: none;
-}
-
-[data-page="inicio"] .inicio__nota-enlace:focus-visible {
-  outline: 2px solid var(--color-guinda-claro);
-  outline-offset: 4px;
-}
-
-[data-page="inicio"] .inicio__nota-foto {
-  display: grid;
-  aspect-ratio: 16 / 10;
-  place-items: center;
-  padding: var(--espacio-4);
-  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
-}
-
-[data-page="inicio"] .inicio__nota-cuerpo {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: var(--espacio-6);
-}
-
-[data-page="inicio"] .inicio__nota-titulo {
-  margin-top: var(--espacio-4);
-  font-size: var(--texto-md);
-}
-
-[data-page="inicio"] .inicio__nota-enlace:hover .inicio__nota-titulo,
-[data-page="inicio"] .inicio__nota-enlace:focus-visible .inicio__nota-titulo {
-  color: var(--color-guinda-claro);
-}
-
-[data-page="inicio"] .inicio__nota-datos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--espacio-2);
-  margin-top: auto;
-  padding-top: var(--espacio-6);
-  color: var(--color-texto-suave);
-  font-size: var(--texto-xs);
 }
 
 [data-page="inicio"] .inicio__blog-entrada {
@@ -828,23 +719,21 @@
 /* Escritorio ---------------------------------------------------------- */
 
 @media (min-width: 48rem) {
-  [data-page="inicio"] .inicio__servicios {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Desde tableta entra un margen amplio completo más por cada lado. */
+  [data-page="inicio"] .inicio__clientes {
+    margin-inline: calc(var(--margen-seccion-amplio) * 2 - var(--margen-lateral));
   }
 
   [data-page="inicio"] .inicio__hero-imagen {
     object-position: 50% 35%;
   }
 
-  [data-page="inicio"] .inicio__cifras {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
 }
 
 @media (min-width: 64rem) {
+  /* Escritorio: tres tarjetas completas y un asomo de la cuarta. */
   [data-page="inicio"] .inicio__servicios {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-columns: calc((100% - var(--espacio-4) * 3) / 3.35);
   }
 
   [data-page="inicio"] .inicio__hero {
@@ -856,24 +745,15 @@
     gap: var(--espacio-12);
   }
 
-  [data-page="inicio"] .inicio__insignias {
-    grid-template-columns: repeat(4, 1fr);
+  /* Insignias en una fila de cuatro con el ícono sobre el texto. Los
+     divisores los pone el patrón. */
+  [data-page="inicio"] .inicio__nosotros .ud-insignias {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  [data-page="inicio"] .inicio__insignia {
+  [data-page="inicio"] .inicio__nosotros .ud-insignia {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--espacio-3);
-  }
-
-  [data-page="inicio"] .inicio__insignia:nth-child(odd) {
-    padding-left: var(--espacio-4);
-    border-left: var(--borde) solid var(--color-linea-fuerte);
-  }
-
-  [data-page="inicio"] .inicio__insignia:first-child {
-    padding-left: 0;
-    border-left: 0;
   }
 
   [data-page="inicio"] .inicio__dos-columnas {
@@ -881,7 +761,7 @@
     gap: var(--espacio-12);
   }
 
-  [data-page="inicio"] .inicio__seccion--clara {
+  [data-page="inicio"] .ud-seccion-clara {
     padding: var(--espacio-12);
   }
 
