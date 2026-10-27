@@ -26,3 +26,10 @@
   scroll-snap-type: none;
   user-select: none;
 }
+
+/* Botón de WhatsApp mientras el footer está a la vista. */
+.ud-whatsapp.esta-oculto {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}

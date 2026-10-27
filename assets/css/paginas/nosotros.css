@@ -25,41 +25,8 @@
 
 /* Hero ------------------------------------------------------------------ */
 
-[data-plantilla="nosotros"] .nos__hero {
-  position: relative;
-  display: flex;
-  min-height: 50vh;
-  min-height: 50svh;
-  align-items: flex-end;
-  overflow: hidden;
-  padding: var(--espacio-8) var(--margen-seccion-amplio);
-}
-
-/* El marcador va arriba para no encimarse con el título. */
-[data-plantilla="nosotros"] .nos__hero-foto {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  padding: var(--espacio-4);
-  place-items: start center;
-  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
-}
-
-[data-plantilla="nosotros"] .nos__hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
-}
-
-[data-plantilla="nosotros"] .nos__hero-contenido {
-  position: relative;
-  z-index: 1;
-}
-
-[data-plantilla="nosotros"] .nos__hero-contenido .ud-capsula {
-  margin-top: var(--espacio-6);
-}
+/* Hero: tarjeta, foto, degradado y centrado son el patrón ud-hero
+   (patrones.css). Aquí solo lo propio: el ancho del título y la entrada. */
 
 [data-plantilla="nosotros"] .nos__titulo {
   max-width: 14em;
@@ -130,10 +97,25 @@
   padding-block: var(--espacio-12);
 }
 
+/* Tarjeta con el margen y el relleno de la de SST Elite del home, no de borde
+   a borde. Dos columnas en escritorio: texto a la izquierda, valores a la
+   derecha; en celular se apilan en ese orden. */
+[data-plantilla="nosotros"] .nos__seccion--valores {
+  display: grid;
+  gap: var(--espacio-8);
+  margin-inline: var(--margen-seccion-amplio);
+  padding: var(--espacio-12) var(--espacio-6);
+}
+
+/* Sobre fondo claro el párrafo va en azul de marca, como en el home. */
+[data-plantilla="nosotros"] .nos__seccion--valores .nos__texto {
+  color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
+}
+
+/* Una sola lista vertical. */
 [data-plantilla="nosotros"] .nos__valores {
   display: grid;
   gap: var(--espacio-4);
-  margin-top: var(--espacio-8);
 }
 
 [data-plantilla="nosotros"] .nos__valor {
@@ -181,6 +163,12 @@
   margin-top: var(--espacio-8);
 }
 
+/* Tres insignias: una sola fila en todos los anchos; con dos columnas, en
+   celular la tercera quedaba sola. */
+[data-plantilla="nosotros"] .ud-insignias {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 [data-plantilla="nosotros"] .nos__encabezado-carrusel {
   display: flex;
   flex-wrap: wrap;
@@ -218,10 +206,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  [data-plantilla="nosotros"] .nos__valores {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   [data-plantilla="nosotros"] .nos__maquinas {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -234,15 +218,14 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  [data-plantilla="nosotros"] .nos__valores {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  [data-plantilla="nosotros"] .nos__seccion--valores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: var(--espacio-12);
+    padding: var(--espacio-12);
   }
 
   [data-plantilla="nosotros"] .nos__maquinas {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  [data-plantilla="nosotros"] .ud-insignias {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 

@@ -92,12 +92,22 @@
 
     <main class="servicio">
       <!-- Hero --------------------------------------------------------- -->
-      <section class="servicio__hero" aria-labelledby="servicio-titulo">
-        <div class="servicio__hero-foto">
-          <p class="ud-pendiente">[PENDIENTE: foto de techo metálico en obra]</p>
+      <section class="ud-hero" aria-labelledby="servicio-titulo">
+        <div class="ud-hero__foto">
+          <!-- [PENDIENTE: versión vertical de perfiladora-en-obra.webp, la versión vertical para celular].
+               Mientras no exista, en celular se usa esta misma imagen. -->
+          <img
+            class="ud-hero__imagen"
+            src="/assets/img/empresa/maquinaria/perfiladora-en-obra.webp"
+            alt="Operario con una máquina perfiladora sobre la estructura de una nave industrial, junto a un rollo de lámina"
+            width="2400"
+            height="1350"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
 
-        <div class="servicio__hero-contenido">
+        <div class="ud-hero__contenido">
           <nav class="ud-migas" aria-label="Migas de pan">
             <ol class="ud-migas__lista">
               <li><a href="/">Inicio</a></li>
@@ -179,7 +189,7 @@
             </p>
           </li>
           <li class="servicio__sistema ud-tarjeta">
-            <h3 class="servicio__sistema-nombre">Roof curves (brocales)</h3>
+            <h3 class="servicio__sistema-nombre">Roof curbs (brocales)</h3>
             <p class="servicio__sistema-texto">
               Bases para domos, extractores, ventiladores y equipos de aire
               acondicionado.
@@ -404,8 +414,6 @@
                 </h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-08">8 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -426,8 +434,6 @@
                 </h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-03">3 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -445,8 +451,6 @@
                 </h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-16">16 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>

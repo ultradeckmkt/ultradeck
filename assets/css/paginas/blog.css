@@ -79,6 +79,13 @@
   font-size: var(--titulo-bloque);
 }
 
+/* Cápsula de categoría por debajo del título, igual que en la tarjeta de
+   nota del patrón (ud-nota). */
+[data-page="blog"] .blog__cuerpo .ud-capsula {
+  font-family: var(--fuente-texto);
+  font-weight: var(--peso-medio);
+}
+
 [data-page="blog"] .blog__extracto {
   display: block;
   margin-top: var(--espacio-3);

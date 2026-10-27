@@ -1,86 +1,58 @@
 /**
- * Landing pilar de Mantenimiento de techos industriales.
- * Fuera de toda capa y acotada a su data-page. Lo compartido con el resto del
- * sitio vive en patrones.css.
+ * /mantenimiento/: la rama completa (techos industriales y canalones y
+ * bajantes) y la página pilar del blog. Fuera de toda capa y acotada a su
+ * data-page. Lo compartido con el resto del sitio vive en patrones.css.
  */
 
-[data-page="techos-industriales"] .mant {
+[data-page="mantenimiento"] .mant {
   padding-bottom: var(--espacio-12);
 }
 
-[data-page="techos-industriales"] .mant__seccion {
+[data-page="mantenimiento"] .mant__seccion {
   margin-top: var(--espacio-12);
   padding-inline: var(--margen-seccion-amplio);
 }
 
-[data-page="techos-industriales"] .mant__h2 {
+[data-page="mantenimiento"] .mant__h2 {
   margin-top: var(--espacio-4);
   font-size: var(--titulo-subseccion);
 }
 
+/* Párrafos de introducción y de entrada de cada servicio. */
+[data-page="mantenimiento"] .mant__texto {
+  max-width: 68ch;
+}
+
+[data-page="mantenimiento"] .mant__texto p {
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
 /* Hero ------------------------------------------------------------------ */
 
-[data-page="techos-industriales"] .mant__hero {
-  position: relative;
-  display: flex;
-  min-height: 50vh;
-  min-height: 50svh;
-  align-items: flex-end;
-  overflow: hidden;
-  padding: var(--espacio-8) var(--margen-seccion-amplio);
-}
+/* Tarjeta, foto, degradado y centrado son el patrón ud-hero (patrones.css).
+   Aquí solo lo propio: el ancho del título, la entrada y el teléfono, que va
+   debajo del botón. */
 
-/* El marcador va arriba para no encimarse con el título. */
-[data-page="techos-industriales"] .mant__hero-foto {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  padding: var(--espacio-4);
-  place-items: start center;
-  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
-}
-
-[data-page="techos-industriales"] .mant__hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
-}
-
-[data-page="techos-industriales"] .mant__hero-contenido {
-  position: relative;
-  z-index: 1;
-}
-
-[data-page="techos-industriales"] .mant__hero-contenido .ud-capsula {
-  margin-top: var(--espacio-6);
-}
-
-[data-page="techos-industriales"] .mant__titulo {
+[data-page="mantenimiento"] .mant__titulo {
   max-width: 16em;
   margin-top: var(--espacio-4);
 }
 
-[data-page="techos-industriales"] .mant__entrada {
+[data-page="mantenimiento"] .mant__entrada {
   max-width: var(--ancho-texto);
   margin-top: var(--espacio-4);
   color: var(--color-texto-suave);
   font-size: var(--texto-lg);
 }
 
-[data-page="techos-industriales"] .mant__acciones {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--espacio-6);
-  margin-top: var(--espacio-6);
-}
-
-[data-page="techos-industriales"] .mant__telefono {
+[data-page="mantenimiento"] .mant__telefono {
   display: inline-flex;
   min-height: var(--area-toque);
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  margin-top: var(--espacio-4);
   color: var(--color-texto);
   font-family: var(--fuente-titulos);
   font-size: var(--texto-md);
@@ -88,12 +60,12 @@
   text-decoration: none;
 }
 
-[data-page="techos-industriales"] .mant__telefono:hover,
-[data-page="techos-industriales"] .mant__telefono:focus-visible {
+[data-page="mantenimiento"] .mant__telefono:hover,
+[data-page="mantenimiento"] .mant__telefono:focus-visible {
   color: var(--color-guinda-claro);
 }
 
-[data-page="techos-industriales"] .mant__telefono-nota {
+[data-page="mantenimiento"] .mant__telefono-nota {
   color: var(--color-texto-suave);
   font-family: var(--fuente-texto);
   font-size: var(--texto-xs);
@@ -102,14 +74,14 @@
 
 /* Señales ---------------------------------------------------------------- */
 
-[data-page="techos-industriales"] .mant__senales {
+[data-page="mantenimiento"] .mant__senales {
   display: grid;
   grid-auto-rows: 1fr;
   gap: var(--espacio-4);
   margin-top: var(--espacio-8);
 }
 
-[data-page="techos-industriales"] .mant__senal {
+[data-page="mantenimiento"] .mant__senal {
   display: flex;
   align-items: flex-start;
   gap: var(--espacio-4);
@@ -119,7 +91,7 @@
   background-color: var(--color-superficie-1);
 }
 
-[data-page="techos-industriales"] .mant__senal-icono {
+[data-page="mantenimiento"] .mant__senal-icono {
   width: 1.75rem;
   height: 1.75rem;
   flex: none;
@@ -130,37 +102,37 @@
   stroke-width: 1.5;
 }
 
-[data-page="techos-industriales"] .mant__senal-texto {
+[data-page="mantenimiento"] .mant__senal-texto {
   font-family: var(--fuente-titulos);
   font-size: var(--texto-md);
   font-weight: var(--peso-titulo);
 }
 
-/* Qué hacemos ------------------------------------------------------------ */
+/* Techos industriales y canalones: tarjetas de cada servicio ---------------- */
 
-[data-page="techos-industriales"] .mant__bloques {
+[data-page="mantenimiento"] .mant__bloques {
   display: grid;
   gap: var(--espacio-6);
   margin-top: var(--espacio-8);
 }
 
-[data-page="techos-industriales"] .mant__bloque {
+[data-page="mantenimiento"] .mant__bloque {
   padding: var(--espacio-8) var(--espacio-6);
   border: var(--borde) solid var(--tarjeta-borde, var(--color-linea-fuerte));
   border-radius: var(--radio-lg);
   background-color: var(--color-superficie-2);
 }
 
-[data-page="techos-industriales"] .mant__bloque-titulo {
+[data-page="mantenimiento"] .mant__bloque-titulo {
   font-size: var(--titulo-tarjeta);
 }
 
-[data-page="techos-industriales"] .mant__bloque-texto {
+[data-page="mantenimiento"] .mant__bloque-texto {
   margin-top: var(--espacio-3);
   color: var(--color-texto-suave);
 }
 
-[data-page="techos-industriales"] .mant__lista {
+[data-page="mantenimiento"] .mant__lista {
   display: flex;
   flex-direction: column;
   gap: var(--espacio-2);
@@ -169,17 +141,13 @@
   font-size: var(--texto-sm);
 }
 
-[data-page="techos-industriales"] .mant__pilar {
-  margin-top: var(--espacio-8);
-}
-
 /* Sin detener su operación ------------------------------------------------ */
 
-[data-page="techos-industriales"] .ud-seccion-clara {
+[data-page="mantenimiento"] .ud-seccion-clara {
   padding-block: var(--espacio-12);
 }
 
-[data-page="techos-industriales"] .mant__texto-claro {
+[data-page="mantenimiento"] .mant__texto-claro {
   max-width: 68ch;
   margin-top: var(--espacio-4);
   color: color-mix(in srgb, var(--color-primario) 78%, var(--color-apoyo));
@@ -187,15 +155,15 @@
 
 /* Proceso y confianza ----------------------------------------------------- */
 
-[data-page="techos-industriales"] .ud-pasos {
+[data-page="mantenimiento"] .ud-pasos {
   margin-top: var(--espacio-8);
 }
 
-[data-page="techos-industriales"] .mant__insignias {
+[data-page="mantenimiento"] .mant__insignias {
   margin-top: var(--espacio-8);
 }
 
-[data-page="techos-industriales"] .mant__marcas {
+[data-page="mantenimiento"] .mant__marcas {
   margin-top: var(--espacio-8);
   color: var(--color-texto-suave);
   font-size: var(--texto-sm);
@@ -203,7 +171,7 @@
 
 /* Carruseles -------------------------------------------------------------- */
 
-[data-page="techos-industriales"] .mant__encabezado-carrusel {
+[data-page="mantenimiento"] .mant__encabezado-carrusel {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -211,7 +179,7 @@
   gap: var(--espacio-4);
 }
 
-[data-page="techos-industriales"] .mant__acciones-carrusel {
+[data-page="mantenimiento"] .mant__acciones-carrusel {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -219,8 +187,8 @@
   margin-left: auto;
 }
 
-[data-page="techos-industriales"] .mant__proyectos,
-[data-page="techos-industriales"] .mant__notas {
+[data-page="mantenimiento"] .mant__proyectos,
+[data-page="mantenimiento"] .mant__notas {
   grid-auto-columns: calc((100% - var(--espacio-6)) / 1.25);
   gap: var(--espacio-6);
   margin-top: var(--espacio-8);
@@ -232,7 +200,7 @@
 /* Las notas son enlaces que se elevan: respiro arriba y abajo para que la
    tarjeta y su sombra no se corten contra la pista, compensado con los
    márgenes para que la sección mida lo mismo. */
-[data-page="techos-industriales"] .mant__notas {
+[data-page="mantenimiento"] .mant__notas {
   margin-top: var(--espacio-4);
   margin-bottom: calc(var(--espacio-8) * -1);
   padding-block: var(--espacio-4) var(--espacio-8);
@@ -240,14 +208,14 @@
 
 /* Preguntas y cierre ------------------------------------------------------- */
 
-[data-page="techos-industriales"] .mant__preguntas {
+[data-page="mantenimiento"] .mant__preguntas {
   display: flex;
   flex-direction: column;
   gap: var(--espacio-3);
   margin-top: var(--espacio-8);
 }
 
-[data-page="techos-industriales"] .mant__cierre {
+[data-page="mantenimiento"] .mant__cierre {
   margin-top: var(--espacio-12);
   margin-inline: var(--margen-seccion-amplio);
 }
@@ -255,11 +223,11 @@
 /* Tablet -------------------------------------------------------------------- */
 
 @media (min-width: 48rem) {
-  [data-page="techos-industriales"] .mant__senales {
+  [data-page="mantenimiento"] .mant__senales {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  [data-page="techos-industriales"] .mant__bloques {
+  [data-page="mantenimiento"] .mant__bloques {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -267,16 +235,16 @@
 /* Escritorio ----------------------------------------------------------------- */
 
 @media (min-width: 64rem) {
-  [data-page="techos-industriales"] .mant__senales {
+  [data-page="mantenimiento"] .mant__senales {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  [data-page="techos-industriales"] .ud-insignias {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+  [data-page="mantenimiento"] .ud-insignias {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  [data-page="techos-industriales"] .mant__proyectos,
-  [data-page="techos-industriales"] .mant__notas {
+  [data-page="mantenimiento"] .mant__proyectos,
+  [data-page="mantenimiento"] .mant__notas {
     grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
   }
 }

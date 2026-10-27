@@ -1,5 +1,6 @@
 /**
- * Páginas de rama (/construccion/ y /mantenimiento/).
+ * Página de rama de Construcción (/construccion/). /mantenimiento/ tiene
+ * estructura propia (rama-mantenimiento.css).
  * Fuera de toda capa y acotada a data-plantilla="rama".
  * Lo compartido con el resto del sitio vive en patrones.css.
  */
@@ -20,41 +21,8 @@
 
 /* Hero ------------------------------------------------------------------ */
 
-[data-plantilla="rama"] .rama__hero {
-  position: relative;
-  display: flex;
-  min-height: 50vh;
-  min-height: 50svh;
-  align-items: flex-end;
-  overflow: hidden;
-  padding: var(--espacio-8) var(--margen-seccion-amplio);
-}
-
-/* El marcador va arriba para no encimarse con el título. */
-[data-plantilla="rama"] .rama__hero-foto {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  padding: var(--espacio-4);
-  place-items: start center;
-  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
-}
-
-[data-plantilla="rama"] .rama__hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
-}
-
-[data-plantilla="rama"] .rama__hero-contenido {
-  position: relative;
-  z-index: 1;
-}
-
-[data-plantilla="rama"] .rama__hero-contenido .ud-capsula {
-  margin-top: var(--espacio-6);
-}
+/* Hero: tarjeta, foto, degradado y centrado son el patrón ud-hero
+   (patrones.css). Aquí solo lo propio: el ancho del título y la entrada. */
 
 [data-plantilla="rama"] .rama__titulo {
   max-width: 16em;
@@ -66,10 +34,6 @@
   margin-top: var(--espacio-4);
   color: var(--color-texto-suave);
   font-size: var(--texto-lg);
-}
-
-[data-plantilla="rama"] .rama__hero-contenido .ud-boton {
-  margin-top: var(--espacio-6);
 }
 
 /* Introducción ----------------------------------------------------------- */
@@ -112,6 +76,18 @@
 [data-plantilla="rama"] .rama__servicio-foto {
   aspect-ratio: 16 / 10;
   border-radius: 0;
+}
+
+/* Con foto, el marco pierde el relleno del marcador y la imagen lo llena. */
+[data-plantilla="rama"] .rama__servicio-foto:has(.rama__servicio-imagen) {
+  padding: 0;
+}
+
+[data-plantilla="rama"] .rama__servicio-imagen {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 [data-plantilla="rama"] .rama__servicio-cuerpo {
@@ -203,7 +179,7 @@
 
 @media (min-width: 64rem) {
   [data-plantilla="rama"] .ud-insignias {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   [data-plantilla="rama"] .rama__proyectos {

@@ -19,43 +19,8 @@
   font-size: var(--titulo-subseccion);
 }
 
-/* Hero: la mitad de la pantalla, no la pantalla entera como en el home. */
-[data-plantilla="servicio"] .servicio__hero {
-  position: relative;
-  display: flex;
-  min-height: 50vh;
-  min-height: 50svh;
-  align-items: flex-end;
-  overflow: hidden;
-  padding: var(--espacio-8) var(--margen-seccion-amplio);
-}
-
-/* El marcador va arriba: centrado se encimaba con el H1. */
-[data-plantilla="servicio"] .servicio__hero-foto {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: start center;
-  padding: var(--espacio-4);
-  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
-}
-
-/* Velo parejo sobre la foto, para que el texto se lea. */
-[data-plantilla="servicio"] .servicio__hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: color-mix(in srgb, var(--color-fondo) 84%, transparent);
-}
-
-[data-plantilla="servicio"] .servicio__hero-contenido {
-  position: relative;
-  z-index: 1;
-}
-
-[data-plantilla="servicio"] .servicio__hero-contenido .ud-capsula {
-  margin-top: var(--espacio-6);
-}
+/* Hero: tarjeta, foto, degradado y centrado son el patrón ud-hero
+   (patrones.css). Aquí solo lo propio: el ancho del título y la entrada. */
 
 [data-plantilla="servicio"] .servicio__titulo {
   max-width: 16em;
@@ -67,10 +32,6 @@
   margin-top: var(--espacio-4);
   color: var(--color-texto-suave);
   font-size: var(--texto-lg);
-}
-
-[data-plantilla="servicio"] .servicio__hero-contenido .ud-boton {
-  margin-top: var(--espacio-6);
 }
 
 /* Introducción ---------------------------------------------------------- */

@@ -97,30 +97,44 @@
 
 /* En celular la tarjeta es vertical y solo se recorta a lo ancho: el encuadre
    se corre a la izquierda para no cortar al montador ni su casco. */
-[data-page="inicio"] .inicio__hero-imagen {
+[data-page="inicio"] .inicio__hero-imagen,
+[data-page="inicio"] .inicio__hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 45% 50%;
 }
 
-/* Oscurece de abajo hacia arriba y carga la esquina inferior izquierda, que es
-   donde se apoya el texto. */
+/* El video va encima de la imagen y debajo del degradado. Si no puede
+   reproducirse, el JavaScript lo oculta y queda la imagen a la vista. */
+[data-page="inicio"] .inicio__hero-video {
+  position: absolute;
+  inset: 0;
+}
+
+/* Con movimiento reducido no hay video: solo la imagen de respaldo. */
+@media (prefers-reduced-motion: reduce) {
+  [data-page="inicio"] .inicio__hero-video {
+    display: none;
+  }
+}
+
+/* Degradado sobre el video: oscurece solo donde está el texto y deja limpio
+   el resto. Es decorativo (pseudoelemento sin texto): los lectores de
+   pantalla no lo anuncian. Intensidad medida contra 30 cuadros del video: el
+   párrafo cumple AA en 390, 768, 1024 y 1440 px.
+   Mientras las cifras van debajo del texto (antes de 64rem), el texto queda
+   en la parte de arriba: se oscurece esa franja y las cifras quedan limpias. */
 [data-page="inicio"] .inicio__hero-foto::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(
-      120% 95% at 0% 100%,
-      color-mix(in srgb, var(--color-fondo) 92%, transparent),
-      transparent 62%
-    ),
-    linear-gradient(
-      to top,
-      color-mix(in srgb, var(--color-fondo) 85%, transparent),
-      color-mix(in srgb, var(--color-fondo) 18%, transparent) 68%
-    );
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-fondo) 86%, transparent) 0%,
+    color-mix(in srgb, var(--color-fondo) 86%, transparent) 45%,
+    transparent 62%
+  );
 }
 
 /* Base flexible de 36rem: por debajo de eso junto a las cifras, las cifras
@@ -157,9 +171,52 @@
   }
 }
 
+/* La cifra manda: escala de títulos de sección. Cabe en la tarjeta en
+   cualquier ancho, porque la columna la ensancha la etiqueta más larga. */
+/* Realce que recorre las cifras, una tarjeta a la vez y en bucle: borde en
+   guinda claro (más una línea interior, para que se note sin engrosar la
+   caja). Cada tarjeta corre la misma animación con un cuarto de vuelta de
+   desfase. Solo cambia color y sombra: no mueve ni redimensiona nada, y no
+   toca lo que leen los lectores de pantalla. Con movimiento reducido no hay
+   realce. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-page="inicio"] .inicio__hero-cifra {
+    animation: inicio-cifra-realce var(--duracion-cifras) ease-in-out infinite;
+  }
+
+  [data-page="inicio"] .inicio__hero-cifra:nth-child(2) {
+    animation-delay: calc(var(--duracion-cifras) / 4);
+  }
+
+  [data-page="inicio"] .inicio__hero-cifra:nth-child(3) {
+    animation-delay: calc(var(--duracion-cifras) / 4 * 2);
+  }
+
+  [data-page="inicio"] .inicio__hero-cifra:nth-child(4) {
+    animation-delay: calc(var(--duracion-cifras) / 4 * 3);
+  }
+}
+
+/* Encendido en 0.4 s, 1.7 s firme y apagado en 0.4 s, dentro de su cuarto de
+   vuelta; el resto del tiempo, el borde de siempre. */
+@keyframes inicio-cifra-realce {
+  0%,
+  25%,
+  100% {
+    border-color: var(--tarjeta-borde, var(--color-linea-fuerte));
+    box-shadow: inset 0 0 0 var(--borde) transparent;
+  }
+
+  4%,
+  21% {
+    border-color: var(--color-guinda-claro);
+    box-shadow: inset 0 0 0 var(--borde) var(--color-guinda-claro);
+  }
+}
+
 [data-page="inicio"] .inicio__hero-cifra-numero {
   font-family: var(--fuente-titulos);
-  font-size: var(--titulo-tarjeta);
+  font-size: var(--titulo-seccion);
   font-weight: var(--peso-titulo);
   letter-spacing: var(--espaciado-letra-titulo);
   line-height: var(--interlinea-apretada);
@@ -181,11 +238,119 @@
 [data-page="inicio"] .inicio__entrada {
   max-width: var(--ancho-texto);
   margin-top: var(--espacio-4);
-  color: var(--color-texto-suave);
+  color: var(--color-texto);
   font-size: var(--texto-lg);
 }
 
+/* Cápsula del hero: fondo sólido para que se lea sobre cualquier cuadro del
+   video (blanco sobre guinda vivo, 7.5:1). Solo aquí; el patrón ud-capsula
+   no cambia. */
+[data-page="inicio"] .inicio__hero .ud-capsula {
+  border-color: transparent;
+  background-color: var(--color-guinda-vivo);
+  color: var(--color-blanco);
+}
+
 /* Ramas y tarjetas ---------------------------------------------------- */
+
+/* Las dos ramas del negocio, entre los clientes y Servicios: dos tarjetas
+   con foto de fondo del mismo alto (apiladas en celular), con el margen
+   amplio de las secciones de abajo (descuenta el del <main>, como SST). La
+   tarjeta no es enlace: el enlace es el botón. El contenido va abajo a la
+   izquierda; en escritorio, el de la segunda tarjeta va abajo a la derecha. */
+[data-page="inicio"] .inicio__ramas {
+  display: grid;
+  gap: var(--espacio-8);
+  margin-inline: calc(var(--margen-seccion-amplio) - var(--margen-lateral));
+}
+
+/* Montaje: la barra de clientes queda a caballo sobre el borde superior de
+   las ramas. La sección sube --espacio-24 (96 px, cerca de la mitad del alto
+   de la barra) y la barra pasa por encima. Las tarjetas suman ese mismo
+   valor a su relleno de arriba, así nada legible (ni el contenido ni el
+   marcador de foto) queda bajo la barra en ningún ancho. Se conserva en
+   celular. z-index 1: el header y sus submenús (100) y el botón de WhatsApp
+   (90) siguen por encima. */
+[data-page="inicio"] .inicio__clientes {
+  position: relative;
+  z-index: 1;
+}
+
+[data-page="inicio"] .inicio__ramas {
+  margin-top: calc(var(--espacio-24) * -1);
+}
+
+[data-page="inicio"] .inicio__rama {
+  position: relative;
+  display: flex;
+  aspect-ratio: 3 / 4;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: var(--espacio-8) var(--relleno-hero);
+  padding-top: calc(var(--espacio-24) + var(--espacio-8));
+  border: var(--borde) solid var(--tarjeta-borde, var(--color-linea));
+  border-radius: var(--radio-lg);
+  text-align: left;
+}
+
+/* Sin foto, el marcador va arriba, como en el hero interior. */
+[data-page="inicio"] .inicio__rama-foto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  padding: var(--espacio-4);
+  padding-top: calc(var(--espacio-24) + var(--espacio-4));
+  background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+}
+
+[data-page="inicio"] .inicio__rama-imagen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Degradado decorativo (pseudoelemento sin texto) donde está el texto: en
+   tarjetas angostas, el texto ocupa casi todo el ancho y se oscurece la
+   franja de abajo; desde 80rem, solo la esquina del texto (ver Escritorio).
+   Medido sobre la foto de Construcción: el párrafo cumple AA en 390, 1024,
+   1280, 1440 y 1920 px. */
+[data-page="inicio"] .inicio__rama::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-fondo) 84%, transparent) 0%,
+    color-mix(in srgb, var(--color-fondo) 84%, transparent) 70%,
+    transparent 100%
+  );
+}
+
+[data-page="inicio"] .inicio__rama-contenido {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+[data-page="inicio"] .inicio__rama-titulo {
+  font-size: var(--titulo-subseccion);
+}
+
+[data-page="inicio"] .inicio__rama-texto {
+  max-width: var(--ancho-texto);
+  margin-top: var(--espacio-4);
+  color: var(--color-texto-suave);
+}
+
+[data-page="inicio"] .inicio__rama-contenido .ud-boton {
+  margin-top: var(--espacio-6);
+}
 
 /* Clientes ------------------------------------------------------------ */
 
@@ -298,11 +463,17 @@
 
 /* Servicios: carrusel de tarjetas con ícono -------------------------------- */
 
-[data-page="inicio"] .inicio__servicios-encabezado .inicio__titulo {
+/* Títulos de Servicios y Proyectos: 16em los parte en dos líneas parejas
+   (con text-wrap: balance). */
+[data-page="inicio"] .inicio__servicios-encabezado .inicio__titulo,
+[data-page="inicio"] .inicio__seccion--proyectos .inicio__titulo {
   max-width: 16em;
 }
 
-[data-page="inicio"] .inicio__servicios-entrada {
+/* Párrafo de encabezado sobre fondo claro: el ancho de lectura y el espacio
+   del de Blog, en azul de marca. Servicios y Proyectos. */
+[data-page="inicio"] .inicio__servicios-entrada,
+[data-page="inicio"] .inicio__proyectos-entrada {
   max-width: var(--ancho-texto);
   margin-top: var(--espacio-4);
   color: var(--color-primario);
@@ -373,7 +544,7 @@
 [data-page="inicio"] .inicio__servicio-nombre {
   margin-top: var(--espacio-6);
   color: var(--color-primario);
-  font-size: var(--titulo-tarjeta-sm);
+  font-size: var(--titulo-tarjeta);
 }
 
 [data-page="inicio"] .inicio__servicio-linea {
@@ -456,6 +627,17 @@
 [data-page="inicio"] .inicio__nosotros {
   display: grid;
   gap: var(--espacio-12);
+}
+
+/* Tres insignias: una sola fila en todos los anchos; con dos columnas, en
+   celular la tercera quedaba sola. */
+[data-page="inicio"] .inicio__nosotros .ud-insignias {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Mismo ancho que el párrafo de abajo (--ancho-texto). El patrón saca la
+     fila --espacio-4 por cada lado para esconder el primer divisor y lo
+     recupera con el relleno de cada insignia; por eso se suman aquí: así la
+     fila empieza y termina donde el párrafo. */
+  max-width: calc(var(--ancho-texto) + var(--espacio-4) * 2);
 }
 
 /* Nosotros respira más que el resto del home: más separación del hero y
@@ -567,8 +749,19 @@
 
 /* La tarjeta de SST se alinea con el margen amplio, igual que Nosotros:
    descuenta el margen del <main>, que ya la separa del borde. */
+/* Más aire arriba y abajo que el resto de las secciones: queda entre dos
+   franjas claras de borde a borde (Servicios y Proyectos). El margen de abajo
+   se colapsa con el margen superior de Proyectos, así que no se suman. */
 [data-page="inicio"] .inicio__seccion--sst {
+  margin-block: var(--espacio-16);
   margin-inline: calc(var(--margen-seccion-amplio) - var(--margen-lateral));
+}
+
+/* Destino de /#proyectos (menú y footer). Al llegar desde otra página el
+   salto es nativo: este margen deja la sección bajo el header, igual que el
+   desplazamiento con Lenis de assets/js/scroll.js. */
+[data-page="inicio"] #proyectos {
+  scroll-margin-top: calc(var(--margen-lateral) + var(--altura-header) + var(--espacio-2));
 }
 
 /* Proyectos deja de ser tarjeta: franja de borde a borde (sale del margen del
@@ -782,6 +975,15 @@
   color: var(--color-guinda-claro);
 }
 
+/* Ramas: en celular, 3:4; desde 30rem (480 px), apaisadas en 4:3. Si no, entre
+   ~600 y 1023 px, apiladas a todo el ancho, cada tarjeta medía ~1000 px de
+   alto. */
+@media (min-width: 30rem) {
+  [data-page="inicio"] .inicio__rama {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 /* Escritorio ---------------------------------------------------------- */
 
 @media (min-width: 48rem) {
@@ -790,7 +992,8 @@
     margin-inline: calc(var(--margen-seccion-amplio) * 2 - var(--margen-lateral));
   }
 
-  [data-page="inicio"] .inicio__hero-imagen {
+  [data-page="inicio"] .inicio__hero-imagen,
+  [data-page="inicio"] .inicio__hero-video {
     object-position: 50% 35%;
   }
 
@@ -802,19 +1005,62 @@
     grid-auto-columns: calc((100% - var(--espacio-4) * 3) / 3.35);
   }
 
+  /* La fila del hero ocupa todo el alto de la tarjeta (dentro del relleno):
+     el texto sigue apoyado abajo y la columna de cifras se estira de arriba
+     abajo, repartida en cuatro filas iguales. En celular las cifras siguen
+     debajo del texto, a su alto natural. */
+  [data-page="inicio"] .inicio__seccion--sst {
+    margin-block: var(--espacio-24);
+  }
+
+  /* Ramas en dos columnas, tarjetas apaisadas. La segunda (Mantenimiento)
+     lleva su contenido abajo a la derecha. */
+  [data-page="inicio"] .inicio__ramas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  [data-page="inicio"] .inicio__rama:nth-child(2) {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  [data-page="inicio"] .inicio__rama:nth-child(2) .inicio__rama-contenido {
+    align-items: flex-end;
+  }
+
   [data-page="inicio"] .inicio__hero {
+    align-content: stretch;
     padding: var(--relleno-hero);
+  }
+
+  /* Con las cifras a la derecha, el texto vive en la esquina inferior
+     izquierda: el oscurecimiento se concentra ahí y la zona de las cifras
+     queda casi limpia. */
+  [data-page="inicio"] .inicio__hero-foto::after {
+    background-image: radial-gradient(
+      110% 125% at 0% 100%,
+      color-mix(in srgb, var(--color-fondo) 86%, transparent) 0%,
+      color-mix(in srgb, var(--color-fondo) 86%, transparent) 50%,
+      transparent 100%
+    );
+  }
+
+  [data-page="inicio"] .inicio__hero-cifras {
+    align-self: stretch;
+    grid-auto-rows: 1fr;
+  }
+
+  /* Cada tarjeta crece, no su contenido: cifra y etiqueta van juntas al
+     centro. */
+  [data-page="inicio"] .inicio__hero-cifra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   [data-page="inicio"] .inicio__nosotros {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--espacio-12);
-  }
-
-  /* Insignias en una fila de cuatro con el ícono sobre el texto. Los
-     divisores los pone el patrón. */
-  [data-page="inicio"] .inicio__nosotros .ud-insignias {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   [data-page="inicio"] .inicio__nosotros .ud-insignia {
@@ -841,5 +1087,44 @@
 
   [data-page="inicio"] .inicio__notas {
     grid-auto-columns: calc((100% - var(--espacio-6) * 3) / 3.35);
+  }
+}
+
+/* Ramas desde 80rem: la tarjeta ya es lo bastante ancha para oscurecer solo
+   la esquina del texto y dejar limpio el resto de la foto. */
+@media (min-width: 80rem) {
+  [data-page="inicio"] .inicio__rama::after {
+    background-image: radial-gradient(
+      140% 110% at 0% 100%,
+      color-mix(in srgb, var(--color-fondo) 84%, transparent) 0%,
+      color-mix(in srgb, var(--color-fondo) 84%, transparent) 75%,
+      transparent 100%
+    );
+  }
+
+  [data-page="inicio"] .inicio__rama:nth-child(2)::after {
+    background-image: radial-gradient(
+      140% 110% at 100% 100%,
+      color-mix(in srgb, var(--color-fondo) 84%, transparent) 0%,
+      color-mix(in srgb, var(--color-fondo) 84%, transparent) 75%,
+      transparent 100%
+    );
+  }
+}
+
+/* Pantalla amplia --------------------------------------------------------- */
+
+/* Carruseles del blog y de servicios: cuatro tarjetas completas y el asomo
+   de la quinta. Entra a partir de 84rem porque ahí la tarjeta ya no baja de
+   ~221 px (blog) y ~230 px (servicios); más angosta, los títulos largos se
+   parten en cinco o seis líneas o, en servicios, "policarbonato" no cabe y se
+   parte a media palabra. */
+@media (min-width: 84rem) {
+  [data-page="inicio"] .inicio__notas {
+    grid-auto-columns: calc((100% - var(--espacio-6) * 4) / 4.35);
+  }
+
+  [data-page="inicio"] .inicio__servicios {
+    grid-auto-columns: calc((100% - var(--espacio-4) * 4) / 4.35);
   }
 }

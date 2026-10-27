@@ -12,13 +12,16 @@
     { "source": "/servicios", "destination": "/construccion/", "permanent": true },
     { "source": "/servicios/", "destination": "/construccion/", "permanent": true },
 
-    { "source": "/galeria.html", "destination": "/proyectos/", "permanent": true },
-    { "source": "/galeria", "destination": "/proyectos/", "permanent": true },
-    { "source": "/galeria/", "destination": "/proyectos/", "permanent": true },
+    { "source": "/galeria.html", "destination": "/#proyectos", "permanent": true },
+    { "source": "/galeria", "destination": "/#proyectos", "permanent": true },
+    { "source": "/galeria/", "destination": "/#proyectos", "permanent": true },
 
-    { "source": "/clientes.html", "destination": "/proyectos/", "permanent": true },
-    { "source": "/clientes", "destination": "/proyectos/", "permanent": true },
-    { "source": "/clientes/", "destination": "/proyectos/", "permanent": true },
+    { "source": "/clientes.html", "destination": "/#proyectos", "permanent": true },
+    { "source": "/clientes", "destination": "/#proyectos", "permanent": true },
+    { "source": "/clientes/", "destination": "/#proyectos", "permanent": true },
+
+    { "source": "/proyectos", "destination": "/#proyectos", "permanent": true },
+    { "source": "/proyectos/", "destination": "/#proyectos", "permanent": true },
 
     { "source": "/contacto.html", "destination": "/#cotizar", "permanent": true },
     { "source": "/contacto", "destination": "/#cotizar", "permanent": true },

@@ -28,6 +28,20 @@ const dirAssets = path.join(raiz, "assets");
 const dirPartials = path.join(dirSrc, "partials");
 const dirDist = path.join(raiz, "dist");
 
+// ---------------------------------------------------------------------------
+// PÁGINAS OCULTAS
+//
+// Carpetas de src/ que no se publican: no llegan a dist/ ni al sitemap, pero
+// su fuente se conserva. Hoy: proyectos, a la espera de las fotos del cliente.
+//
+// Para reactivar una página:
+//   1. Quítala de esta lista y vuelve a correr `node build.js`.
+//   2. En vercel.json, borra su redirección y regresa a ella las del sitio
+//      viejo que hoy apuntan a otro lado.
+//   3. Regresa sus enlaces. Para proyectos, ver "Páginas ocultas" en CLAUDE.md.
+// ---------------------------------------------------------------------------
+const PAGINAS_OCULTAS = ["proyectos"];
+
 const DOMINIO = "https://ultradeck.com.mx";
 const CARATULA = "mantenimiento-temporal.html";
 
@@ -225,13 +239,15 @@ function construirCaratula() {
 
 /** El sitio completo. */
 function construirSitio() {
-  // src/ se publica en la raíz; los partials son fragmentos, no páginas, y la
-  // carátula solo sale en modo mantenimiento.
+  // src/ se publica en la raíz; los partials son fragmentos, no páginas, la
+  // carátula solo sale en modo mantenimiento y las páginas ocultas no salen.
+  const ocultas = PAGINAS_OCULTAS.map((slug) => path.join(dirSrc, slug));
   fs.cpSync(dirSrc, dirDist, {
     recursive: true,
     filter: (origen) =>
       origen !== dirPartials &&
       origen !== path.join(dirSrc, CARATULA) &&
+      !ocultas.includes(origen) &&
       sePublica(origen),
   });
 

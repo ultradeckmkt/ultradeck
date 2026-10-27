@@ -90,12 +90,22 @@
 
     <main class="rama">
       <!-- Hero --------------------------------------------------------- -->
-      <section class="rama__hero" aria-labelledby="rama-titulo">
-        <div class="rama__hero-foto">
-          <p class="ud-pendiente">[PENDIENTE: foto de nave industrial en construcción]</p>
+      <section class="ud-hero" aria-labelledby="rama-titulo">
+        <div class="ud-hero__foto">
+          <!-- [PENDIENTE: construccion-movil.webp, la versión vertical para celular].
+               Mientras no exista, en celular se usa esta misma imagen. -->
+          <img
+            class="ud-hero__imagen"
+            src="/assets/img/hero/construccion.webp"
+            alt="Vista aérea de un parque industrial con varias naves"
+            width="2400"
+            height="1350"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
 
-        <div class="rama__hero-contenido">
+        <div class="ud-hero__contenido">
           <nav class="ud-migas" aria-label="Migas de pan">
             <ol class="ud-migas__lista">
               <li><a href="/">Inicio</a></li>
@@ -140,7 +150,15 @@
           <li class="rama__servicio">
             <a class="rama__servicio-enlace ud-tarjeta ud-tarjeta--enlace" href="/construccion/techos-metalicos/">
               <span class="ud-foto rama__servicio-foto ud-tarjeta__imagen">
-                <span class="ud-pendiente">[PENDIENTE: foto techos metálicos]</span>
+                <img
+                  class="rama__servicio-imagen"
+                  src="/assets/img/servicios/techos-metalicos/cuadrilla-instalando-lamina.webp"
+                  alt="Cuadrilla instalando lámina en el techo de una nave industrial, bajo un cielo nublado"
+                  width="2400"
+                  height="1350"
+                  loading="lazy"
+                  decoding="async"
+                />
               </span>
               <span class="rama__servicio-cuerpo">
                 <h3 class="rama__servicio-nombre">Techos metálicos</h3>
@@ -155,7 +173,15 @@
           <li class="rama__servicio">
             <a class="rama__servicio-enlace ud-tarjeta ud-tarjeta--enlace" href="/construccion/estructura-metalica/">
               <span class="ud-foto rama__servicio-foto ud-tarjeta__imagen">
-                <span class="ud-pendiente">[PENDIENTE: foto estructura metálica]</span>
+                <img
+                  class="rama__servicio-imagen"
+                  src="/assets/img/hero/estructura-metalica.webp"
+                  alt="Vista cenital de la estructura metálica expuesta de una nave industrial, rodeada de vegetación"
+                  width="2400"
+                  height="1350"
+                  loading="lazy"
+                  decoding="async"
+                />
               </span>
               <span class="rama__servicio-cuerpo">
                 <h3 class="rama__servicio-nombre">Estructura metálica</h3>
@@ -170,7 +196,15 @@
           <li class="rama__servicio">
             <a class="rama__servicio-enlace ud-tarjeta ud-tarjeta--enlace" href="/construccion/muros-y-fachadas/">
               <span class="ud-foto rama__servicio-foto ud-tarjeta__imagen">
-                <span class="ud-pendiente">[PENDIENTE: foto muros y fachadas]</span>
+                <img
+                  class="rama__servicio-imagen"
+                  src="/assets/img/hero/muros-y-fachadas.webp"
+                  alt="Nave industrial terminada con fachada clara de lámina de muro"
+                  width="2400"
+                  height="1350"
+                  loading="lazy"
+                  decoding="async"
+                />
               </span>
               <span class="rama__servicio-cuerpo">
                 <h3 class="rama__servicio-nombre">Muros y fachadas</h3>
@@ -185,7 +219,15 @@
           <li class="rama__servicio">
             <a class="rama__servicio-enlace ud-tarjeta ud-tarjeta--enlace" href="/construccion/domos-e-iluminacion/">
               <span class="ud-foto rama__servicio-foto ud-tarjeta__imagen">
-                <span class="ud-pendiente">[PENDIENTE: foto domos e iluminación natural]</span>
+                <img
+                  class="rama__servicio-imagen"
+                  src="/assets/img/servicios/domos-e-iluminacion/techo-con-domos-en-proceso.webp"
+                  alt="Vista cenital de un techo en proceso, con domos y armaduras a la vista"
+                  width="2400"
+                  height="1350"
+                  loading="lazy"
+                  decoding="async"
+                />
               </span>
               <span class="rama__servicio-cuerpo">
                 <h3 class="rama__servicio-nombre">Domos e iluminación natural</h3>
@@ -313,12 +355,6 @@
               <circle cx="12" cy="12" r="8"/><path d="M8.5 12l2.5 2.5 4.5-5"/>
             </svg>
             ISO
-          </li>
-          <li class="ud-insignia">
-            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 21V5"/><path d="M6.5 10.5L12 5l5.5 5.5"/>
-            </svg>
-            DC-3 · Trabajo en alturas
           </li>
           <li class="ud-insignia">
             <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">

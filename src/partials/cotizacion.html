@@ -171,3 +171,97 @@
     </div>
   </div>
 </dialog>
+
+<!-- WhatsApp ----------------------------------------------------------
+     Botón flotante y diálogo previo: primero Nombre y Teléfono, luego se
+     abre la conversación. Viven en este parcial porque ya lo incluyen todas
+     las páginas. Comportamiento en assets/js/cotizacion.js. El botón llega
+     oculto (hidden) y lo muestra el JavaScript: sin él no podría abrir nada. -->
+<button
+  class="ud-whatsapp"
+  type="button"
+  data-abrir-whatsapp
+  aria-haspopup="dialog"
+  hidden
+>
+  <svg class="ud-whatsapp__icono" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z" />
+    <path
+      d="M9 8.5c.2-.6.9-.8 1.3-.4l.8 1c.3.4.2.9-.1 1.2l-.4.4c.5 1.1 1.4 2 2.5 2.5l.4-.4c.3-.3.8-.4 1.2-.1l1 .8c.4.4.2 1.1-.4 1.3-2.9 1-6.9-3-6.3-6.3z"
+    />
+  </svg>
+  <span class="ud-oculto-visual">Escríbanos por WhatsApp</span>
+</button>
+
+<dialog
+  class="ud-modal ud-modal--compacto"
+  id="modal-whatsapp"
+  aria-labelledby="whatsapp-titulo"
+>
+  <button class="ud-modal__cerrar" type="button">
+    <span aria-hidden="true">&times;</span>
+    <span class="ud-oculto-visual">Cerrar</span>
+  </button>
+
+  <div class="ud-modal__forma" data-lenis-prevent>
+    <h2 class="ud-modal__titulo" id="whatsapp-titulo">
+      Escríbanos por WhatsApp
+    </h2>
+
+    <!-- [PENDIENTE: número de WhatsApp de Ultra Deck]. Es el único lugar
+         donde vive: data-whatsapp-numero, solo dígitos, con la lada del país
+         y sin "+" (México: 52 seguido de los 10 dígitos). -->
+    <form
+      class="ud-formulario"
+      id="whatsapp-forma"
+      method="post"
+      novalidate
+      data-whatsapp-numero="520000000000"
+    >
+      <div class="ud-campo">
+        <label class="ud-campo__etiqueta" for="whatsapp-nombre">Nombre</label>
+        <input
+          class="ud-campo__control"
+          id="whatsapp-nombre"
+          name="nombre"
+          type="text"
+          autocomplete="name"
+          required
+        />
+      </div>
+
+      <div class="ud-campo">
+        <label class="ud-campo__etiqueta" for="whatsapp-telefono"
+          >Teléfono</label
+        >
+        <input
+          class="ud-campo__control"
+          id="whatsapp-telefono"
+          name="telefono"
+          type="tel"
+          autocomplete="tel"
+          required
+        />
+      </div>
+
+      <div class="ud-campo ud-campo--casilla">
+        <input
+          class="ud-campo__casilla"
+          id="whatsapp-privacidad"
+          name="privacidad"
+          type="checkbox"
+          required
+        />
+        <label class="ud-campo__etiqueta" for="whatsapp-privacidad">
+          Acepto el
+          <a href="/aviso-de-privacidad/">aviso de privacidad</a>
+        </label>
+      </div>
+
+      <button class="ud-boton ud-boton--flecha ud-formulario__envio" type="submit">
+        Continuar en WhatsApp
+        <span class="ud-boton__flecha" aria-hidden="true"></span>
+      </button>
+    </form>
+  </div>
+</dialog>

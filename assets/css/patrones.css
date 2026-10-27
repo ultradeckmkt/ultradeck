@@ -264,7 +264,7 @@
     color: var(--color-apoyo);
   }
 
-  /* Insignias de certificación. Home y landing de mantenimiento. */
+  /* Insignias de certificación. Home, Nosotros, ramas y Mantenimiento. */
   /* Divisores con cualquier número de columnas: cada insignia dibuja el suyo
      justo a su izquierda. La caja se extiende hacia fuera lo que mide el
      relleno y recorta lo que sobresale, así el divisor de la primera
@@ -312,6 +312,77 @@
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 1.5;
+  }
+
+  /* Hero de las páginas interiores: Nosotros, las ramas y las páginas de
+     servicio, y /mantenimiento/ (el home tiene el suyo).
+     Tarjeta con las proporciones del hero del home: el mismo margen lateral
+     angosto y el mismo alto (llena la pantalla bajo el header y crece si el
+     contenido no cabe, también en celular). Radio grande; la foto se recorta
+     dentro del redondeo y el contenido va centrado en los dos ejes. */
+  .ud-hero {
+    position: relative;
+    display: flex;
+    min-height: calc(100vh - var(--altura-header) - var(--margen-lateral) * 3);
+    min-height: calc(100svh - var(--altura-header) - var(--margen-lateral) * 3);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: var(--margen-lateral) var(--margen-lateral) 0;
+    padding: var(--espacio-8) var(--relleno-hero);
+    border-radius: var(--radio-lg);
+  }
+
+  /* Sin foto, el marcador va arriba: centrado se encimaba con el H1. */
+  .ud-hero__foto {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: start center;
+    padding: var(--espacio-4);
+    background-color: color-mix(in srgb, var(--color-apoyo) 22%, var(--color-fondo));
+  }
+
+  /* La foto cubre todo el fondo; el degradado va encima. */
+  .ud-hero__imagen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Degradado en vez de velo: oscurece solo detrás del texto y deja limpias
+     las orillas. El radio horizontal sigue al ancho de lectura, no al de la
+     tarjeta, para que el párrafo quede siempre en la zona plena; el centro va
+     al medio del alto, como el contenido. Intensidad medida contra las siete
+     fotos de obra con la tarjeta a pantalla completa: el párrafo da 5:1 o más
+     (AA) en 390, 1024, 1440 y 1920 px. Es decorativo: un pseudoelemento sin
+     texto, que los lectores de pantalla no anuncian. */
+  .ud-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--degradado-texto-foto);
+  }
+
+  .ud-hero__contenido {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Las migas también van al centro, aun cuando saltan de línea. */
+  .ud-hero .ud-migas__lista {
+    justify-content: center;
+  }
+
+  .ud-hero__contenido .ud-capsula,
+  .ud-hero__contenido .ud-boton {
+    margin-top: var(--espacio-6);
   }
 
   /* Migas de pan. Las piden las notas y las páginas de servicio. */
@@ -544,9 +615,18 @@
     padding: var(--espacio-6);
   }
 
+  /* El título manda en la tarjeta: tamaño de tarjeta grande. */
   .ud-nota__titulo {
     margin-top: var(--espacio-4);
-    font-size: var(--titulo-tarjeta-sm);
+    font-size: var(--titulo-tarjeta);
+  }
+
+  /* La cápsula de categoría queda por debajo del título: Manrope medio en
+     lugar de Archivo seminegra. (Archivo solo se carga en 600 y 700, así que
+     bajarle el peso no tendría efecto.) Solo en la tarjeta de nota. */
+  .ud-nota .ud-capsula {
+    font-family: var(--fuente-texto);
+    font-weight: var(--peso-medio);
   }
 
   .ud-nota__datos {
@@ -785,7 +865,7 @@
 
   .ud-footer__logo img {
     width: auto;
-    height: var(--altura-logo);
+    height: var(--altura-logo-footer);
   }
 
   .ud-footer__frase {
@@ -838,9 +918,9 @@
     font-size: var(--texto-sm);
   }
 
-  /* Tarjeta inferior, más baja: copyright a la izquierda; aviso y sello a
-     la derecha, con el sello en la esquina. Al partirse en celular, el grupo
-     de la derecha se queda alineado a la derecha. */
+  /* Tarjeta inferior, más baja: copyright a la izquierda y sello a la
+     derecha, en la esquina. Al partirse en celular, el sello se queda
+     alineado a la derecha. */
   .ud-footer__legal {
     display: flex;
     flex-wrap: wrap;
@@ -879,10 +959,6 @@
 
   .ud-footer__derechos {
     color: var(--color-texto-suave);
-    font-size: var(--texto-xs);
-  }
-
-  .ud-footer__legal .ud-footer__enlace {
     font-size: var(--texto-xs);
   }
 
@@ -1027,6 +1103,72 @@
     background-color: var(--color-superficie-1);
   }
 
+  /* Modal compacto: una sola columna con el formulario. WhatsApp. */
+  .ud-modal--compacto {
+    width: min(100%, var(--ancho-modal-compacto));
+  }
+
+  .ud-modal--compacto .ud-modal__forma {
+    padding: var(--espacio-8) var(--espacio-6) var(--espacio-6);
+  }
+
+  /* El título deja libre la esquina del botón de cerrar. */
+  .ud-modal--compacto .ud-modal__titulo {
+    margin-bottom: var(--espacio-6);
+    padding-right: calc(var(--area-toque) + var(--espacio-2));
+  }
+
+  /* Botón flotante de WhatsApp. Colores de la marca, no el verde de
+     WhatsApp. Se aparta cuando el footer está a la vista (esta-oculto, en
+     interacciones.css). */
+  .ud-whatsapp {
+    position: fixed;
+    z-index: var(--z-flotante);
+    right: var(--margen-lateral);
+    bottom: var(--margen-lateral);
+    display: inline-flex;
+    width: var(--area-toque);
+    height: var(--area-toque);
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--radio-pildora);
+    background-color: var(--color-guinda-vivo);
+    box-shadow: var(--sombra-submenu);
+    color: var(--color-blanco);
+    cursor: pointer;
+    transition:
+      background-color var(--transicion),
+      opacity var(--transicion),
+      visibility var(--transicion);
+  }
+
+  /* Llega con hidden y lo muestra el JavaScript; el display de arriba le
+     ganaría al hidden del navegador. */
+  .ud-whatsapp[hidden] {
+    display: none;
+  }
+
+  .ud-whatsapp:hover,
+  .ud-whatsapp:focus-visible {
+    background-color: var(--color-guinda-vivo-hover);
+  }
+
+  .ud-whatsapp:focus-visible {
+    outline: 2px solid var(--color-guinda-claro);
+    outline-offset: 4px;
+  }
+
+  .ud-whatsapp__icono {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+  }
+
   /* Formulario ------------------------------------------------------- */
 
   .ud-formulario {
@@ -1100,9 +1242,23 @@
     margin-top: var(--espacio-2);
   }
 
+  /* En celular el modal compacto se ancla arriba: al abrirse el teclado, los
+     campos quedan a la vista en lugar de taparse. */
+  @media (max-width: 63.999rem) {
+    .ud-modal--compacto {
+      margin-top: var(--margen-lateral);
+      margin-bottom: auto;
+    }
+  }
+
   /* Escritorio ------------------------------------------------------- */
 
   @media (min-width: 64rem) {
+    .ud-whatsapp {
+      width: calc(var(--area-toque) + var(--espacio-3));
+      height: calc(var(--area-toque) + var(--espacio-3));
+    }
+
     /* Tres columnas: las de los lados se reparten por igual, así la píldora
        del centro queda centrada en el header sin que influya el ancho del
        logotipo ni el del botón. */
@@ -1171,6 +1327,18 @@
       pointer-events: auto;
     }
 
+    /* Puente invisible sobre el hueco entre el enlace y el submenú: sin él,
+       el cursor sale del grupo al bajar, el submenú se cierra y el clic cae
+       en lo que hay debajo del header. */
+    .ud-nav__submenu::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 100%;
+      left: 0;
+      height: calc(var(--espacio-3) + var(--espacio-2) + var(--borde));
+    }
+
     .ud-nav__grupo:hover > .ud-nav__submenu,
     .ud-nav__grupo:focus-within > .ud-nav__submenu {
       display: block;
@@ -1226,25 +1394,46 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* La marca se queda con el espacio sobrante; las columnas de enlaces y la
-       de contacto se agrupan a la derecha, cada una del ancho de su contenido
-       y con una separación fija. */
+    /* Escritorio angosto (64–80rem): las cuatro columnas no caben junto a la
+       marca, así que la marca va en su propia fila y debajo, en una fila, los
+       enlaces (que se llevan el sobrante) y el contacto. */
     .ud-footer__interior {
-      grid-template-columns: minmax(16rem, 1fr) auto minmax(0, 18rem);
+      grid-template-columns: minmax(0, 1fr) minmax(14rem, 18rem);
       column-gap: var(--espacio-12);
       row-gap: var(--espacio-8);
       align-items: start;
       padding: var(--espacio-12);
     }
 
+    .ud-footer__marca {
+      grid-column: 1 / -1;
+    }
+
     .ud-footer__legal {
       padding-inline: var(--espacio-12);
     }
 
+    /* Cada columna de enlaces cabe completa y reparte por igual lo que sobra. */
     .ud-footer__navegacion {
-      grid-template-columns: repeat(3, auto);
-      gap: var(--espacio-12);
+      grid-template-columns: repeat(3, minmax(max-content, 1fr));
+      gap: var(--espacio-8);
     }
 
+  }
+
+  /* Desde 80rem cabe todo en una fila. La marca se queda en lo justo para el
+     logotipo y la frase; lo que sobra se reparte entre los enlaces (dos
+     partes) y el contacto (una). */
+  @media (min-width: 80rem) {
+    .ud-footer__interior {
+      grid-template-columns:
+        minmax(17.5rem, 20rem)
+        minmax(max-content, 2fr)
+        minmax(14rem, 1fr);
+    }
+
+    .ud-footer__marca {
+      grid-column: auto;
+    }
   }
 }

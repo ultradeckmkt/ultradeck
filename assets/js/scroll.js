@@ -31,33 +31,49 @@
     return header ? header.offsetHeight + 8 : 0;
   }
 
-  /* Anclas de la misma página. */
+  /* Anclas de la misma página: "#id" o una ruta con ancla que apunta a la
+     página actual, como "/#proyectos" estando en el home. */
   document.addEventListener("click", function (evento) {
     var destino = evento.target;
     if (!destino || !destino.closest) return;
 
-    var enlace = destino.closest('a[href^="#"]');
+    var enlace = destino.closest('a[href*="#"]');
     if (!enlace) return;
+    if (
+      enlace.origin !== location.origin ||
+      enlace.pathname !== location.pathname
+    ) {
+      return; // otra página: el navegador la carga y salta al ancla
+    }
 
-    var id = enlace.getAttribute("href");
-    if (id === "#" || id.length < 2) return;
+    var id = enlace.hash;
+    if (id.length < 2) return;
 
-    var ancla = document.getElementById(id.slice(1));
+    var ancla = document.getElementById(decodeURIComponent(id.slice(1)));
     if (!ancla) return; // p. ej. #cotizar, que lo atiende el modal
 
     evento.preventDefault();
     lenis.scrollTo(ancla, { offset: -estorboDelHeader() });
   });
 
-  /* Con el modal abierto la página de atrás no se mueve; la columna del
-     formulario lleva data-lenis-prevent y se desplaza sola. */
-  var modal = document.getElementById("modal-cotizacion");
-  if (modal) {
-    new MutationObserver(function () {
-      if (modal.open) lenis.stop();
-      else lenis.start();
-    }).observe(modal, { attributes: true, attributeFilter: ["open"] });
+  /* Con un modal abierto (cotización o WhatsApp) la página de atrás no se
+     mueve; la columna del formulario lleva data-lenis-prevent y se desplaza
+     sola. */
+  var modales = document.querySelectorAll("dialog.ud-modal");
 
-    if (modal.open) lenis.stop();
+  function revisarModales() {
+    var alguno = Array.prototype.some.call(modales, function (modal) {
+      return modal.open;
+    });
+    if (alguno) lenis.stop();
+    else lenis.start();
   }
+
+  modales.forEach(function (modal) {
+    new MutationObserver(revisarModales).observe(modal, {
+      attributes: true,
+      attributeFilter: ["open"],
+    });
+  });
+  revisarModales();
 })();

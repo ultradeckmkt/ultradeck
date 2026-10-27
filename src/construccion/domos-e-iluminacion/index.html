@@ -92,12 +92,22 @@
 
     <main class="servicio">
       <!-- Hero --------------------------------------------------------- -->
-      <section class="servicio__hero" aria-labelledby="servicio-titulo">
-        <div class="servicio__hero-foto">
-          <p class="ud-pendiente">[PENDIENTE: foto de domos en cubierta]</p>
+      <section class="ud-hero" aria-labelledby="servicio-titulo">
+        <div class="ud-hero__foto">
+          <!-- [PENDIENTE: domos-e-iluminacion-movil.webp, la versión vertical para celular].
+               Mientras no exista, en celular se usa esta misma imagen. -->
+          <img
+            class="ud-hero__imagen"
+            src="/assets/img/hero/domos-e-iluminacion.webp"
+            alt="Vista aérea de una nave industrial terminada con domos continuos en el techo y cerros al fondo"
+            width="2400"
+            height="1350"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
 
-        <div class="servicio__hero-contenido">
+        <div class="ud-hero__contenido">
           <nav class="ud-migas" aria-label="Migas de pan">
             <ol class="ud-migas__lista">
               <li><a href="/">Inicio</a></li>
@@ -152,14 +162,14 @@
         <ul class="servicio__sistemas">
           <li class="servicio__sistema ud-tarjeta">
             <h3 class="servicio__sistema-nombre">Domos de policarbonato tipo cañón</h3>
-            <p class="servicio__sistema-texto">Iluminación natural continua a lo largo de la cubierta.</p>
+            <p class="servicio__sistema-texto">Iluminación natural continua a lo largo del techo.</p>
           </li>
           <li class="servicio__sistema ud-tarjeta">
             <h3 class="servicio__sistema-nombre">Domos Sunoptics</h3>
             <p class="servicio__sistema-texto">Domos prismáticos de alto rendimiento en difusión de luz.</p>
           </li>
           <li class="servicio__sistema ud-tarjeta">
-            <h3 class="servicio__sistema-nombre">Roof curves (brocales)</h3>
+            <h3 class="servicio__sistema-nombre">Roof curbs (brocales)</h3>
             <p class="servicio__sistema-texto">Bases fabricadas a la medida para el montaje de cada domo.</p>
           </li>
           <li class="servicio__sistema ud-tarjeta">
@@ -379,8 +389,6 @@
                 <h3 class="ud-nota__titulo">¿Cuánto dura el techo de lámina de una nave industrial y cómo alargar su vida útil?</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-08">8 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -395,8 +403,6 @@
                 <h3 class="ud-nota__titulo">¿Cada cuánto dar mantenimiento a un techo industrial?</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-19">19 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -411,8 +417,6 @@
                 <h3 class="ud-nota__titulo">Goteras en naves industriales: causas y cómo detectarlas a tiempo</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-16">16 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>

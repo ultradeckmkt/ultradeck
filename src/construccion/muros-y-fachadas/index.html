@@ -92,12 +92,22 @@
 
     <main class="servicio">
       <!-- Hero --------------------------------------------------------- -->
-      <section class="servicio__hero" aria-labelledby="servicio-titulo">
-        <div class="servicio__hero-foto">
-          <p class="ud-pendiente">[PENDIENTE: foto de muros y fachadas en obra]</p>
+      <section class="ud-hero" aria-labelledby="servicio-titulo">
+        <div class="ud-hero__foto">
+          <!-- [PENDIENTE: muros-y-fachadas-movil.webp, la versión vertical para celular].
+               Mientras no exista, en celular se usa esta misma imagen. -->
+          <img
+            class="ud-hero__imagen"
+            src="/assets/img/hero/muros-y-fachadas.webp"
+            alt="Nave industrial terminada con fachada clara de lámina de muro"
+            width="2400"
+            height="1350"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
 
-        <div class="servicio__hero-contenido">
+        <div class="ud-hero__contenido">
           <nav class="ud-migas" aria-label="Migas de pan">
             <ol class="ud-migas__lista">
               <li><a href="/">Inicio</a></li>
@@ -379,8 +389,6 @@
                 <h3 class="ud-nota__titulo">Goteras en naves industriales: causas y cómo detectarlas a tiempo</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-16">16 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -395,8 +403,6 @@
                 <h3 class="ud-nota__titulo">¿Cada cuánto dar mantenimiento a un techo industrial?</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-19">19 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -411,8 +417,6 @@
                 <h3 class="ud-nota__titulo">Cuánto cuesta el mantenimiento de un techo industrial y de qué depende</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-02">2 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>

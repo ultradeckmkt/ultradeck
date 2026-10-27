@@ -43,6 +43,17 @@
 
   /* Header translúcido: deja ver el contenido que pasa por debajo. */
   --color-header: color-mix(in srgb, var(--color-fondo) 72%, transparent);
+  /* Degradado para texto sobre foto: oscurece solo detrás del texto,
+     centrado, y deja limpias las orillas. El radio horizontal sigue al ancho
+     de lectura. Con el fondo al 84 % el párrafo en gris suave cumple AA sobre
+     las fotos de obra. Lo usan el hero interior (ud-hero) y las ramas del
+     home. */
+  --degradado-texto-foto: radial-gradient(
+    ellipse calc(var(--ancho-texto) * 1.1) 90% at 50% 50%,
+    color-mix(in srgb, var(--color-fondo) 84%, transparent) 0%,
+    color-mix(in srgb, var(--color-fondo) 84%, transparent) 50%,
+    transparent 100%
+  );
   --desenfoque-header: blur(14px);
 
   /* Tipografía
@@ -87,6 +98,7 @@
   --espacio-8: 2rem;
   --espacio-12: 3rem;
   --espacio-16: 4rem;
+  --espacio-24: 6rem;
 
   /* Medidas
      El sitio es de ancho completo: --margen-lateral es el único respiro contra
@@ -106,11 +118,14 @@
   --ancho-texto: 34rem;
   --ancho-contenido: 44rem;
   --ancho-modal: 58rem;
+  --ancho-modal-compacto: 26rem;
   --alto-franja-modal: 9rem;
   --ancho-submenu: 15rem;
   --area-toque: 2.75rem;
   --altura-header: 4.5rem;
   --altura-logo: 2rem;
+  /* Logotipo del footer: aparte del header, para poder agrandarlo solo aquí. */
+  --altura-logo-footer: 2rem;
   --altura-sello: 1.0625rem;
   --icono-grande: 2.5rem;
   --borde: 1px;
@@ -125,6 +140,9 @@
   --sombra-submenu: 0 16px 32px color-mix(in srgb, var(--color-negro) 45%, transparent);
   --sombra-modal: 0 24px 60px color-mix(in srgb, var(--color-negro) 55%, transparent);
   --z-header: 100;
+  /* Botón flotante de WhatsApp: sobre el contenido, bajo el header. Los
+     modales van en la capa superior del navegador, por encima de todo. */
+  --z-flotante: 90;
   --transicion: 150ms ease;
   --opacidad-atenuada: 0.7;
 
@@ -136,10 +154,17 @@
   --transicion-tarjeta: 200ms ease;
   /* Vuelta completa de la barra de clientes del home: lenta a propósito. */
   --duracion-clientes: 60s;
+  /* Vuelta completa del realce de las cifras del hero: 2.5 s por tarjeta. */
+  --duracion-cifras: 10s;
 }
 
 @media (min-width: 64rem) {
   :root {
     --relleno-hero: var(--espacio-12);
+    /* Footer en escritorio: logotipo más grande para que su bajotítulo se lea
+       (a 3rem sus mayúsculas miden ~6 px). El sello crece en la misma
+       proporción que el logotipo respecto a celular (2rem → 3rem, × 1.5). */
+    --altura-logo-footer: 3rem;
+    --altura-sello: calc(1.0625rem * 1.5);
   }
 }

@@ -77,12 +77,22 @@
 
     <main class="nos">
       <!-- Hero --------------------------------------------------------- -->
-      <section class="nos__hero" aria-labelledby="nos-titulo">
-        <div class="nos__hero-foto">
-          <p class="ud-pendiente">[PENDIENTE: foto de equipo o taller]</p>
+      <section class="ud-hero" aria-labelledby="nos-titulo">
+        <div class="ud-hero__foto">
+          <!-- [PENDIENTE: versión vertical de perfiladora-en-obra.webp, la versión vertical para celular].
+               Mientras no exista, en celular se usa esta misma imagen. -->
+          <img
+            class="ud-hero__imagen"
+            src="/assets/img/empresa/maquinaria/perfiladora-en-obra.webp"
+            alt="Operario con una máquina perfiladora sobre la estructura de una nave industrial, junto a un rollo de lámina"
+            width="2400"
+            height="1350"
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
 
-        <div class="nos__hero-contenido">
+        <div class="ud-hero__contenido">
           <nav class="ud-migas" aria-label="Migas de pan">
             <ol class="ud-migas__lista">
               <li><a href="/">Inicio</a></li>
@@ -95,10 +105,9 @@
             35 años cubriendo la industria mexicana
           </h1>
           <p class="nos__entrada">
-            Empezamos en 1990 instalando techos en proyectos residenciales. Hoy
-            somos una empresa especializada en naves industriales, con
-            maquinaria propia y personal certificado, presente en obras de todo
-            el país.
+            Desde 1990 fabricamos e instalamos techos metálicos para la
+            industria mexicana, con maquinaria propia y personal certificado,
+            en obras de todo el país.
           </p>
         </div>
       </section>
@@ -117,7 +126,7 @@
           </li>
           <li class="nos__hito">
             <p class="nos__hito-anio">[PENDIENTE: año]</p>
-            <p class="nos__hito-texto">Primer proyecto industrial</p>
+            <p class="nos__hito-texto">Especialización en naves industriales</p>
           </li>
           <li class="nos__hito">
             <p class="nos__hito-anio">[PENDIENTE: año]</p>
@@ -134,23 +143,22 @@
       <section class="nos__seccion" aria-labelledby="proposito-titulo">
         <h2 class="nos__h2" id="proposito-titulo">Misión y visión</h2>
 
-        <!-- Cita textual del cliente: aquí se conserva "cubiertas" aunque el
-             resto del sitio diga "techos". Ver Terminología en CLAUDE.md. -->
         <div class="nos__proposito">
           <article class="nos__tarjeta ud-tarjeta ud-tarjeta--fuerte">
             <h3 class="nos__tarjeta-titulo">Misión</h3>
             <p class="nos__tarjeta-texto">
-              Dar el servicio de suministro e instalación de cubiertas
-              metálicas con la mejor calidad posible, siempre innovando tanto
-              en labor como en infraestructura.
+              Fabricar e instalar techos metálicos que protejan la operación
+              de nuestros clientes, con maquinaria propia, personal
+              certificado y los estándares más altos de calidad en cada obra.
             </p>
           </article>
           <article class="nos__tarjeta ud-tarjeta ud-tarjeta--fuerte">
             <h3 class="nos__tarjeta-titulo">Visión</h3>
             <p class="nos__tarjeta-texto">
-              Llevar a la compañía al mayor nivel posible, ser líderes a nivel
-              nacional y ser siempre la primera opción en cubiertas metálicas
-              dentro del ámbito industrial.
+              Ser la primera opción en techos metálicos para la industria
+              mexicana, reconocidos por la calidad de nuestra instalación y
+              por acompañar a cada cliente durante toda la vida útil de su
+              nave.
             </p>
           </article>
         </div>
@@ -158,11 +166,18 @@
 
       <!-- Valores -------------------------------------------------------- -->
       <section
-        class="nos__seccion ud-seccion-clara"
+        class="nos__seccion ud-seccion-clara nos__seccion--valores"
         aria-labelledby="valores-titulo"
       >
-        <p class="ud-capsula">Valores</p>
-        <h2 class="nos__h2" id="valores-titulo">Cómo trabajamos</h2>
+        <div>
+          <p class="ud-capsula">Valores</p>
+          <h2 class="nos__h2" id="valores-titulo">Cómo trabajamos</h2>
+          <p class="nos__texto">
+            Cada obra la entregamos con el mismo criterio con el que trabajamos
+            desde 1990: materiales que cumplen, personal que sabe lo que hace y
+            una respuesta clara cuando el cliente la necesita.
+          </p>
+        </div>
 
         <ul class="nos__valores">
           <li class="nos__valor">Respeto al cliente</li>
@@ -224,12 +239,6 @@
               <circle cx="12" cy="12" r="8"/><path d="M8.5 12l2.5 2.5 4.5-5"/>
             </svg>
             ISO
-          </li>
-          <li class="ud-insignia">
-            <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 21V5"/><path d="M6.5 10.5L12 5l5.5 5.5"/>
-            </svg>
-            DC-3 · Trabajo en alturas
           </li>
           <li class="ud-insignia">
             <svg class="ud-insignia__icono" viewBox="0 0 24 24" aria-hidden="true">

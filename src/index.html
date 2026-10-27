@@ -7,7 +7,7 @@
     <title>Ultra Deck | Techos metálicos para naves industriales</title>
     <meta
       name="description"
-      content="Diseño, fabricación e instalación de techos metálicos, estructura y canalones para naves industriales. 35 años de experiencia y mantenimiento de techos en todo México."
+      content="Construcción y mantenimiento de techos metálicos para naves industriales. 35 años de experiencia en todo México."
     />
     <link rel="canonical" href="https://ultradeck.com.mx/" />
     <link rel="icon" href="/assets/img/marca/favicon.png" type="image/png" />
@@ -29,6 +29,7 @@
     <script src="/assets/js/vendor/lenis.min.js" defer></script>
     <script src="/assets/js/scroll.js" defer></script>
     <script src="/assets/js/carrusel.js" defer></script>
+    <script src="/assets/js/video-hero.js" defer></script>
   </head>
   <body data-page="inicio">
     <!-- @include header -->
@@ -49,6 +50,23 @@
             fetchpriority="high"
             decoding="async"
           />
+          <!-- Video decorativo sobre la imagen, que queda de respaldo y es
+               también su póster: la misma URL, una sola descarga. Sin
+               autoplay ni precarga: lo arranca assets/js/video-hero.js cuando
+               la página terminó de cargar y no se pide movimiento reducido. -->
+          <video
+            class="inicio__hero-video"
+            poster="/assets/img/hero/inicio.webp"
+            width="1920"
+            height="960"
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-hidden="true"
+          >
+            <source src="/assets/img/hero/inicio.mp4" type="video/mp4" />
+          </video>
         </div>
 
         <div class="inicio__hero-contenido">
@@ -71,7 +89,7 @@
               Solicitar cotización
               <span class="ud-boton__flecha" aria-hidden="true"></span>
             </button>
-            <a class="inicio__boton-secundario" href="/proyectos/"
+            <a class="inicio__boton-secundario" href="/#proyectos"
               >Ver proyectos</a
             >
           </div>
@@ -150,17 +168,6 @@
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
-                  <path d="M12 21V5" />
-                  <path d="M6.5 10.5L12 5l5.5 5.5" />
-                </svg>
-                DC-3 · Trabajo en alturas
-              </li>
-              <li class="ud-insignia">
-                <svg
-                  class="ud-insignia__icono"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
                   <path d="M4 20h8" />
                   <path d="M8 20V4" />
                   <path d="M8 4h11" />
@@ -171,9 +178,9 @@
             </ul>
 
             <p class="inicio__texto">
-              Empezamos en 1990 con proyectos residenciales y crecimos hasta
-              especializarnos en naves industriales. Hoy fabricamos e
-              instalamos con personal certificado en todo el país.
+              Desde 1990 fabricamos e instalamos techos metálicos para naves
+              industriales. Hoy trabajamos en obras de todo el país con
+              personal certificado.
             </p>
 
             <div class="inicio__acciones">
@@ -245,6 +252,51 @@
         </div>
       </section>
 
+      <!-- Ramas ------------------------------------------------------ -->
+      <section class="inicio__ramas" aria-label="Construcción y mantenimiento">
+        <div class="inicio__rama ud-tarjeta">
+          <div class="inicio__rama-foto">
+            <img
+              class="inicio__rama-imagen"
+              src="/assets/img/hero/estructura-metalica.webp"
+              alt="Vista cenital de la estructura metálica expuesta de una nave industrial, rodeada de vegetación"
+              width="2400"
+              height="1350"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="inicio__rama-contenido">
+            <h2 class="inicio__rama-titulo">Construcción</h2>
+            <p class="inicio__rama-texto">
+              Naves nuevas y ampliaciones: techo, estructura, muros y domos, con
+              un solo responsable de principio a fin.
+            </p>
+            <a class="ud-boton ud-boton--flecha" href="/construccion/">
+              Ver más<span class="ud-oculto-visual"> de Construcción</span>
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="inicio__rama ud-tarjeta">
+          <div class="inicio__rama-foto">
+            <p class="ud-pendiente">[PENDIENTE: foto de mantenimiento]</p>
+          </div>
+          <div class="inicio__rama-contenido">
+            <h2 class="inicio__rama-titulo">Mantenimiento</h2>
+            <p class="inicio__rama-texto">
+              Reparación, limpieza y revisión del techo y el sistema pluvial de
+              su nave, para que no pare de operar.
+            </p>
+            <a class="ud-boton ud-boton--flecha" href="/mantenimiento/">
+              Ver más<span class="ud-oculto-visual"> de Mantenimiento</span>
+              <span class="ud-boton__flecha" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- Servicios -------------------------------------------------- -->
       <section
         class="inicio__seccion inicio__seccion--con-margen inicio__seccion--servicios"
@@ -300,7 +352,7 @@
               </svg>
               <h3 class="inicio__servicio-nombre">Mantenimiento de techos industriales</h3>
               <p class="inicio__servicio-linea">Reparación de goteras, filtraciones y láminas dañadas.</p>
-              <a class="ud-enlace-flecha" href="/mantenimiento/techos-industriales/">
+              <a class="ud-enlace-flecha" href="/mantenimiento/#techos">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
@@ -313,7 +365,7 @@
               </svg>
               <h3 class="inicio__servicio-nombre">Canalones y bajantes pluviales</h3>
               <p class="inicio__servicio-linea">Diseño, fabricación e instalación de sistemas pluviales.</p>
-              <a class="ud-enlace-flecha" href="/mantenimiento/canalones-y-bajantes/">
+              <a class="ud-enlace-flecha" href="/mantenimiento/#canalones">
                 Ver más
                 <span class="ud-boton__flecha" aria-hidden="true"></span>
               </a>
@@ -428,7 +480,7 @@
               <svg class="inicio__servicio-icono" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M3 18h18"/><path d="M7 18v-6h10v6"/><path d="M9 12V9h6v3"/>
               </svg>
-              <h3 class="inicio__servicio-nombre">Roof curves (brocales)</h3>
+              <h3 class="inicio__servicio-nombre">Roof curbs (brocales)</h3>
               <p class="inicio__servicio-linea">Bases para domos, extractores, ventiladores y equipos de A/C.</p>
               <a class="ud-enlace-flecha" href="/construccion/techos-metalicos/">
                 Ver más
@@ -503,6 +555,7 @@
       <!-- Proyectos -------------------------------------------------- -->
       <section
         class="inicio__seccion ud-seccion-clara inicio__seccion--proyectos"
+        id="proyectos"
         aria-labelledby="proyectos-titulo"
       >
         <div class="inicio__carrusel-encabezado">
@@ -511,6 +564,11 @@
             <h2 class="inicio__titulo" id="proyectos-titulo">
               Respaldados por 35 años de proyectos exitosos
             </h2>
+            <p class="inicio__proyectos-entrada">
+              Hemos trabajado para plantas automotrices, centros de distribución
+              y naves industriales en todo el país, con el mismo estándar sin
+              importar el tamaño de la obra.
+            </p>
           </div>
 
           <!-- Sin JavaScript quedan deshabilitadas; el carrusel se sigue
@@ -591,10 +649,13 @@
           </li>
         </ul>
 
+        <!-- Oculto mientras /proyectos/ no se publica (ver PAGINAS_OCULTAS en
+             build.js). Al reactivarla, se descomenta tal cual.
         <a class="ud-boton ud-boton--flecha" href="/proyectos/">
           Ver todos los proyectos
           <span class="ud-boton__flecha" aria-hidden="true"></span>
         </a>
+        -->
       </section>
 
       <!-- Cierre ----------------------------------------------------- -->
@@ -695,8 +756,6 @@
                 <h3 class="ud-nota__titulo">¿Cada cuánto dar mantenimiento a un techo industrial?</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-19">19 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -711,8 +770,6 @@
                 <h3 class="ud-nota__titulo">Goteras en naves industriales: causas y cómo detectarlas a tiempo</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-16">16 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -727,8 +784,6 @@
                 <h3 class="ud-nota__titulo">Qué revisar en el techo de su nave industrial antes de la temporada de lluvias</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-12">12 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -743,8 +798,6 @@
                 <h3 class="ud-nota__titulo">Mantenimiento preventivo vs. correctivo en techos industriales</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-10">10 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -759,8 +812,6 @@
                 <h3 class="ud-nota__titulo">¿Cuánto dura el techo de lámina de una nave industrial y cómo alargar su vida útil?</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-08">8 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -775,8 +826,6 @@
                 <h3 class="ud-nota__titulo">Por qué se desbordan los canalones de una nave industrial y cómo evitarlo</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-05">5 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -791,8 +840,6 @@
                 <h3 class="ud-nota__titulo">¿Reparar o cambiar el techo de su nave industrial? Cuándo conviene un retechado</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-03">3 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
@@ -807,8 +854,6 @@
                 <h3 class="ud-nota__titulo">Cuánto cuesta el mantenimiento de un techo industrial y de qué depende</h3>
                 <span class="ud-nota__datos">
                   <time datetime="2026-09-02">2 de septiembre de 2026</time>
-                  <span aria-hidden="true">·</span>
-                  <span>6 min de lectura</span>
                 </span>
               </span>
             </a>
